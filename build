@@ -1,0 +1,973 @@
+#!/bin/bash
+# 
+# Title: Project Compiler (Build From Filesystem)
+# Copyright: 2013 Adrian C. Miranda
+# License: Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 License
+# Version: 1.0.3
+# 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# SYM: For reading through a symlink, which is usually not what you want
+# (you usually don't want to confuse the user this way)
+SYM=$(basename "$(test -L "$0" && readlink "$0" || echo "$0")");
+DIR=$(dirname "$0");
+PWD=$(pwd);
+ABS=$(cd "$DIR"; pwd);
+
+# Navigate to project
+cd "$ABS";
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# HUMANIZE
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# colors
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: printf "${Bla}black ${Red}red ${NC} ...\n";
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# regular         bold               underline          high intensity     boldhigh intens..   background         high intensity bgs
+Yel='\e[0;33m';   BYel='\e[1;33m';   UYel='\e[4;33m';   IYel='\e[0;93m';   BIYel='\e[1;93m';   On_Yel='\e[43m';   On_IYel='\e[0;103m';
+Pur='\e[0;35m';   BPur='\e[1;35m';   UPur='\e[4;35m';   IPur='\e[0;95m';   BIPur='\e[1;95m';   On_Pur='\e[45m';   On_IPur='\e[0;105m';
+Bla='\e[0;30m';   BBla='\e[1;30m';   UBla='\e[4;30m';   IBla='\e[0;90m';   BIBla='\e[1;90m';   On_Bla='\e[40m';   On_IBla='\e[0;100m';
+Gre='\e[0;32m';   BGre='\e[1;32m';   UGre='\e[4;32m';   IGre='\e[0;92m';   BIGre='\e[1;92m';   On_Gre='\e[42m';   On_IGre='\e[0;102m';
+Whi='\e[0;37m';   BWhi='\e[1;37m';   UWhi='\e[4;37m';   IWhi='\e[0;97m';   BIWhi='\e[1;97m';   On_Whi='\e[47m';   On_IWhi='\e[0;107m';
+Blu='\e[0;34m';   BBlu='\e[1;34m';   UBlu='\e[4;34m';   IBlu='\e[0;94m';   BIBlu='\e[1;94m';   On_Blu='\e[44m';   On_IBlu='\e[0;104m';
+Cya='\e[0;36m';   BCya='\e[1;36m';   UCya='\e[4;36m';   ICya='\e[0;96m';   BICya='\e[1;96m';   On_Cya='\e[46m';   On_ICya='\e[0;106m';
+Red='\e[0;31m';   BRed='\e[1;31m';   URed='\e[4;31m';   IRed='\e[0;91m';   BIRed='\e[1;91m';   On_Red='\e[41m';   On_IRed='\e[0;101m';
+
+# alert messages
+SUCCESS=${BBla}${On_Gre};
+ERROR=${BWhi}${On_Red};
+WARN=${BBla}${On_Yel};
+
+# no color
+NC='\e[0m';
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# line decoration
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+___="${Red}$(printf %81s |tr " " "~")${NC}";
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# UTILS
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: localhost [file/directory/port/nothing]
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function localhost {
+	local ipl="$(ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1' | sed "1 d")";
+	ipl="${ipl:-localhost}";
+	if [[ "$1" =~ ^[0-9]+$ ]]; then
+	# Launch a local web server from specific port
+		open "http://localhost:$1";
+	elif [ `echo "$ABS" | grep -o "$WORKSPACE.*"` ]; then
+	# Launch a local web server from workspace
+		AMBIENT=`echo "$ABS" | sed 's,'"$WORKSPACE"','"http://$ipl"','`;
+		open "$AMBIENT/$1";
+	else
+	# Launch a local web server from a directory if isn't workspace folder
+		python -m SimpleHTTPServer 8080 &>/dev/null &
+		open http://localhost:8080/;
+	fi
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: if floatnum ''$PLAYER_VERSION' > 10.1'; then ...
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function floatnum {
+	local cond=0;
+	if [[ $# -gt 0 ]]; then
+		cond=$(echo "$*" | bc -q 2>/dev/null);
+		if [[ -z "$cond" ]]; then cond=0; fi
+		if [[ "$cond" != 0  &&  "$cond" != 1 ]]; then cond=0; fi
+	fi
+	local stat=$((cond == 0));
+	return $stat;
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: retrieveReview;
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function retrieveReview {
+	mkdir -pv "$TEMPLATES" && \
+	touch "$TEMPLATES/revision" && \
+	echo $(($(cat "$TEMPLATES/revision")));
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: updateReview;
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function updateReview {
+	REVISION=$(retrieveReview) && TIME_STAMP=$(date +%y.%m.%d) \
+	echo "$((REVISION+1))" > "$TEMPLATES/revision";
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Remove all .DS_Store, Thumbs.db, *.tmp, and useless files from project
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function cleanupProject {
+	# Cleanup output folder
+	if [[ ! -z "${RESOURCES+xxx}" ]]; then
+		rm -rf $RESOURCES;
+	fi
+
+	# Remove all empty directories from OUTPUT_PATH
+	if [[ ! -z "${OUTPUT_PATH+xxx}" ]]; then
+		find $OUTPUT_PATH -empty -type d -delete;
+	fi
+
+	# Remove boot file
+	if [[ -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
+		rm -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
+	fi
+
+	# Remove boot file
+	if [[ -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
+		rm -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
+	fi
+
+	# Remove descriptor file
+	if [[ -f "$OUTPUT.xml" ]]; then
+		rm -f "$OUTPUT.xml";
+	fi
+
+	# Cleanup preference files
+	find "$ABS" \( \
+		-name .DS_Store -or \
+		-name ._.DS_Store -or \
+		-name Thumbs.db -or \
+		-name ._Thumbs.db -or \
+		-name *.adl \) \
+	-delete;
+
+	# Remove output folder if is empty
+	if [[ $(ls "$OUTPUT_PATH" | wc -l) -eq 0 ]]; then
+		rm -rf "$OUTPUT_PATH";
+	fi
+
+	# Fallback
+	printf "\n${Gre}Cleared, without errors.${NC}\n";
+}
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# HELP
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: ./build -help
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function usage {
+	printf "$SYM documentation soon ;)\n";
+	printf "[-swf|-air|-dmg|-app|-apk|-ipa]\n";
+	printf "[-release|-debug]\n";
+	exit 1;
+}
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# VALIDATE PARAMETERS
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage:
+# ./build -dmg -release
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TEMPLATES="$ABS/{{TEMPLATES_DIR}}";
+MODE="debug";
+PKG="";
+for opt in "$@"; do
+	case "$opt" in
+		-release)
+			MODE="release";
+			;;
+		-debug)
+			MODE="debug";
+			;;
+		-air)
+			PKG="air";
+			;;
+		-dmg) 
+			PKG="dmg";
+			;;
+		-app)
+			PKG="app";
+			;;
+		-apk)
+			PKG="apk";
+			;;
+		-ipa)
+			PKG="ipa";
+			;;
+		-help)
+			usage;
+			;;
+		*)
+			usage;
+			;;
+	esac
+done
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# VALIDATE SETTINGS
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# LOAD
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if [[ ! -r "$ABS/build.cfg" ]]; then
+	printf "${ERROR}ERROR:${NC} build.cfg not found. Run ./$SYM init\n";
+	exit 1;
+else 
+	source "$ABS/build.cfg";
+fi
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# BIN
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# sdk
+if [[ ! -d "$FLEX_SDK" ]]; then
+	# if directory doensn't exists or not is directory.
+	printf "${ERROR}ERROR:${NC} Flex SDK not found.\n";
+	exit 1;
+else
+	# This should see the list of defined variables.
+	# If you need to remove an existing FLEX_HOME, you can do so:
+	export -n FLEX_HOME;
+
+	# After removing the chances of having a variable outdated...
+	export FLEX_HOME="$FLEX_SDK";
+fi
+
+# asdoc
+if [[ ! -x "$FLEX_SDK/bin/asdoc" ]]; then
+	# if file doensn't exists or not is executable.
+	printf "${ERROR}ERROR:${NC} asdoc not found.\n";
+	exit 1;
+else
+	asdoc="$FLEX_SDK/bin/asdoc";
+fi
+
+# adl
+if [[ ! -x "$FLEX_SDK/bin/adl" ]]; then
+	# if file doensn't exists or not is executable.
+	printf "${ERROR}ERROR:${NC} adl not found.\n";
+	exit 1;
+else
+	adl="$FLEX_SDK/bin/adl";
+fi
+
+# adt
+if [[ ! -x "$FLEX_SDK/bin/adt" ]]; then
+	# if file doensn't exists or not is executable.
+	printf "${ERROR}ERROR:${NC} adt not found.\n";
+	exit 1;
+else
+	adt="$FLEX_SDK/bin/adt";
+fi
+
+# amxmlc
+if [[ ! -x "$FLEX_SDK/bin/amxmlc" ]]; then
+	# if file doensn't exists or not is executable.
+	printf "${ERROR}ERROR:${NC} amxmlc not found.\n";
+	exit 1;
+else
+	amxmlc="$FLEX_SDK/bin/amxmlc";
+fi
+
+# mxmlc
+if [[ ! -x "$FLEX_SDK/bin/mxmlc" ]]; then
+	# if file doensn't exists or not is executable.
+	printf "${ERROR}ERROR:${NC} mxmlc not found.\n";
+	exit 1;
+else
+	if [[ -x "$FLEX_SDK/bin/fcshctl" ]]; then
+		mxmlc="$FLEX_SDK/bin/fcshctl mxmlc";
+	else
+		mxmlc="$FLEX_SDK/bin/mxmlc";
+	fi
+fi
+
+# frameworks
+if [[ ! -d "$FLEX_SDK/frameworks" ]]; then
+	# if directory doensn't exists or 'frameworks' not is directory.
+	printf "${ERROR}ERROR:${NC} frameworks not found.\n";
+	exit 1;
+else
+	frameworks="$FLEX_SDK/frameworks";
+fi
+
+# locale
+if [[ ! -d "$frameworks/locale" ]]; then
+	# if directory doensn't exists or not is readable.
+	printf "${ERROR}ERROR:${NC} frameworks locale not found.\n";
+	exit 1;
+fi
+
+# player versions
+if [[ ! -d "$frameworks/libs/player" ]]; then
+	# if directory doensn't exists or not is readable.
+	printf "${ERROR}ERROR:${NC} frameworks player libs not found.\n";
+	exit 1;
+fi
+
+# air-config
+if [[ ! -r "$frameworks/air-config.xml" ]]; then
+	# if file doensn't exists or not is readable.
+	printf "${ERROR}ERROR:${NC} air-config.xml not found.\n";
+	exit 1;
+else
+	air_config="$frameworks/air-config.xml";
+fi
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# GENERAL
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# The name of the project (e.g. appname)
+if [[ -z "${NAME+xxx}" ]]; then
+	printf "${ERROR}NAME ERROR:${NC} NAME is not defined.\n";
+	exit 1;
+elif [[ ! "$NAME" =~ ^[a-zA-Z][a-zA-Z0-9]*$ || -z "$NAME" ]]; then
+	printf "${ERROR}NAME ERROR:${NC} Please pick a valid name for this project.\n";
+	exit 1;
+fi
+
+# Flash player version number
+if [[ ! -d "$frameworks/libs/player/$PLAYER_VERSION" ]]; then
+	printf "${ERROR}PLAYER_VERSION ERROR:${NC} You has not playerglobal.swc version $PLAYER_VERSION\n";
+	exit 1;
+fi
+
+# This is a class that is instantiated on startup (e.g. Main.as or Main.mxml)
+if [[ -z "${BOOT+xxx}" ]]; then
+	printf "${ERROR}BOOT ERROR:${NC} is not defined.\n";
+	exit 1;
+elif [[ -z "$BOOT" ]]; then
+	printf "${ERROR}BOOT ERROR:${NC} is empty.\n";
+	exit 1;
+elif [[ ! "$(basename ${BOOT%.*})" =~ ^[a-zA-Z_$][a-zA-Z0-9_$]*$ ]]; then
+	printf "${ERROR}BOOT ERROR:${NC} Has a invalid name.\n";
+	exit 1;
+elif [[ ! "$(basename ${BOOT##*.})" =~ ^(as|mxml|html)$ ]]; then
+	printf "${ERROR}BOOT ERROR:${NC} Has a invalid extension.\n";
+	exit 1;
+else
+	BOOT="$ABS/$BOOT";
+	BOOT_NAME="$(basename ${BOOT%.*})";
+	BOOT_OUTPUT_EXTENSION=$(basename ${BOOT##*.});
+	BOOT_PATH=$(dirname "$BOOT");
+	if [[ "$BOOT_OUTPUT_EXTENSION" =~ ^html$ ]]; then
+		BOOT_OUTPUT_EXTENSION="html";
+	else
+		BOOT_OUTPUT_EXTENSION="swf";
+	fi
+fi
+
+# Air version number (for the app descriptor file)
+if [[ ! "$AIR_VERSION" =~ ^[0-9]+([.][0-9]+)?$ || -z "${AIR_VERSION+xxx}" ]]; then
+	printf "${WARN}WARNING:${NC} AIR_VERSION has been defined to default.\n";
+	AIR_VERSION={{DEFAULT_AIR_VERSION}};
+fi
+
+# Application ID (e.g. com.yourdomain.appname)
+if [[ ! "$ID" =~ ^[a-zA-Z][a-zA-Z0-9.]*$ || -z "${ID+xxx}" ]]; then
+	printf "${WARN}WARNING:${NC} ID has been defined to default.\n";
+	ID={{DEFAULT_ID}};
+fi
+
+# Used by AIR compiler to include appropriate libraries
+if [[ ! -d "$frameworks/locale/$LOCALE" || -z "${LOCALE+xxx}" ]]; then
+	printf "${WARN}WARNING:${NC} LOCALE has been defined to {{DEFAULT_LOCALE}}.\n";
+	$LOCALE="{{DEFAULT_LOCALE}}";
+fi
+
+# The description of the project (e.g. My awesome rpg game!)
+if [[ -z "${DESCRIPTION+xxx}" ]]; then
+	DESCRIPTION="{{DEFAULT_DESCRIPTION}}";
+fi
+
+# The copyright of the project (e.g. © 2014 YourCompany Systems Inc.)
+if [[ -z "${COPYRIGHT+xxx}" ]]; then
+	COPYRIGHT="{{DEFAULT_COPYRIGHT}}";
+fi
+
+# Flash player background color
+if [[ ! "$BGCOLOR" =~ ^([#]|0x)[a-zA-Z0-9]{6}$ || -z "${BGCOLOR+xxx}" ]]; then
+	printf "${WARN}WARNING:${NC} BGCOLOR has been changed to default.\n";
+	BGCOLOR={{DEFAULT_BGCOLOR}};
+fi
+
+# Default project width
+if [[ ! "$WIDTH" =~ ^[0-9]+$ || -z "${WIDTH+xxx}" ]]; then
+	printf "${WARN}WARNING:${NC} WIDTH has been changed to default.\n";
+	WIDTH={{DEFAULT_WIDTH}};
+fi
+
+# Default project height
+if [[ ! "$HEIGHT" =~ ^[0-9]+$ || -z "${HEIGHT+xxx}" ]]; then
+	printf "${WARN}WARNING:${NC} HEIGHT has been changed to default.\n";
+	HEIGHT={{DEFAULT_HEIGHT}};
+fi
+
+# Frames per second
+if [[ ! "$FPS" =~ ^[0-9]+$ || -z "${FPS+xxx}" ]]; then
+	printf "${WARN}WARNING:${NC} FPS has been changed to default.\n";
+	FPS={{DEFAULT_FPS}};
+fi
+
+# A package of ActionScript utilities codes
+if [[ -z "${LIBRARY+xxx}" ]]; then
+	LIBRARY="$ABS/{{DEFAULT_LIBRARY}}";
+else
+	LIBRARY="$ABS/$LIBRARY";
+fi
+
+# A directory of precompiled Flash symbols and ActionScript codes
+if [[ -z "${BINARY+xxx}" ]]; then
+	# WARNING: Not tested yet.
+	BINARY=$(find "$ABS/" \( ! -regex '.*/\..*/..*' \) \
+		-type f -iname '*.swc' \
+	| awk '{print " -library-path+="$1}');
+else
+	BINARY="$ABS/$BINARY";
+fi
+
+# A directory of Native extensions
+if [[ -z "${ANE+xxx}" ]]; then
+	ANE="";
+fi
+
+# App descriptor XML (e.g. MyAwesomeGame-app.xml)
+if [[ -z "${DESCRIPTOR+xxx}" || -z "$DESCRIPTOR" ]]; then
+	DESCRIPTOR="$ABS/{{DEFAULT_DESCRIPTOR}}";
+elif [[ ! "$(basename ${DESCRIPTOR%.*})" =~ ^[a-zA-Z][a-zA-Z0-9]*$ ]]; then
+	DESCRIPTOR="$ABS/{{DEFAULT_DESCRIPTOR}}";
+elif [[ ! "$(basename ${DESCRIPTOR##*.})" =~ ^xml$ ]]; then
+	DESCRIPTOR="$ABS/{{DEFAULT_DESCRIPTOR}}";
+else
+	DESCRIPTOR="$ABS/$DESCRIPTOR";
+fi
+
+# Output descriptor file path
+DESCRIPTOR_PATH=$(dirname "$DESCRIPTOR");
+
+# Sub-directory for release SWF builds (appended to ./appname)
+if [[ -z "${OUTPUT_RELEASE+xxx}" ]]; then
+	OUTPUT_RELEASE="$ABS/{{DEFAULT_OUTPUT_RELEASE}}";
+else
+	OUTPUT_RELEASE="$ABS/$OUTPUT_RELEASE";
+fi
+
+# Sub-directory for debug SWF builds (appended to ./appname)
+if [[ -z "${OUTPUT_DEBUG+xxx}" ]]; then
+	OUTPUT_DEBUG="$ABS/{{DEFAULT_OUTPUT_DEBUG}}";
+else
+	OUTPUT_DEBUG="$ABS/$OUTPUT_DEBUG";
+fi
+
+# Sub-directory for SWF builds
+if [[ "$MODE" = "release" ]]; then
+	OUTPUT_PATH="$OUTPUT_RELEASE";
+else
+	OUTPUT_PATH="$OUTPUT_DEBUG";
+fi
+
+# Output files name
+OUTPUT="$OUTPUT_PATH/$BOOT_NAME";
+
+# Sub-directory for resources (like sounds and images)
+if [[ -z "${RESOURCES+xxx}" ]]; then
+	RESOURCES="$ABS/{{DEFAULT_RESOURCES}}";
+else
+	RESOURCES="$ABS/$RESOURCES";
+fi
+
+# Config constants and RSLs
+if [[ -z "${EXTRA+xxx}" ]]; then
+	EXTRA="";
+fi
+
+# Package icons
+if [[ -z "${ICONS+xxx}" ]]; then
+	ICONS="";
+fi
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# SIGNATURE
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# The AIR signing tools keystores accessible through the Java Cryptography Architecture (JCA).
+# (e.g source/certificate.pfx or source/certificate.p12 file extension) (appended to $SOURCE)
+if [[ -z "${CERTIFICATE+xxx}" ]]; then
+	printf "${ERROR}CERTIFICATE ERROR:${NC} is not defined.\n";
+	exit 1;
+elif [[ -z "$CERTIFICATE" ]]; then
+	printf "${ERROR}CERTIFICATE ERROR:${NC} is empty.\n";
+	exit 1;
+elif [[ ! "$(basename ${CERTIFICATE%.*})" =~ ^[a-zA-Z_$][a-zA-Z0-9_$]*$ ]]; then
+	printf "${ERROR}CERTIFICATE ERROR:${NC} Has a invalid name.\n";
+	exit 1;
+elif [[ ! "$(basename ${CERTIFICATE##*.})" =~ ^(p12|pfx)$ ]]; then
+	printf "${ERROR}CERTIFICATE ERROR:${NC} Has a invalid extension.\n";
+	exit 1;
+else
+	CERTIFICATE="$ABS/$CERTIFICATE";
+	CERTIFICATE_OUTPUT_EXTENSION=$(basename ${CERTIFICATE##*.});
+	CERTIFICATE_PATH=$(dirname "$CERTIFICATE");
+fi
+
+# Passwords used to protect PKCS12 certificate files (e.g w34Xc2Y)
+if [[ -z "${PASSWORD+xxx}" ]]; then
+	printf "Enter password used to protect PKCS12 certificate files: ";
+	read -s key; printf "\n";
+	PASSWORD="$key";
+fi
+
+# Used by AIR compiler to include appropriate libraries
+CERTIFICATE_LOCALE=$(echo "$LOCALE" | cut -d'_' -f 2);
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# COMPILERS
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function generateHTML {
+	# Create a new html
+	printf "\n=> Preparing $BOOT_NAME.$BOOT_OUTPUT_EXTENSION\n";
+	local PTIME=0;
+	local startTime=`eval date +%s`;
+	cp "$BOOT" "$OUTPUT.$BOOT_OUTPUT_EXTENSION" && {
+		
+		local endTime=`eval date +%s`;
+		let PTIME=($endTime - $startTime);
+		if [[ $PTIME > 1 ]]; then
+			printf "${Gre}✓ HTML${NC} (Built in $PTIME seconds)\n";
+		else
+			printf "${Gre}✓ HTML${NC} (Built in $PTIME second)\n";
+		fi
+
+		# Launch preview
+		$adl "$OUTPUT.adl" || {
+
+			printf "\n$___\n${ERROR}✖ ERROR:${NC} $NAME preview failed\n$___\n";
+			cleanupProject;
+			exit 1;
+
+		};
+	}
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function generateSWF {
+	{ # try
+
+		# Config constants
+		local PARAMS="-define CONFIG::LOGGING true";
+		PARAMS="$PARAMS -define CONFIG::PLATFORM true";
+		PARAMS="$PARAMS -define CONFIG::MOCK false";
+
+		# Player options
+		local CONFIG="-target-player=$PLAYER_VERSION";
+		CONFIG="$CONFIG -source-path $BOOT_PATH";
+		CONFIG="$CONFIG -source-path $LIBRARY";
+		CONFIG="$CONFIG -library-path $BINARY";
+		CONFIG="$CONFIG -library-path $frameworks/libs/framework.swc";
+		CONFIG="$CONFIG -static-link-runtime-shared-libraries=true";
+		CONFIG="$CONFIG -use-network=false";
+		CONFIG="$CONFIG -headless-server=true";
+		CONFIG="$CONFIG -incremental=false";
+		CONFIG="$CONFIG -keep=false";
+
+		# AIR/Web
+		if [[ "$PKG" = "air" ]]; then
+			printf "\n=> Seeking air modules\n";
+			CONFIG="$CONFIG -load-config $air_config";
+			PARAMS="$PARAMS -define CONFIG::AIR true";
+			PARAMS="$PARAMS -define CONFIG::WEB false";
+		else
+			PARAMS="$PARAMS -define CONFIG::AIR false";
+			PARAMS="$PARAMS -define CONFIG::WEB true";
+		fi
+		
+		# Player version
+		if floatnum ''$PLAYER_VERSION' > 10.1'; then
+			PARAMS="$PARAMS -define CONFIG::FLASH_10_1 false";
+		else
+			PARAMS="$PARAMS -define CONFIG::FLASH_10_1 true";
+		fi
+		
+		# Player type
+		if [[ "$MODE" = 'release' ]]; then
+			CONFIG="$CONFIG -debug=false";
+		else
+			printf "\n=> Setting debug mode\n";
+			CONFIG="$CONFIG -debug=true";
+			open -a as3Debugger;
+		fi
+
+		# Concatenate extra arguments
+		CONFIG="$CONFIG $PARAMS $EXTRA";
+		
+		# Compile
+		printf "\n=> Preparing $NAME.$BOOT_OUTPUT_EXTENSION\n";
+		local PTIME=0;
+		local startTime=`eval date +%s`;
+		$mxmlc "$BOOT" -output "$OUTPUT.$BOOT_OUTPUT_EXTENSION" $CONFIG && {
+			
+			local endTime=`eval date +%s`;
+			let PTIME=($endTime - $startTime);
+			if [[ $PTIME > 1 ]]; then
+				printf "${Gre}✓ SWF${NC} (Built in $PTIME seconds)\n";
+			else
+				printf "${Gre}✓ SWF${NC} (Built in $PTIME second)\n";
+			fi
+
+			# Launch preview
+			$adl -extdir "$ANE" "$OUTPUT.adl" || {
+
+				printf "\n$___\n${ERROR}✖ ERROR:${NC} $NAME preview failed\n$___\n";
+				cleanupProject;
+				exit 1;
+
+			};
+		}
+
+	} || { # catch
+
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} Build $BOOT_OUTPUT_EXTENSION failed\n$___\n";
+		cleanupProject;
+		exit 1;
+
+	}
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function generateAIR {
+	{ # try
+
+		# Has source file?
+		if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
+			if [[ ! -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
+				printf "${ERROR}ERROR:${NC} $OUTPUT.$BOOT_OUTPUT_EXTENSION not found\n";
+				cleanupProject;
+				exit 1;
+			fi
+		elif [[ ! -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
+			printf "${ERROR}ERROR:${NC} $OUTPUT.$BOOT_OUTPUT_EXTENSION not found\n";
+			cleanupProject;
+			exit 1;
+		fi
+		
+		# Has certificate?
+		if [[ ! -f "$CERTIFICATE" ]]; then
+			printf "${ERROR}ERROR:${NC} $CERTIFICATE not found\n";
+			cleanupProject;
+			exit 1;
+		fi
+
+		# Configure
+		local CONFIG="-keystore $CERTIFICATE";
+		CONFIG="$CONFIG -storepass $PASSWORD";
+		CONFIG="$CONFIG -target native";
+
+		# Package
+		CONFIG="$CONFIG $OUTPUT.${PKG:-air}";
+		
+		# Descriptor
+		CONFIG="$CONFIG $OUTPUT.xml";
+		
+		# Source
+		CONFIG="$CONFIG $OUTPUT.$BOOT_OUTPUT_EXTENSION";
+
+		# Resources
+		CONFIG="$CONFIG $ICONS $RESOURCES";
+
+		# Native extensions directory
+		if [[ -d "$ANE" ]]; then
+			CONFIG="$CONFIG -extdir $ANE";
+		fi
+		
+		# Compile
+		printf "\n=> Packaging application\n";
+		local PTIME=0;
+		local startTime=`eval date +%s`;
+		$adt -package -storetype pkcs12 $CONFIG && {
+			
+			local endTime=`eval date +%s`;
+			let PTIME=($endTime - $startTime);
+			if [[ $PTIME > 1 ]]; then
+				printf "${Gre}✓ $(echo ${PKG:-air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME seconds)\n";
+			else
+				printf "${Gre}✓ $(echo ${PKG:-air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME second)\n";
+			fi
+			if [[ "$MODE" = "release" ]]; then
+				updateReview;
+			fi
+
+		}
+
+	} || { # catch
+
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} Build ${PKG:-air} package failed\n$___\n";
+		cleanupProject;
+		exit 1;
+
+	}
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function generateP12 {
+	{ # try
+
+		# Configure
+		local CONFIG="-certificate";
+		CONFIG="$CONFIG -cn $NAME";
+		CONFIG="$CONFIG -ou $NAME";
+		CONFIG="$CONFIG -o $NAME";
+		CONFIG="$CONFIG -c $CERTIFICATE_LOCALE";
+		CONFIG="$CONFIG -validityPeriod 2";
+		CONFIG="$CONFIG 2048-RSA";
+		CONFIG="$CONFIG $CERTIFICATE $PASSWORD";
+
+		# Compile
+		printf "\n=> Generating certificate file\n";
+		local PTIME=0;
+		local startTime=`eval date +%s`;
+		$adt $CONFIG && {
+			
+			local endTime=`eval date +%s`;
+			let PTIME=($endTime - $startTime);
+			if [[ $PTIME > 1 ]]; then
+				printf "${Gre}✓ $(echo ${CERTIFICATE_OUTPUT_EXTENSION} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME seconds)\n";
+			else
+				printf "${Gre}✓ $(echo ${CERTIFICATE_OUTPUT_EXTENSION} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME second)\n";
+			fi
+
+		};
+
+	} || { # catch
+
+		printf "\n$___\n${ERROR}ERROR:${NC} Build certificate failed\n$___\n";
+		cleanupProject;
+		exit 1;
+
+	}
+}
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# TMP
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: ./build -d
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Update the application file to ensure the output is properly set
+function generateDescriptor {
+	# Get relative path from output (e.g bin-debug, bin-release)
+	printf "\n=> Updating descriptor file\n";
+	local CONTENT_FILE=$(echo "$OUTPUT.$BOOT_OUTPUT_EXTENSION" | sed "s,$ABS/,,");
+	local CONTENT_FILE_PATH=$(dirname "$CONTENT_FILE");
+
+	# Descriptor for package
+	sed -e "s,\(xmlns=\"[a-zA-Z/.:]*\)\([0-9]*[.][0-9]*\),\1${AIR_VERSION},g" \
+		-e "s,\(<id>\)\([^<>]*\)\(</id>\),\1${ID}\3,g" \
+		-e "s,\(<name>\)\([^<>]*\)\(</name>\),\1${NAME}\3,g" \
+		-e "s,\(<title>\)\([^<>]*\)\(</title>\),\1${NAME}\3,g" \
+		-e "s,\(<width>\)\([^<>]*\)\(</width>\),\1${WIDTH}\3,g" \
+		-e "s,\(<height>\)\([^<>]*\)\(</height>\),\1${HEIGHT}\3,g" \
+		-e "s,\(<content>\)\([^<>]*\)\(</content>\),\1${CONTENT_FILE}\3,g" \
+		-e "s,\(<filename>\)\([^<>]*\)\(</filename>\),\1${NAME}\3,g" \
+		-e "s,\(<copyright>\)\([^<>]*\)\(</copyright>\),\1${COPYRIGHT}\3,g" \
+		-e "s,\(<versionNumber>\)\([^<>]*\)\(</versionNumber>\),\11.$(retrieveReview)\3,g" \
+		-e "s,\(<description>\)\([^<>]*\)\(</description>\),\1${DESCRIPTION}\3,g" \
+		-e "s,\(<image\([0-9]*x[0-9]*\)>\)\([^<>]*\)\(</image\([0-9]*x[0-9]*\)>\),\1${CONTENT_FILE_PATH}/\3\4,g" \
+	"$DESCRIPTOR" > "$OUTPUT.xml";
+
+	# Descriptor for test
+	sed -e "s,\(xmlns=\"[a-zA-Z/.:]*\)\([0-9]*[.][0-9]*\),\1${AIR_VERSION},g" \
+		-e "s,\(<id>\)\([^<>]*\)\(</id>\),\1${ID}\3,g" \
+		-e "s,\(<name>\)\([^<>]*\)\(</name>\),\1${NAME}\3,g" \
+		-e "s,\(<width>\)\([^<>]*\)\(</width>\),\1${WIDTH}\3,g" \
+		-e "s,\(<height>\)\([^<>]*\)\(</height>\),\1${HEIGHT}\3,g" \
+		-e "s,\(<content>\)\([^<>]*\)\(</content>\),\1${NAME}.$BOOT_OUTPUT_EXTENSION\3,g" \
+		-e "s,\(<filename>\)\([^<>]*\)\(</filename>\),\1${NAME}\3,g" \
+		-e "s,\(<copyright>\)\([^<>]*\)\(</copyright>\),\1${COPYRIGHT}\3,g" \
+		-e "s,\(<versionNumber>\)\([^<>]*\)\(</versionNumber>\),\11.$(retrieveReview)\3,g" \
+		-e "s,\(<description>\)\([^<>]*\)\(</description>\),\1${DESCRIPTION}\3,g" \
+	"$DESCRIPTOR" > "$OUTPUT.adl";
+}
+
+# Copy assets to output folder to be packaged
+# Additional files for AIR package
+function retrieveResources {
+	printf "\n=> Packaging resources\n";
+	rsync -avz "$RESOURCES/" "$OUTPUT_PATH/";
+	RESOURCES=$(find "$OUTPUT_PATH" \( ! -regex '.*/\..*/..*' \) \
+		-type f ! -iname ".DS_Store" \
+		-type f ! -iname "._.DS_Store" \
+		-type f ! -iname "Thumbs.db" \
+		-type f ! -iname "$BOOT_NAME.html" \
+		-type f ! -iname "$BOOT_NAME.adl" \
+		-type f ! -iname "$BOOT_NAME.swf" \
+		-type f ! -iname "$BOOT_NAME.xml" \
+		-type f ! -iname "$NAME.html" \
+		-type f ! -iname "$NAME.adl" \
+		-type f ! -iname "$NAME.swf" \
+		-type f ! -iname "$NAME.xml" \
+		-type f ! -iname "build" \
+		-type f ! -iname "*.air" \
+		-type f ! -iname "*.app" \
+		-type f ! -iname "*.dmg" \
+		-type f ! -iname "*.ipa" \
+		-type f ! -iname "*.apk" \
+		-type f ! -iname "*.exe" \
+		-type f ! -iname "*.tmp" \
+		-type f ! -iname "*.cfg" \
+	| awk '{print " "$1}');
+	if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
+		:
+	fi
+}
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# COMPILE
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: ./build -help
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Prepend info
+printf "     .~~^~^~^~^~^~^~~~.\n";
+printf "    (  Boy this thing  )\n";
+printf "     (    is slow.    )\n";
+printf "      \`~u~u~u~u~u~u~~'\n";
+printf "      O             O\n";
+printf "     O               O\n";
+printf "      o             o\n";
+printf "       \` .     _ . '\n";
+printf "          ~0  (_|\n";
+printf "         |(_~|^~~|\n";
+printf "         TT/_ T\"T\n";
+printf "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
+printf "${BCya}Running $SYM symlink on GNU bash $BASH_VERSION${NC}\n";
+printf "${BCya}From:${NC} $PWD\n";
+printf "${BCya}Origin:${NC} $ABS\n";
+
+# Check if output folder for convenient mode exists
+if [[ "$MODE" = "release" ]]; then
+	# If release folder exists so delete and recreate
+	if [[ -d "$WORK/$OUTPUT_RELEASE" ]]; then
+		rm -rf "$WORK/$OUTPUT_RELEASE";
+	fi
+	mkdir -pv "$WORK/$OUTPUT_RELEASE";
+else
+	# If debug folder exists so delete and recreate
+	if [[ -d "$WORK/$OUTPUT_DEBUG" ]]; then
+		rm -rf "$WORK/$OUTPUT_DEBUG";
+	fi
+	mkdir -pv "$WORK/$OUTPUT_DEBUG";
+fi
+
+# Check if npm already been installed
+if [[ ! -d "node_modules" || $(ls "node_modules" | wc -l) -eq 0 ]]; then
+	if [[ -f "package.json" ]]; then
+		npm install;
+	fi
+fi
+
+# Check if npm already been installed
+if [[ ! -d "source/bower_components" || $(ls "source/bower_components" | wc -l) -eq 0 ]]; then
+	if [[ $(which bower) > /dev/null && -f "bower.json" ]]; then
+		bower install;
+	fi
+fi
+
+# Check if the project is html
+if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
+	# Check if grunt already been installed
+	# https://github.com/yeoman/grunt-usemin/issues/112
+	if [[ $(which grunt) > /dev/null && -f "Gruntfile.js" ]]; then
+		grunt build;
+	fi
+
+	# Check if node already been installed
+	# http://requirejs.org/docs/optimization.html
+	if [[ $(which node) > /dev/null && -f "build.js" ]]; then
+		node r.js -o build.js;
+	fi
+fi
+
+# Update the application file to ensure
+# the output is properly set
+generateDescriptor;
+
+# Copy assets to output folder to be packaged
+# Additional files for AIR package
+retrieveResources;
+
+# Generate specific mode
+if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
+	generateHTML;
+else
+	generateSWF;
+fi
+
+# Generate specific package
+if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
+	# If certificate file doesn't exists
+	if [[ ! -f "$CERTIFICATE" ]]; then
+		generateP12;
+	fi
+	generateAIR;
+fi
+
+cleanupProject;
+
+# Stop proccess
+exit 0;
