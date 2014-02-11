@@ -71,10 +71,10 @@ function localhost {
 	if [[ "$1" =~ ^[0-9]+$ ]]; then
 	# Launch a local web server from specific port
 		open "http://localhost:$1";
-	elif [ `echo "$ABS" | grep -o "$WORKSPACE.*"` ]; then
+	elif [ `echo "$1" | grep -o "$WORKSPACE.*"` ]; then
 	# Launch a local web server from workspace
-		AMBIENT=`echo "$ABS" | sed 's,'"$WORKSPACE"','"http://$ipl"','`;
-		open "$AMBIENT/$1";
+		AMBIENT=`echo "$1" | sed 's,'"$WORKSPACE"','"http://$ipl"','`;
+		open "$AMBIENT";
 	else
 	# Launch a local web server from a directory if isn't workspace folder
 		python -m SimpleHTTPServer 8080 &>/dev/null &
@@ -117,31 +117,6 @@ function updateReview {
 # Remove all .DS_Store, Thumbs.db, *.tmp, and useless files from project
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function cleanupProject {
-	# Cleanup output folder
-	if [[ ! -z "${RESOURCES+xxx}" ]]; then
-		rm -rf $RESOURCES;
-	fi
-
-	# Remove all empty directories from OUTPUT_PATH
-	if [[ ! -z "${OUTPUT_PATH+xxx}" ]]; then
-		find $OUTPUT_PATH -empty -type d -delete;
-	fi
-
-	# Remove boot file
-	if [[ -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
-		rm -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
-	fi
-
-	# Remove boot file
-	if [[ -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
-		rm -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
-	fi
-
-	# Remove descriptor file
-	if [[ -f "$OUTPUT.xml" ]]; then
-		rm -f "$OUTPUT.xml";
-	fi
-
 	# Cleanup preference files
 	find "$ABS" \( \
 		-name .DS_Store -or \
@@ -151,9 +126,31 @@ function cleanupProject {
 		-name *.adl \) \
 	-delete;
 
-	# Remove output folder if is empty
-	if [[ $(ls "$OUTPUT_PATH" | wc -l) -eq 0 ]]; then
-		rm -rf "$OUTPUT_PATH";
+	if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
+		# Cleanup output folder
+		if [[ ! -z "${RESOURCES+xxx}" ]]; then
+			rm -rf $RESOURCES;
+		fi
+
+		# Remove all empty directories from OUTPUT_PATH
+		if [[ ! -z "${OUTPUT_PATH+xxx}" ]]; then
+			find $OUTPUT_PATH -empty -type d -delete;
+		fi
+
+		# Remove boot file
+		if [[ -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
+			rm -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
+		fi
+		
+		# Remove descriptor file
+		if [[ -f "$OUTPUT.xml" ]]; then
+			rm -f "$OUTPUT.xml";
+		fi
+		
+		# Remove output folder if is empty
+		if [[ $(ls "$OUTPUT_PATH" | wc -l) -eq 0 ]]; then
+			rm -rf "$OUTPUT_PATH";
+		fi
 	fi
 
 	# Fallback
@@ -202,6 +199,12 @@ for opt in "$@"; do
 			;;
 		-debug)
 			MODE="debug";
+			;;
+		-preview)
+			OPTS="preview";
+			;;
+		-server)
+			OPTS="server";
 			;;
 		-air)
 			PKG="air";
@@ -611,7 +614,7 @@ function generateSWF {
 		CONFIG="$CONFIG -keep=false";
 
 		# AIR/Web
-		if [[ "$PKG" = "air" ]]; then
+		if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
 			printf "\n=> Seeking air modules\n";
 			CONFIG="$CONFIG -load-config $air_config";
 			PARAMS="$PARAMS -define CONFIG::AIR true";
@@ -655,13 +658,15 @@ function generateSWF {
 			fi
 
 			# Launch preview
-			$adl -extdir "$ANE" "$OUTPUT.adl" || {
+			if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
+				$adl -extdir "$ANE" "$OUTPUT.adl" || {
 
-				printf "\n$___\n${ERROR}✖ ERROR:${NC} $NAME preview failed\n$___\n";
-				cleanupProject;
-				exit 1;
+					printf "\n$___\n${ERROR}✖ ERROR:${NC} $NAME preview failed\n$___\n";
+					cleanupProject;
+					exit 1;
 
-			};
+				};
+			fi
 		}
 
 	} || { # catch
@@ -899,19 +904,21 @@ printf "${BCya}Running $SYM symlink on GNU bash $BASH_VERSION${NC}\n";
 printf "${BCya}From:${NC} $PWD\n";
 printf "${BCya}Origin:${NC} $ABS\n";
 
-# Check if output folder for convenient mode exists
-if [[ "$MODE" = "release" ]]; then
-	# If release folder exists so delete and recreate
-	if [[ -d "$WORK/$OUTPUT_RELEASE" ]]; then
-		rm -rf "$WORK/$OUTPUT_RELEASE";
+if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
+	# Check if output folder for convenient mode exists
+	if [[ "$MODE" = "release" ]]; then
+		# If release folder exists so delete and recreate
+		if [[ -d "$WORK/$OUTPUT_RELEASE" ]]; then
+			rm -rf "$WORK/$OUTPUT_RELEASE";
+		fi
+		mkdir -pv "$WORK/$OUTPUT_RELEASE";
+	else
+		# If debug folder exists so delete and recreate
+		if [[ -d "$WORK/$OUTPUT_DEBUG" ]]; then
+			rm -rf "$WORK/$OUTPUT_DEBUG";
+		fi
+		mkdir -pv "$WORK/$OUTPUT_DEBUG";
 	fi
-	mkdir -pv "$WORK/$OUTPUT_RELEASE";
-else
-	# If debug folder exists so delete and recreate
-	if [[ -d "$WORK/$OUTPUT_DEBUG" ]]; then
-		rm -rf "$WORK/$OUTPUT_DEBUG";
-	fi
-	mkdir -pv "$WORK/$OUTPUT_DEBUG";
 fi
 
 # Check if npm already been installed
@@ -943,13 +950,15 @@ if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
 	fi
 fi
 
-# Update the application file to ensure
-# the output is properly set
-generateDescriptor;
+if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
+	# Update the application file to ensure
+	# the output is properly set
+	generateDescriptor;
 
-# Copy assets to output folder to be packaged
-# Additional files for AIR package
-retrieveResources;
+	# Copy assets to output folder to be packaged
+	# Additional files for AIR package
+	retrieveResources;
+fi
 
 # Generate specific mode
 if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
@@ -965,6 +974,12 @@ if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
 		generateP12;
 	fi
 	generateAIR;
+elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
+	if [[ "$OPTS" = "preview" ]]; then
+		open "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
+	elif [[ "$OPTS" = "server" ]]; then
+		localhost "$OUTPUT_PATH";
+	fi
 fi
 
 cleanupProject;
