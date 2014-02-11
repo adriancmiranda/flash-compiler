@@ -644,7 +644,7 @@ function generateSWF {
 		CONFIG="$CONFIG $PARAMS $EXTRA";
 		
 		# Compile
-		printf "\n=> Preparing $NAME.$BOOT_OUTPUT_EXTENSION\n";
+		printf "\n=> Preparing $BOOT_NAME.$BOOT_OUTPUT_EXTENSION\n";
 		local PTIME=0;
 		local startTime=`eval date +%s`;
 		$mxmlc "$BOOT" -output "$OUTPUT.$BOOT_OUTPUT_EXTENSION" $CONFIG && {
