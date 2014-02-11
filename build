@@ -1,10 +1,10 @@
 #!/bin/bash
-# 
+#
 # Title: AIR Project Compiler
 # Copyright: 2013 Adrian C. Miranda
 # License: Apache License
 # Version: 1.0.3
-# 
+#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SYM: For reading through a symlink, which is usually not what you want
 # (you usually don't want to confuse the user this way)
@@ -141,12 +141,12 @@ function cleanupProject {
 		if [[ -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION" ]]; then
 			rm -f "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
 		fi
-		
+
 		# Remove descriptor file
 		if [[ -f "$OUTPUT.xml" ]]; then
 			rm -f "$OUTPUT.xml";
 		fi
-		
+
 		# Remove output folder if is empty
 		if [[ $(ls "$OUTPUT_PATH" | wc -l) -eq 0 ]]; then
 			rm -rf "$OUTPUT_PATH";
@@ -170,9 +170,19 @@ function cleanupProject {
 # @usage: ./build -help
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function usage {
-	printf "$SYM documentation soon ;)\n";
-	printf "[-swf|-air|-dmg|-app|-apk|-ipa]\n";
-	printf "[-release|-debug]\n";
+	printf "Usage: $SYM [package] [mode] [options]\n";
+	printf "${Red}[package]${NC}\n";
+	printf "   -dmg\n";
+	printf "   -app\n";
+	printf "   -apk\n";
+	printf "   -ipa\n";
+	printf "   -air\n\n";
+	printf "${Red}[options]${NC}\n";
+	printf "   -preview\n";
+	printf "   -server\n\n";
+	printf "${Red}[mode]${NC}\n";
+	printf "   -release\n";
+	printf "   -debug\n\n";
 	exit 1;
 }
 
@@ -209,7 +219,7 @@ for opt in "$@"; do
 		-air)
 			PKG="air";
 			;;
-		-dmg) 
+		-dmg)
 			PKG="dmg";
 			;;
 		-app)
@@ -245,7 +255,7 @@ done
 if [[ ! -r "$ABS/build.cfg" ]]; then
 	printf "${ERROR}ERROR:${NC} build.cfg not found. Run ./$SYM init\n";
 	exit 1;
-else 
+else
 	source "$ABS/build.cfg";
 fi
 
@@ -562,7 +572,7 @@ CERTIFICATE_LOCALE=$(echo "$LOCALE" | cut -d'_' -f 2);
 #
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage: 
+# @usage:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateHTML {
 	# Create a new html
@@ -570,7 +580,7 @@ function generateHTML {
 	local PTIME=0;
 	local startTime=`eval date +%s`;
 	cp "$BOOT" "$OUTPUT.$BOOT_OUTPUT_EXTENSION" && {
-		
+
 		local endTime=`eval date +%s`;
 		let PTIME=($endTime - $startTime);
 		if [[ $PTIME > 1 ]]; then
@@ -591,7 +601,7 @@ function generateHTML {
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage: 
+# @usage:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateSWF {
 	{ # try
@@ -623,14 +633,14 @@ function generateSWF {
 			PARAMS="$PARAMS -define CONFIG::AIR false";
 			PARAMS="$PARAMS -define CONFIG::WEB true";
 		fi
-		
+
 		# Player version
 		if floatnum ''$PLAYER_VERSION' > 10.1'; then
 			PARAMS="$PARAMS -define CONFIG::FLASH_10_1 false";
 		else
 			PARAMS="$PARAMS -define CONFIG::FLASH_10_1 true";
 		fi
-		
+
 		# Player type
 		if [[ "$MODE" = 'release' ]]; then
 			CONFIG="$CONFIG -debug=false";
@@ -642,13 +652,13 @@ function generateSWF {
 
 		# Concatenate extra arguments
 		CONFIG="$CONFIG $PARAMS $EXTRA";
-		
+
 		# Compile
 		printf "\n=> Preparing $BOOT_NAME.$BOOT_OUTPUT_EXTENSION\n";
 		local PTIME=0;
 		local startTime=`eval date +%s`;
 		$mxmlc "$BOOT" -output "$OUTPUT.$BOOT_OUTPUT_EXTENSION" $CONFIG && {
-			
+
 			local endTime=`eval date +%s`;
 			let PTIME=($endTime - $startTime);
 			if [[ $PTIME > 1 ]]; then
@@ -679,7 +689,7 @@ function generateSWF {
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage: 
+# @usage:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateAIR {
 	{ # try
@@ -696,7 +706,7 @@ function generateAIR {
 			cleanupProject;
 			exit 1;
 		fi
-		
+
 		# Has certificate?
 		if [[ ! -f "$CERTIFICATE" ]]; then
 			printf "${ERROR}ERROR:${NC} $CERTIFICATE not found\n";
@@ -711,10 +721,10 @@ function generateAIR {
 
 		# Package
 		CONFIG="$CONFIG $OUTPUT.${PKG:-air}";
-		
+
 		# Descriptor
 		CONFIG="$CONFIG $OUTPUT.xml";
-		
+
 		# Source
 		CONFIG="$CONFIG $OUTPUT.$BOOT_OUTPUT_EXTENSION";
 
@@ -725,13 +735,13 @@ function generateAIR {
 		if [[ -d "$ANE" ]]; then
 			CONFIG="$CONFIG -extdir $ANE";
 		fi
-		
+
 		# Compile
 		printf "\n=> Packaging application\n";
 		local PTIME=0;
 		local startTime=`eval date +%s`;
 		$adt -package -storetype pkcs12 $CONFIG && {
-			
+
 			local endTime=`eval date +%s`;
 			let PTIME=($endTime - $startTime);
 			if [[ $PTIME > 1 ]]; then
@@ -755,7 +765,7 @@ function generateAIR {
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage: 
+# @usage:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateP12 {
 	{ # try
@@ -775,7 +785,7 @@ function generateP12 {
 		local PTIME=0;
 		local startTime=`eval date +%s`;
 		$adt $CONFIG && {
-			
+
 			local endTime=`eval date +%s`;
 			let PTIME=($endTime - $startTime);
 			if [[ $PTIME > 1 ]]; then
