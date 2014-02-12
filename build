@@ -180,6 +180,7 @@ function usage {
 	printf "${Red}[options]${NC}\n";
 	printf "   -preview\n";
 	printf "   -server\n\n";
+	printf "   -launch\n\n";
 	printf "${Red}[mode]${NC}\n";
 	printf "   -release\n";
 	printf "   -debug\n\n";
@@ -215,6 +216,9 @@ for opt in "$@"; do
 			;;
 		-server)
 			OPTS="server";
+			;;
+		-launch)
+			OPTS="launch";
 			;;
 		-air)
 			PKG="air";
@@ -971,10 +975,12 @@ if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
 fi
 
 # Generate specific mode
-if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
-	generateHTML;
-else
-	generateSWF;
+if [[ "$OPTS" != "launch" ]]; then
+	if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
+		generateHTML;
+	else
+		generateSWF;
+	fi
 fi
 
 # Generate specific package
@@ -988,6 +994,8 @@ elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 	if [[ "$OPTS" = "preview" ]]; then
 		open "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
 	elif [[ "$OPTS" = "server" ]]; then
+		localhost "$OUTPUT_PATH";
+	elif [[ "$OPTS" = "launch" ]]; then
 		localhost "$OUTPUT_PATH";
 	fi
 fi
