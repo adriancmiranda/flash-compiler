@@ -78,7 +78,7 @@ function localhost {
 	else
 	# Launch a local web server from a directory if isn't workspace folder
 		python -m SimpleHTTPServer 8080 &>/dev/null &
-		open http://localhost:8080/;
+		open "http://$ipl:8080/$(basename ${1##*/})/";
 	fi
 }
 
@@ -179,8 +179,10 @@ function usage {
 	printf "   -air\n\n";
 	printf "${Red}[options]${NC}\n";
 	printf "   -preview\n";
-	printf "   -server\n\n";
-	printf "   -launch\n\n";
+	printf "   -server\n";
+	printf "   -launch\n";
+	printf "   -hml\n";
+	printf "   -dev\n\n";
 	printf "${Red}[mode]${NC}\n";
 	printf "   -release\n";
 	printf "   -debug\n\n";
@@ -219,6 +221,12 @@ for opt in "$@"; do
 			;;
 		-launch)
 			OPTS="launch";
+			;;
+		-hml)
+			OPTS="hml";
+			;;
+		-dev)
+			OPTS="dev";
 			;;
 		-air)
 			PKG="air";
@@ -975,7 +983,7 @@ if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
 fi
 
 # Generate specific mode
-if [[ "$OPTS" != "launch" ]]; then
+if [[ "$OPTS" != "launch" || "$OPTS" != "dev" || "$OPTS" != "hml" ]]; then
 	if [[ "$BOOT_OUTPUT_EXTENSION" = "html" ]]; then
 		generateHTML;
 	else
@@ -997,6 +1005,10 @@ elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 		localhost "$OUTPUT_PATH";
 	elif [[ "$OPTS" = "launch" ]]; then
 		localhost "$OUTPUT_PATH";
+	elif [[ "$OPTS" = "hml" ]]; then
+		open "$HML";
+	elif [[ "$OPTS" = "dev" ]]; then
+		open "$DEV";
 	fi
 fi
 
