@@ -1,4 +1,4 @@
-Flash compiler
-===============
+Flash compiler (alpha)
+======================
 
 Another flash compiler
