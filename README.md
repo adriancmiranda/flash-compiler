@@ -7,3 +7,8 @@ Usage
 =====
 
     sh build
+
+or
+
+    chmod +x build
+    ./build
