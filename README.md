@@ -5,4 +5,5 @@ Another flash compiler
 
 Usage
 =====
-  sh build
+
+    sh build
