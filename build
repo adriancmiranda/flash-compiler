@@ -743,6 +743,8 @@ function generateAIR {
 		# An iOS package with extra debugging information. (The SWF files in the application must also be compiled with debugging support.)
 		# 		CONFIG="$CONFIG -target ipa-debug";
 		# 	fi
+		#	CONFIG="$CONFIG -target ipa-debug-interpreter-simulator";
+		#	CONFIG="$CONFIG -connect";
 		# fi
 		# if [[ "$PKG" = "apk" ]]; then
 		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
@@ -1031,6 +1033,9 @@ elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 		open "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
 		#printf "Opening IPA in iTunes ...";
 		# osascript -e 'tell application "iTunes" to update "mydevice"';
+		# "$adt" -uninstallApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$APPID";
+		# "$adt" -installApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -package "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
+		# "$adt" -launchApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$APPID";
 	elif [[ "$OPTS" = "server" ]]; then
 		localhost "$OUTPUT_PATH";
 	elif [[ "$OPTS" = "launch" ]]; then
