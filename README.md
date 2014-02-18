@@ -11,3 +11,7 @@ Usage
 or
 
     chmod +x build && ./build
+
+or
+
+double click on it
