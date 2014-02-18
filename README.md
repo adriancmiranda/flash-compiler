@@ -10,5 +10,4 @@ Usage
 
 or
 
-    chmod +x build
-    ./build
+    chmod +x build && ./build
