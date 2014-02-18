@@ -1033,9 +1033,9 @@ elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 		open "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
 		#printf "Opening IPA in iTunes ...";
 		# osascript -e 'tell application "iTunes" to update "mydevice"';
-		# "$adt" -uninstallApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$APPID";
+		# "$adt" -uninstallApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$ID";
 		# "$adt" -installApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -package "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
-		# "$adt" -launchApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$APPID";
+		# "$adt" -launchApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$ID";
 	elif [[ "$OPTS" = "server" ]]; then
 		localhost "$OUTPUT_PATH";
 	elif [[ "$OPTS" = "launch" ]]; then
