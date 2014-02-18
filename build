@@ -730,6 +730,16 @@ function generateAIR {
 		local CONFIG="-keystore $CERTIFICATE";
 		CONFIG="$CONFIG -storepass $PASSWORD";
 		CONFIG="$CONFIG -target native";
+		# if [[ "$PKG" = "ipa" ]]; then
+		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
+		# 	if [[ "$MODE" = "release" ]]; then
+		# 		CONFIG="$CONFIG -target ipa-app-store";
+		# 		CONFIG="$CONFIG -target ipa-ad-hoc";
+		# 	elif [[ "$MODE" = "debug" ]]; then
+		# 		CONFIG="$CONFIG -target ipa-test";
+		# 		CONFIG="$CONFIG -target ipa-debug";
+		# 	fi
+		# fi
 
 		# Package
 		CONFIG="$CONFIG $OUTPUT.${PKG:-air}";
@@ -1001,6 +1011,8 @@ if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
 elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 	if [[ "$OPTS" = "preview" ]]; then
 		open "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
+		#printf "Opening IPA in iTunes ...";
+		# osascript -e 'tell application "iTunes" to update "mydevice"';
 	elif [[ "$OPTS" = "server" ]]; then
 		localhost "$OUTPUT_PATH";
 	elif [[ "$OPTS" = "launch" ]]; then
