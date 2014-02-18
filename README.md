@@ -14,4 +14,4 @@ or
 
 or
 
-double click on it
+    double-click on it
