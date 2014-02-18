@@ -733,11 +733,29 @@ function generateAIR {
 		# if [[ "$PKG" = "ipa" ]]; then
 		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
 		# 	if [[ "$MODE" = "release" ]]; then
+		# An iOS package for Apple App store distribution.
 		# 		CONFIG="$CONFIG -target ipa-app-store";
+		# An iOS package for ad hoc distribution.
 		# 		CONFIG="$CONFIG -target ipa-ad-hoc";
 		# 	elif [[ "$MODE" = "debug" ]]; then
+		# An iOS package compiled without optimization or debugging information.
 		# 		CONFIG="$CONFIG -target ipa-test";
+		# An iOS package with extra debugging information. (The SWF files in the application must also be compiled with debugging support.)
 		# 		CONFIG="$CONFIG -target ipa-debug";
+		# 	fi
+		# fi
+		# if [[ "$PKG" = "apk" ]]; then
+		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
+		# 	if [[ "$MODE" = "release" ]]; then
+		# A package produced with this target can only be installed on an Android device, not an emulator.
+		# 		CONFIG="$CONFIG -target apk";
+		# An Android package that supports application performance and memory profiling.
+		# 		CONFIG="$CONFIG -target apk-profile";
+		# 	elif [[ "$MODE" = "debug" ]]; then
+		# An Android package for use on an emulator without debugging support. (Use the apk-debug target to permit debugging on both emulators and devices.)
+		# 		CONFIG="$CONFIG -target apk-emulator";
+		# An Android package with extra debugging information. (The SWF files in the application must also be compiled with debugging support.)
+		# 		CONFIG="$CONFIG -target apk-debug";
 		# 	fi
 		# fi
 
