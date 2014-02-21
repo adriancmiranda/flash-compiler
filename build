@@ -1036,10 +1036,12 @@ elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 		# "$adt" -uninstallApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$ID";
 		# "$adt" -installApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -package "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
 		# "$adt" -launchApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$ID";
-	elif [[ "$OPTS" = "server" ]]; then
-		localhost "$OUTPUT_PATH";
-	elif [[ "$OPTS" = "launch" ]]; then
-		localhost "$OUTPUT_PATH";
+	elif [[ "$OPTS" = "server" || "$OPTS" = "launch" ]]; then
+		if [[ "$MODE" = "debug" ]]; then
+			localhost "$OUTPUT_PATH?debug=true";
+		else 
+			localhost "$OUTPUT_PATH";
+		fi
 	elif [[ "$OPTS" = "hml" ]]; then
 		open "$HML";
 	elif [[ "$OPTS" = "dev" ]]; then
