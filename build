@@ -1043,9 +1043,17 @@ elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 			localhost "$OUTPUT_PATH";
 		fi
 	elif [[ "$OPTS" = "hml" ]]; then
-		open "$HML";
+		if [[ "$MODE" = "debug" ]]; then
+			open "$HML?debug=true";
+		else 
+			open "$HML";
+		fi
 	elif [[ "$OPTS" = "dev" ]]; then
-		open "$DEV";
+		if [[ "$MODE" = "debug" ]]; then
+			open "$DEV?debug=true";
+		else 
+			open "$DEV";
+		fi
 	fi
 fi
 
