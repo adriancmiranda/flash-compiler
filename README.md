@@ -1,4 +1,6 @@
-![Apache](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/apache.png =250x "Apache") Apache compiler (alpha)
+![Apache](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/apache.png=250x "Apache")
+
+Apache compiler (alpha)
 ======================
 
 Another flash compiler
