@@ -14,11 +14,11 @@ Another flash compiler
 Usage
 =====
 
-    sh build
+    sh build [package] [mode] [options]
 
 or
 
-    chmod +x build && ./build
+    chmod +x build && ./build -help
 
 or
 
