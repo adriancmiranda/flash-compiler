@@ -33,11 +33,12 @@ or
         -apk (Android application package file)
         -ipa (iOS application) 
         -air (Adobe Integrated Runtime)
+        -swf (Default: ShockWave Flash)
 
 ### [mode]
 
         -release (The public distribution of software code and support materials)
-        -debug (The methodical process of finding and reducing the number of bugs, or defects)
+        -debug (Default: The methodical process of finding and reducing the number of bugs, or defects)
 
 ### [options]
 
