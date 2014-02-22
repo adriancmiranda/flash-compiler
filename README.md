@@ -28,39 +28,21 @@ or
 
 ### [package]
 
-        -dmg
-
-
-        -app
-
-
-        -apk
-
-
-        -ipa
-
-
-        -air
+        -dmg (Apple disk images)
+        -app (Application bundle)
+        -apk (Android application package file)
+        -ipa (iOS application) 
+        -air (Adobe Integrated Runtime)
 
 ### [options]
 
         -preview
-
-
         -server
-
-
         -launch
-
-
         -hml
-
-
         -dev
         
 ### [mode]
 
         -release
-
-
         -debug
