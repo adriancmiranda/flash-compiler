@@ -26,8 +26,7 @@ or
 
     double-click on it
 
-Package
-=======
+## Package
 
         -dmg
 
@@ -43,8 +42,7 @@ Package
 
         -air
 
-Options
-=======
+## Options
 
         -preview
 
