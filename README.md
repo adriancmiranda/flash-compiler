@@ -1,7 +1,5 @@
 ![Apache](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/logo-apache.png "Apache")
 
-Another flash compiler
-
 ![Grunt](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt")
 
 [Grunt](http://gruntjs.com/) is used to build, preview and test your project.
