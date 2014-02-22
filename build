@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Title: AIR Project Compiler
+# Usage: ./build -dmg -release
 # Copyright: 2013 Adrian C. Miranda
 # License: Apache License
 # Version: 1.0.3
@@ -218,8 +219,7 @@ fi
 #
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage:
-# ./build -dmg -release
+# @usage: ./build -dmg -release
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TEMPLATES="$ABS/.air-cache";
 MODE="debug";
@@ -424,58 +424,58 @@ fi
 # Air version number (for the app descriptor file)
 if [[ ! "$AIR_VERSION" =~ ^[0-9]+([.][0-9]+)?$ || -z "${AIR_VERSION+xxx}" ]]; then
 	printf "${WARN}WARNING:${NC} AIR_VERSION has been defined to default.\n";
-	AIR_VERSION={{DEFAULT_AIR_VERSION}};
+	AIR_VERSION=3.9;
 fi
 
 # Application ID (e.g. com.yourdomain.appname)
 if [[ ! "$ID" =~ ^[a-zA-Z][a-zA-Z0-9.]*$ || -z "${ID+xxx}" ]]; then
 	printf "${WARN}WARNING:${NC} ID has been defined to default.\n";
-	ID={{DEFAULT_ID}};
+	ID="com.yourdomain.$NAME";
 fi
 
 # Used by AIR compiler to include appropriate libraries
 if [[ ! -d "$frameworks/locale/$LOCALE" || -z "${LOCALE+xxx}" ]]; then
-	printf "${WARN}WARNING:${NC} LOCALE has been defined to {{DEFAULT_LOCALE}}.\n";
-	$LOCALE="{{DEFAULT_LOCALE}}";
+	printf "${WARN}WARNING:${NC} LOCALE has been defined to pt_BR.\n";
+	$LOCALE="pt_BR";
 fi
 
 # The description of the project (e.g. My awesome rpg game!)
 if [[ -z "${DESCRIPTION+xxx}" ]]; then
-	DESCRIPTION="{{DEFAULT_DESCRIPTION}}";
+	DESCRIPTION="Placeholder description for $NAME";
 fi
 
 # The copyright of the project (e.g. © 2014 YourCompany Systems Inc.)
 if [[ -z "${COPYRIGHT+xxx}" ]]; then
-	COPYRIGHT="{{DEFAULT_COPYRIGHT}}";
+	COPYRIGHT="© $(date +"%Y") $ID Systems Inc.";
 fi
 
 # Flash player background color
 if [[ ! "$BGCOLOR" =~ ^([#]|0x)[a-zA-Z0-9]{6}$ || -z "${BGCOLOR+xxx}" ]]; then
 	printf "${WARN}WARNING:${NC} BGCOLOR has been changed to default.\n";
-	BGCOLOR={{DEFAULT_BGCOLOR}};
+	BGCOLOR=#ffffff;
 fi
 
 # Default project width
 if [[ ! "$WIDTH" =~ ^[0-9]+$ || -z "${WIDTH+xxx}" ]]; then
 	printf "${WARN}WARNING:${NC} WIDTH has been changed to default.\n";
-	WIDTH={{DEFAULT_WIDTH}};
+	WIDTH=640;
 fi
 
 # Default project height
 if [[ ! "$HEIGHT" =~ ^[0-9]+$ || -z "${HEIGHT+xxx}" ]]; then
 	printf "${WARN}WARNING:${NC} HEIGHT has been changed to default.\n";
-	HEIGHT={{DEFAULT_HEIGHT}};
+	HEIGHT=480;
 fi
 
 # Frames per second
 if [[ ! "$FPS" =~ ^[0-9]+$ || -z "${FPS+xxx}" ]]; then
 	printf "${WARN}WARNING:${NC} FPS has been changed to default.\n";
-	FPS={{DEFAULT_FPS}};
+	FPS=30;
 fi
 
 # A package of ActionScript utilities codes
 if [[ -z "${LIBRARY+xxx}" ]]; then
-	LIBRARY="$ABS/{{DEFAULT_LIBRARY}}";
+	LIBRARY="$ABS/";
 else
 	LIBRARY="$ABS/$LIBRARY";
 fi
@@ -497,11 +497,11 @@ fi
 
 # App descriptor XML (e.g. MyAwesomeGame-app.xml)
 if [[ -z "${DESCRIPTOR+xxx}" || -z "$DESCRIPTOR" ]]; then
-	DESCRIPTOR="$ABS/{{DEFAULT_DESCRIPTOR}}";
+	DESCRIPTOR="$ABS/source/descriptor/$(echo $NAME | tr "[:upper:]" "[:lower:]")-app.xml";
 elif [[ ! "$(basename ${DESCRIPTOR%.*})" =~ ^[a-zA-Z][a-zA-Z0-9]*$ ]]; then
-	DESCRIPTOR="$ABS/{{DEFAULT_DESCRIPTOR}}";
+	DESCRIPTOR="$ABS/source/descriptor/$(echo $NAME | tr "[:upper:]" "[:lower:]")-app.xml";
 elif [[ ! "$(basename ${DESCRIPTOR##*.})" =~ ^xml$ ]]; then
-	DESCRIPTOR="$ABS/{{DEFAULT_DESCRIPTOR}}";
+	DESCRIPTOR="$ABS/source/descriptor/$(echo $NAME | tr "[:upper:]" "[:lower:]")-app.xml";
 else
 	DESCRIPTOR="$ABS/$DESCRIPTOR";
 fi
@@ -511,14 +511,14 @@ DESCRIPTOR_PATH=$(dirname "$DESCRIPTOR");
 
 # Sub-directory for release SWF builds (appended to ./appname)
 if [[ -z "${OUTPUT_RELEASE+xxx}" ]]; then
-	OUTPUT_RELEASE="$ABS/{{DEFAULT_OUTPUT_RELEASE}}";
+	OUTPUT_RELEASE="$ABS/release";
 else
 	OUTPUT_RELEASE="$ABS/$OUTPUT_RELEASE";
 fi
 
 # Sub-directory for debug SWF builds (appended to ./appname)
 if [[ -z "${OUTPUT_DEBUG+xxx}" ]]; then
-	OUTPUT_DEBUG="$ABS/{{DEFAULT_OUTPUT_DEBUG}}";
+	OUTPUT_DEBUG="$ABS/beta";
 else
 	OUTPUT_DEBUG="$ABS/$OUTPUT_DEBUG";
 fi
@@ -535,7 +535,7 @@ OUTPUT="$OUTPUT_PATH/$BOOT_NAME";
 
 # Sub-directory for resources (like sounds and images)
 if [[ -z "${RESOURCES+xxx}" ]]; then
-	RESOURCES="$ABS/{{DEFAULT_RESOURCES}}";
+	RESOURCES="$ABS/source/resources";
 else
 	RESOURCES="$ABS/$RESOURCES";
 fi
@@ -593,7 +593,7 @@ CERTIFICATE_LOCALE=$(echo "$LOCALE" | cut -d'_' -f 2);
 #
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage:
+# @usage: generateHTML
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateHTML {
 	# Create a new html
@@ -622,7 +622,7 @@ function generateHTML {
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage:
+# @usage: generateSWF
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateSWF {
 	{ # try
@@ -710,7 +710,7 @@ function generateSWF {
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage:
+# @usage: generateAIR
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateAIR {
 	{ # try
@@ -816,7 +816,7 @@ function generateAIR {
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# @usage:
+# @usage: generateP12
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function generateP12 {
 	{ # try
