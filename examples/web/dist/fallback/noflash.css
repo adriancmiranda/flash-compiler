@@ -1,0 +1,18 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	background: #000000;
+}
+#error {
+	height: 36px;
+	width: 400px;
+	top: 50%;
+	left: 50%;
+	margin-top: -18px;
+	margin-left: -200px;
+	position: absolute;
+	border: 0;
+}

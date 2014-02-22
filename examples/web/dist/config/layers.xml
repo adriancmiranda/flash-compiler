@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<layers>
+	<layer id="application" showRegistrationPoint="no">
+		<layer id="background" showRegistrationPoint="no"/>
+		<layer id="view" showRegistrationPoint="no"/>
+		<layer id="base" showRegistrationPoint="no"/>
+	</layer>
+	<layer id="modal" showRegistrationPoint="no"/>
+	<layer id="preloader" showRegistrationPoint="no"/>
+	<layer id="output" showRegistrationPoint="no"/>
+</layers>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<header title="" flow="normal" history="yes" strict="yes" connections="1">
+	<languages></languages>
+	<file id="layers" url="{@fvBaseContent}config/layers.xml" kb="4"/>
+	<base id="base" class="Base" standard="home" mistake="home">
+		<file id="params" url="{@fvBaseContent}config/params.xml" kb="4"/>
+		<file id="tracks" url="{@fvBaseContent}config/tracks.xml" kb="4"/>
+		<file id="texts" url="{@fvBaseContent}config/texts.xml" kb="4"/>
+		<file id="links" url="{@fvBaseContent}config/links.xml" kb="4"/>
+		<file id="base" url="{@fvBaseContent}content/views/base.swf" kb="4"/>
+		<file id="root" url="{@fvBaseContent}content/views/root.swf" kb="4"/>
+		<view id="home" class="views.Home"></view>
+	</base>
+</header>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:image:type" content="image/jpeg"/>
+    <meta property="og:image:width" content="400"/>
+    <meta property="og:image:height" content="300"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:locale" content="pt_BR"/>
+    <meta property="og:type" content="website"/>
+    <title>Organizr</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="styles/skin.css"/>
+</head>
+<body>
+
+    <!-- app -->
+    <div class="app">
+        <!-- Flash Player -->
+        <div id="flash-content">
+        </div>
+    </div>
+
+    <script type="text/javascript" src="scripts/swfobject.min.js"></script>
+    <script type="text/javascript">
+        (function (window, document) {
+
+            var PROTOCOL = (document.location.protocol || '');
+            var HOST = (document.location.host || '');
+            var PORT = (document.location.port || '').split(':').join('');
+            var PATHNAME = (document.location.pathname || '').split('/').slice(0, -1).join('/');
+            var PARAMS = window.location.toString().slice(window.location.toString().indexOf('?'));
+            var BASEURL = (PROTOCOL +'//'+ HOST + (PORT ? ':'+PORT : '') + PATHNAME);
+
+            function embedFlashPlayer() {
+                var flashvars = {
+                      debug: swfobject.getQueryParamValue('debug')
+                    , fvBaseUrl: BASEURL
+                    , fvBaseContent: ''
+                    , fvBaseService: ''
+                };
+                var parameters = {
+                      allowscriptaccess: 'always'
+                    , allowFullScreen: 'true'
+                    , allownetworking: 'all'
+                    , wmode: 'transparent'
+                };
+                var attributes = {
+                      id: 'flash-content'
+                    , name: 'flash-content'
+                };
+                swfobject.embedSWF(
+                      'boot.swf'
+                    , 'flash-content'
+                    , 785
+                    , 520
+                    , '9.0.0'
+                    , 'expressInstall.swf'
+                    , flashvars
+                    , parameters
+                    , attributes
+                );
+            }
+
+            function available() {
+                var playerVersion = swfobject.getFlashPlayerVersion();
+                return playerVersion.major > 0 || swfobject.hasFlashPlayerVersion('6.0.65');
+            }
+
+            if (available()) {
+                swfobject.addDomLoadEvent(embedFlashPlayer);
+            } else {
+                window.location = 'fallback/index.html';
+            }
+
+        }(this, document));
+    </script>
+</body>
+</html>
