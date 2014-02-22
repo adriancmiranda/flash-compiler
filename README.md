@@ -17,23 +17,6 @@ Usage
 =====
 
     sh build [package] [mode] [options]
-    [package]
-        -dmg
-        -app
-        -apk
-        -ipa
-        -air
-        
-    [options]
-        -preview
-        -server
-        -launch
-        -hml
-        -dev
-        
-    [mode]
-        -release
-        -debug
 
 or
 
@@ -42,3 +25,45 @@ or
 or
 
     double-click on it
+
+Package
+=======
+
+        -dmg
+
+
+        -app
+
+
+        -apk
+
+
+        -ipa
+
+
+        -air
+
+Options
+=======
+
+        -preview
+
+
+        -server
+
+
+        -launch
+
+
+        -hml
+
+
+        -dev
+        
+Mode
+====
+
+        -release
+
+
+        -debug
