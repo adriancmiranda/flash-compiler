@@ -9,6 +9,10 @@
 
 [Bower](http://bower.io/) is used for dependency management.
 
+![Apache Flex SDK](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png "Apache Flex SDK")
+
+[Apache Flex SDK](http://flex.apache.org/) is used for build binary files.
+
 Usage
 =====
 
@@ -21,3 +25,24 @@ or
 or
 
     double-click on it
+
+### [package]
+
+        -dmg (Apple disk images)
+        -app (Application bundle)
+        -apk (Android application package file)
+        -ipa (iOS application) 
+        -air (Adobe Integrated Runtime)
+
+### [mode]
+
+        -release (The public distribution of software code and support materials)
+        -debug (The methodical process of finding and reducing the number of bugs, or defects)
+
+### [options]
+
+        -preview (Opens compiled project)
+        -server (Compiles and opens localhost environment)
+        -launch (Opens localhost environment)
+        -hml (Opens homologation environment)
+        -dev (Opens staging environment)
