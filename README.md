@@ -28,17 +28,17 @@ or
 
 ### [package]
 
+        -swf (Default: ShockWave Flash)
         -dmg (Apple disk images)
         -app (Application bundle)
         -apk (Android application package file)
         -ipa (iOS application) 
         -air (Adobe Integrated Runtime)
-        -swf (Default: ShockWave Flash)
 
 ### [mode]
 
-        -release (The public distribution of software code and support materials)
         -debug (Default: The methodical process of finding and reducing the number of bugs, or defects)
+        -release (The public distribution of software code and support materials)
 
 ### [options]
 
