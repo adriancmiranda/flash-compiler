@@ -7,9 +7,11 @@
 
 ![Bower](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower")
 
+[Bower](http://bower.io/) is used for dependency management.
+
 ![Apache Flex SDK](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png "Apache Flex SDK")
 
-[Bower](http://bower.io/) is used for dependency management.
+[Apache Flex SDK](http://flex.apache.org/) is used for build binary files.
 
 Usage
 =====
