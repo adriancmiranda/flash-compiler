@@ -34,6 +34,11 @@ or
         -ipa (iOS application) 
         -air (Adobe Integrated Runtime)
 
+### [mode]
+
+        -release (The public distribution of software code and support materials)
+        -debug (The methodical process of finding and reducing the number of bugs, or defects)
+
 ### [options]
 
         -preview
@@ -41,8 +46,3 @@ or
         -launch
         -hml
         -dev
-        
-### [mode]
-
-        -release
-        -debug
