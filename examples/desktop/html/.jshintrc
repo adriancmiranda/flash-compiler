@@ -1,0 +1,16 @@
+{
+	"quotmark": "double",
+	"smarttabs": true,
+	"trailing": true,
+	"eqeqeq": true,
+	"unused": true,
+	"immed": true,
+	"onevar": true,
+	"undef": true,
+	"noarg": true,
+	"eqnull": true,
+	"curly": true,
+	"expr": true,
+	"boss": true,
+	"node": true
+}

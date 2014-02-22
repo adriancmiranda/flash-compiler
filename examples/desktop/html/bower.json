@@ -1,0 +1,11 @@
+{
+	"name": "Organizr",
+	"version": "0.0.0",
+	"keywords": ["am", "flash-compiler", "sample"],
+	"dependencies": {
+		"sass-bootstrap": "~3.0.0",
+		"requirejs": "~2.1.8",
+		"jquery": "~1.10.2"
+	},
+	"devDependencies": {}
+}
