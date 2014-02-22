@@ -26,7 +26,7 @@ or
 
     double-click on it
 
-## Package
+### Package
 
         -dmg
 
@@ -42,7 +42,7 @@ or
 
         -air
 
-## Options
+### Options
 
         -preview
 
@@ -58,8 +58,7 @@ or
 
         -dev
         
-Mode
-====
+### Mode
 
         -release
 
