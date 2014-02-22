@@ -1,4 +1,4 @@
-![Apache](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/logo-apache.png "Apache")
+![Flash Compiler](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/logo-apache.png "Flash Compiler")
 =====
 
 ![Grunt](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt")
