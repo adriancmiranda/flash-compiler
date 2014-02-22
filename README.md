@@ -1,3 +1,7 @@
+![grunt!](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif)
+
+![bower!](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif)
+
 Flash compiler (alpha)
 ======================
 
