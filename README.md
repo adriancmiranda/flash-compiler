@@ -28,6 +28,7 @@ or
 
 ### [package]
 
+        -swf (Default: ShockWave Flash)
         -dmg (Apple disk images)
         -app (Application bundle)
         -apk (Android application package file)
@@ -36,8 +37,8 @@ or
 
 ### [mode]
 
+        -debug (Default: The methodical process of finding and reducing the number of bugs, or defects)
         -release (The public distribution of software code and support materials)
-        -debug (The methodical process of finding and reducing the number of bugs, or defects)
 
 ### [options]
 
