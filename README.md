@@ -41,8 +41,8 @@ or
 
 ### [options]
 
-        -preview
-        -server
-        -launch
-        -hml
-        -dev
+        -preview (Opens compiled project)
+        -server (Compiles and opens localhost environment)
+        -launch (Opens localhost environment)
+        -hml (Opens homologation environment)
+        -dev (Opens staging environment)
