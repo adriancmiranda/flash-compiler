@@ -3,10 +3,12 @@ Flash compiler (alpha)
 
 Another flash compiler
 
-![grunt!](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif)
+![Grunt](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt")
+
 [Grunt](http://gruntjs.com/) is used to build, preview and test your project.
 
-![bower!](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif)
+![Bower](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower")
+
 [Bower](http://bower.io/) is used for dependency management.
 
 Usage
