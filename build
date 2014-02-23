@@ -177,20 +177,20 @@ function cleanupProject {
 function usage {
 	printf "Usage: $SYM [package] [mode] [options]\n";
 	printf "${Red}[package]${NC}\n";
-	printf "   -dmg\n";
-	printf "   -app\n";
-	printf "   -apk\n";
-	printf "   -ipa\n";
-	printf "   -air\n\n";
+	printf "   -dmg ${Gre}(✓ Apple disk images)${NC}\n";
+	printf "   -app ${Gre}(${Red}✖ ${Gre}Application bundle)${NC}\n";
+	printf "   -apk ${Gre}(${Red}✖ ${Gre}Android application package file)${NC}\n";
+	printf "   -ipa ${Gre}(${Red}✖ ${Gre}iOS application)${NC}\n";
+	printf "   -air ${Gre}(${Red}✖ ${Gre}Adobe Integrated Runtime)${NC}\n\n";
 	printf "${Red}[options]${NC}\n";
-	printf "   -preview\n";
-	printf "   -server\n";
-	printf "   -launch\n";
-	printf "   -hml\n";
-	printf "   -dev\n\n";
+	printf "   -preview ${Gre}(✓ Opens compiled project)${NC}\n";
+	printf "   -server ${Gre}(✓ Compiles and opens localhost environment)${NC}\n";
+	printf "   -launch ${Gre}(✓ Opens localhost environment)${NC}\n";
+	printf "   -hml ${Gre}(✓ Opens homologation environment)${NC}\n";
+	printf "   -dev ${Gre}(✓ Opens staging environment)${NC}\n\n";
 	printf "${Red}[mode]${NC}\n";
-	printf "   -release\n";
-	printf "   -debug\n\n";
+	printf "   -debug ${Gre}(✓ Default: The methodical process of finding and reducing the number of bugs, or defects)${NC}\n";
+	printf "   -release ${Gre}(✓ The public distribution of software code and support materials)${NC}\n\n";
 	exit 1;
 }
 
