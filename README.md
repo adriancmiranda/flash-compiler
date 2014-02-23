@@ -54,6 +54,10 @@ or
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
 
+Helpfull
+========
+[AIR - Building Apps](http://help.adobe.com/en_US/air/build/air_buildingapps.pdf)
+
 Warning
 =======
 Flash compiler is currently only compatible with MAC OS X.
