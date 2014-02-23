@@ -181,7 +181,9 @@ function usage {
 	printf "   -app ${Gre}(${Red}✖ ${Gre}Application bundle)${NC}\n";
 	printf "   -apk ${Gre}(${Red}✖ ${Gre}Android application package file)${NC}\n";
 	printf "   -ipa ${Gre}(${Red}✖ ${Gre}iOS application)${NC}\n";
-	printf "   -air ${Gre}(${Red}✖ ${Gre}Adobe Integrated Runtime)${NC}\n\n";
+	printf "   -air ${Gre}(${Red}✖ ${Gre}Adobe Integrated Runtime)${NC}\n";
+	printf "   -exe ${Gre}(${Red}✖ ${Gre}Windows Executable file)${NC}\n";
+	printf "   -rem ${Gre}(${Red}✖ ${Gre}Blackberry Desktop Manager / Blackberry devices)\n\n";
 	printf "${Red}[options]${NC}\n";
 	printf "   -preview ${Gre}(✓ Opens compiled project)${NC}\n";
 	printf "   -server ${Gre}(✓ Compiles and opens localhost environment)${NC}\n";
