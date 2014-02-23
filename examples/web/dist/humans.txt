@@ -1,0 +1,6 @@
+/* TEAM */
+	Flash Dev:		Adrian C. Miranda
+	Site:			http://cargocollective.com/adrianmiranda
+	Contact:		adriancmiranda [at] gmail.com
+	Twitter:		@adriancmiranda
+	Location:		São Paulo, São Paulo, Brazil
