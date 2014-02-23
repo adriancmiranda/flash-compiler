@@ -60,4 +60,4 @@ Helpfull
 
 Warning
 =======
-Flash compiler is currently only compatible with MAC OS X. No guarantee, but I think that you can perform using [cygwin](http://cygwin.com/) in Microsoft Windows.
+Flash compiler is currently only compatible with MAC OS X. No guarantee, but I think that you can perform using [cygwin](http://cygwin.com/) on Microsoft Windows.
