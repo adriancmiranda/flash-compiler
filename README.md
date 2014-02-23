@@ -43,7 +43,7 @@ or
 
 ### [mode]
 
-        -debug (✓ Default: The methodical process of finding and reducing the number of bugs, or defects)
+        -debug (✓ Default: Methodical process of finding and reducing the number of bugs, or defects)
         -release (✓ The public distribution of software code and support materials)
 
 ### [options]
