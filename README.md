@@ -60,4 +60,4 @@ Helpfull
 
 Warning
 =======
-Flash compiler is currently only compatible with MAC OS X.
+Flash compiler is currently only compatible with MAC OS X. I think that you can perform using [cygwin](http://cygwin.com/).
