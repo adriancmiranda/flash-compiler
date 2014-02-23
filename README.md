@@ -49,3 +49,7 @@ or
         -launch (✓ Opens localhost environment)
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
+
+WARNING
+=======
+Flash compiler is currently only compatible with MAC OS X.
