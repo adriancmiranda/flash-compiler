@@ -135,17 +135,17 @@
 	<!-- The icon the system uses for the application. Optional. -->
 	<icon>
 		<!-- For at least one resolution, specify the path to a PNG file included in the AIR package. -->
-		<!--<image16x16>icons/Organizr16.png</image16x16>
-		<image29x29>icons/Organizr29.png</image29x29>
-		<image32x32>icons/Organizr32.png</image32x32>
-		<image36x36>icons/Organizr36.png</image36x36>
-		<image48x48>icons/Organizr48.png</image48x48>
-		<image57x57>icons/Organizr57.png</image57x57>
-		<image58x58>icons/Organizr58.png</image58x58>
-		<image72x72>icons/Organizr72.png</image72x72>
-		<image114x114>icons/Organizr114.png</image114x114>
-		<image128x128>icons/Organizr128.png</image128x128>
-		<image512x512>icons/Organizr512.png</image512x512>-->
+		<image16x16>icons/Icon16.png</image16x16>
+		<image29x29>icons/Icon29.png</image29x29>
+		<image32x32>icons/Icon32.png</image32x32>
+		<image36x36>icons/Icon36.png</image36x36>
+		<image48x48>icons/Icon48.png</image48x48>
+		<image57x57>icons/Icon57.png</image57x57>
+		<image58x58>icons/Icon58.png</image58x58>
+		<image72x72>icons/Icon72.png</image72x72>
+		<image114x114>icons/Icon114.png</image114x114>
+		<image128x128>icons/Icon128.png</image128x128>
+		<image512x512>icons/Icon512.png</image512x512>
 	</icon>
 
 	<!-- Whether the application can be launched when the user clicks a link in a web browser. Optional. Default false. -->
