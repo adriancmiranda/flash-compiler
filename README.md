@@ -34,7 +34,7 @@ or
 
         -swf (✓ Default: ShockWave Flash)
         -dmg (✓ Apple disk images)
-        -app (✖ Application bundle)
+        -app (✓ Application bundle)
         -apk (✖ Android application package file)
         -ipa (✖ iOS application) 
         -air (✓ Adobe Integrated Runtime)
