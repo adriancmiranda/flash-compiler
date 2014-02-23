@@ -4,14 +4,14 @@ package {
 	import flash.events.Event;
 
 	[SWF(width='640',height='480',frameRate='30',backgroundColor='#ffffff')]
-	public final class boot extends Sprite {
+	public final class Organizr extends Sprite {
 		// Some sample asset embed strings (handy for various things)
 		//[Embed(source='../resources/fonts/Helvetica.dfont',fontFamily='Helvetica',embedAsCFF='false')] protected var junk:String;
 		//[Embed(source='../resources/text.txt',mimeType='application/octet-stream')] protected var FileText:Class;
 		//[Embed(source='../resources/sounds/music.mp3')] protected var SoundMusic:Class;
 		//[Embed(source='../resources/icon.png')] protected var ImgIcon:Class;
 
-		public function boot() {
+		public function Organizr() {
 			if (stage) onInitialize();
 			else addEventListener(Event.ADDED_TO_STAGE, onInitialize);
 		}
@@ -20,7 +20,7 @@ package {
 			removeEventListener(Event.ADDED_TO_STAGE, onInitialize);
 			addEventListener(Event.REMOVED_FROM_STAGE, onFinalize);
 			var textField:TextField = new TextField();
-			textField.text = 'boot is up and running!';
+			textField.text = 'Organizr is up and running!';
 			stage.addChild(textField);
 		}
 
