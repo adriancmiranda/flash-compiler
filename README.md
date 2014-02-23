@@ -50,6 +50,6 @@ or
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
 
-WARNING
+Warning
 =======
 Flash compiler is currently only compatible with MAC OS X.
