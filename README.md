@@ -43,7 +43,7 @@ or
 
 ### [mode]
 
-        -debug (✓ Default: The methodical process of finding and reducing the number of bugs, or defects)
+        -debug (✓ Default: Methodical process of finding and reducing the number of bugs, or defects)
         -release (✓ The public distribution of software code and support materials)
 
 ### [options]
@@ -53,6 +53,10 @@ or
         -launch (✓ Opens localhost environment)
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
+
+Helpfull
+========
+[AIR - Building Apps](http://help.adobe.com/en_US/air/build/air_buildingapps.pdf)
 
 Warning
 =======
