@@ -3,13 +3,13 @@ package {
 	import flash.text.TextField;
 	import flash.events.Event;
 
-	[SWF(width='{{WIDTH}}',height='{{HEIGHT}}',frameRate='{{FPS}}',backgroundColor='{{BGCOLOR}}')] //half 1080p
+	[SWF(width='640',height='480',frameRate='30',backgroundColor='#ffffff')]
 	public final class boot extends Sprite {
 		// Some sample asset embed strings (handy for various things)
-		//[Embed(source='data/fonts/Helvetica.dfont',fontFamily='Helvetica',embedAsCFF='false')] protected var junk:String;
-		//[Embed(source='data/text.txt',mimeType='application/octet-stream')] protected var FileText:Class;
-		//[Embed(source='data/sounds/music.mp3')] protected var SoundMusic:Class;
-		//[Embed(source='data/icon.png')] protected var ImgIcon:Class;
+		//[Embed(source='../resources/fonts/Helvetica.dfont',fontFamily='Helvetica',embedAsCFF='false')] protected var junk:String;
+		//[Embed(source='../resources/text.txt',mimeType='application/octet-stream')] protected var FileText:Class;
+		//[Embed(source='../resources/sounds/music.mp3')] protected var SoundMusic:Class;
+		//[Embed(source='../resources/icon.png')] protected var ImgIcon:Class;
 
 		public function boot() {
 			if (stage) onInitialize();
