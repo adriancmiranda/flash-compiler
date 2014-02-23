@@ -34,6 +34,8 @@ or
         -apk (✖ Android application package file)
         -ipa (✖ iOS application) 
         -air (✖ Adobe Integrated Runtime)
+        -exe (✖ Windows Executable file)
+        -rem (✖ Blackberry Desktop Manager / Blackberry devices)
 
 ### [mode]
 
