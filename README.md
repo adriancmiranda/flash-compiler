@@ -13,6 +13,10 @@
 
 [Apache Flex SDK](http://flex.apache.org/) is used for build binary files.
 
+![iOS SDK](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-ios.png "iOS SDK")
+
+[iOS SDK](https://developer.apple.com/devcenter/ios/index.action) is used for build ipa binary files.
+
 Usage
 =====
 
