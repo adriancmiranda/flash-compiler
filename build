@@ -740,7 +740,9 @@ function generateAIR {
 		# Configure
 		local CONFIG="-keystore $CERTIFICATE";
 		CONFIG="$CONFIG -storepass $PASSWORD";
-		CONFIG="$CONFIG -target native";
+		if [[ "$PKG" = "dmg" ]]; then
+			CONFIG="$CONFIG -target native";
+		fi
 		# if [[ "$PKG" = "ipa" ]]; then
 		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
 		# 	if [[ "$MODE" = "release" ]]; then
