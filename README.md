@@ -33,7 +33,7 @@ or
         -app (✖ Application bundle)
         -apk (✖ Android application package file)
         -ipa (✖ iOS application) 
-        -air (✖ Adobe Integrated Runtime)
+        -air (✓ Adobe Integrated Runtime)
         -exe (✖ Windows Executable file)
         -rem (✖ Blackberry Desktop Manager / Blackberry devices)
 
