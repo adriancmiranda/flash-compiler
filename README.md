@@ -17,6 +17,10 @@
 
 [iOS SDK](https://developer.apple.com/devcenter/ios/index.action) is used for build ipa binary files.
 
+![Android SDK](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-android.png "Android SDK")
+
+[Android SDK](http://developer.android.com/sdk/index.html) is used for build apk binary files.
+
 Usage
 =====
 
