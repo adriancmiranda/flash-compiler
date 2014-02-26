@@ -778,7 +778,7 @@ function generateAIR {
 		# fi
 
 		# Package
-		CONFIG="$CONFIG $OUTPUT.${PKG:-air}";
+		CONFIG="$CONFIG $OUTPUT.${PKG:air}";
 
 		# Descriptor
 		CONFIG="$CONFIG $OUTPUT.xml";
@@ -803,9 +803,9 @@ function generateAIR {
 			local endTime=`eval date +%s`;
 			let PTIME=($endTime - $startTime);
 			if [[ $PTIME > 1 ]]; then
-				printf "${Gre}✓ $(echo ${PKG:-air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME seconds)\n";
+				printf "${Gre}✓ $(echo ${PKG:air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME seconds)\n";
 			else
-				printf "${Gre}✓ $(echo ${PKG:-air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME second)\n";
+				printf "${Gre}✓ $(echo ${PKG:air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME second)\n";
 			fi
 			if [[ "$MODE" = "release" ]]; then
 				updateReview;
@@ -815,7 +815,7 @@ function generateAIR {
 
 	} || { # catch
 
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} Build ${PKG:-air} package failed\n$___\n";
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} Build $(echo ${PKG:air} | tr "[:lower:]" "[:upper:]") package failed\n$___\n";
 		cleanupProject;
 		exit 1;
 
