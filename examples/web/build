@@ -889,7 +889,7 @@ function generateP12 {
 
 	} || { # catch
 
-		printf "\n$___\n${ERROR}ERROR:${NC} Build certificate failed\n$___\n";
+		printf "\n$___\n${ERROR}ERROR:${NC} Build $(echo ${CERTIFICATE_OUTPUT_EXTENSION} | tr "[:lower:]" "[:upper:]") certificate failed\n$___\n";
 		cleanupProject;
 		exit 1;
 
