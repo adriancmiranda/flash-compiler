@@ -60,6 +60,7 @@ or
 
 Helpfull
 ========
+[AIR - Comando package do ADT](http://help.adobe.com/pt_BR/air/build/WS901d38e593cd1bac1e63e3d128cdca935b-8000.html)
 [AIR - Building Apps](http://help.adobe.com/en_US/air/build/air_buildingapps.pdf)
 
 Warning

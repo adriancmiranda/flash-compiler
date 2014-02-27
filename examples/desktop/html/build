@@ -234,6 +234,12 @@ for opt in "$@"; do
 		-debug)
 			MODE="debug";
 			;;
+		-emulator)
+			MODE="emulator";
+			;;
+		-profile)
+			MODE="profile";
+			;;
 		-preview)
 			OPTS="preview";
 			;;
@@ -737,52 +743,72 @@ function generateAIR {
 			exit 1;
 		fi
 
-		# Configure
+		# Keystore config
 		local CONFIG="-keystore $CERTIFICATE";
 		CONFIG="$CONFIG -storepass $PASSWORD";
+
+		# Application bundle
 		if [[ "$PKG" = "app" ]]; then
 			CONFIG="$CONFIG -target bundle";
 		fi
+
+		# Apple disk image
 		if [[ "$PKG" = "dmg" ]]; then
 			CONFIG="$CONFIG -target native";
 		fi
+
+		# Android application package file
 		if [[ "$PKG" = "apk" ]]; then
-			CONFIG="$CONFIG -target apk";
 			CONFIG="$CONFIG -platformsdk $ANDROID_SDK";
+			CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
+
+			# A package produced with this target can only be installed on an Android device, not an emulator.
+			if [[ "$MODE" = "release" ]]; then
+				CONFIG="$CONFIG -target apk";
+
+			# An Android package with extra debugging information. (The SWF files in the application must also be compiled with debugging support.)
+			elif [[ "$MODE" = "debug" ]]; then
+				CONFIG="$CONFIG -target apk-debug";
+
+			# An Android package for use on an emulator without debugging support. (Use the apk-debug target to permit debugging on both emulators and devices.)
+			elif [[ "$MODE" = "emulator" ]]; then
+				CONFIG="$CONFIG -target apk-emulator";
+
+			# An Android package that supports application performance and memory profiling.
+			elif [[ "$MODE" = "profile" ]]; then
+				CONFIG="$CONFIG -target apk-profile";
+			fi
 		fi
-		# if [[ "$PKG" = "ipa" ]]; then
-		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
-		# 	if [[ "$MODE" = "release" ]]; then
-		# An iOS package for Apple App store distribution.
-		# 		CONFIG="$CONFIG -target ipa-app-store";
-		# An iOS package for ad hoc distribution.
-		# 		CONFIG="$CONFIG -target ipa-ad-hoc";
-		# 	elif [[ "$MODE" = "debug" ]]; then
-		# An iOS package compiled without optimization or debugging information.
-		# 		CONFIG="$CONFIG -target ipa-test";
-		# An iOS package with extra debugging information. (The SWF files in the application must also be compiled with debugging support.)
-		# 		CONFIG="$CONFIG -target ipa-debug";
-		# 	fi
-		#	CONFIG="$CONFIG -target ipa-debug-interpreter-simulator";
-		#	CONFIG="$CONFIG -connect";
-		# fi
-		# if [[ "$PKG" = "apk" ]]; then
-		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
-		# 	if [[ "$MODE" = "release" ]]; then
-		# A package produced with this target can only be installed on an Android device, not an emulator.
-		# 		CONFIG="$CONFIG -target apk";
-		# An Android package that supports application performance and memory profiling.
-		# 		CONFIG="$CONFIG -target apk-profile";
-		# 	elif [[ "$MODE" = "debug" ]]; then
-		# An Android package for use on an emulator without debugging support. (Use the apk-debug target to permit debugging on both emulators and devices.)
-		# 		CONFIG="$CONFIG -target apk-emulator";
-		# An Android package with extra debugging information. (The SWF files in the application must also be compiled with debugging support.)
-		# 		CONFIG="$CONFIG -target apk-debug";
-		# 	fi
-		# fi
+
+		# iOS application
+		if [[ "$PKG" = "ipa" ]]; then
+			CONFIG="$CONFIG -platformsdk $IOS_SDK";
+			CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
+
+			# An iOS package for Apple App store distribution.
+			if [[ "$MODE" = "release" ]]; then
+				CONFIG="$CONFIG -target ipa-app-store";
+
+			# An iOS package with extra debugging information. (The SWF files in the application must also be compiled with debugging support).
+			elif [[ "$MODE" = "debug" ]]; then
+				CONFIG="$CONFIG -target ipa-debug";
+
+			# An iOS package compiled without optimization or debugging information.
+			elif [[ "$MODE" = "emulator" ]]; then
+				CONFIG="$CONFIG -target ipa-test";
+
+			# An iOS package for ad hoc distribution.
+			elif [[ "$MODE" = "profile" ]]; then
+				CONFIG="$CONFIG -target ipa-ad-hoc";
+			fi
+
+			# An debug package... errr... more faster.
+			CONFIG="$CONFIG -target ipa-debug-interpreter-simulator";
+			CONFIG="$CONFIG -connect";
+		fi
 
 		# Package
-		CONFIG="$CONFIG $OUTPUT.${PKG:-air}";
+		CONFIG="$CONFIG $OUTPUT.${PKG:air}";
 
 		# Descriptor
 		CONFIG="$CONFIG $OUTPUT.xml";
@@ -807,9 +833,9 @@ function generateAIR {
 			local endTime=`eval date +%s`;
 			let PTIME=($endTime - $startTime);
 			if [[ $PTIME > 1 ]]; then
-				printf "${Gre}✓ $(echo ${PKG:-air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME seconds)\n";
+				printf "${Gre}✓ $(echo ${PKG:air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME seconds)\n";
 			else
-				printf "${Gre}✓ $(echo ${PKG:-air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME second)\n";
+				printf "${Gre}✓ $(echo ${PKG:air} | tr "[:lower:]" "[:upper:]")${NC} (Built in $PTIME second)\n";
 			fi
 			if [[ "$MODE" = "release" ]]; then
 				updateReview;
@@ -819,7 +845,7 @@ function generateAIR {
 
 	} || { # catch
 
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} Build ${PKG:-air} package failed\n$___\n";
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} Build $(echo ${PKG:air} | tr "[:lower:]" "[:upper:]") package failed\n$___\n";
 		cleanupProject;
 		exit 1;
 
