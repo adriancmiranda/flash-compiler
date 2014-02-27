@@ -746,6 +746,10 @@ function generateAIR {
 		if [[ "$PKG" = "dmg" ]]; then
 			CONFIG="$CONFIG -target native";
 		fi
+		if [[ "$PKG" = "apk" ]]; then
+			CONFIG="$CONFIG -target apk";
+			CONFIG="$CONFIG -platformsdk $ANDROID_SDK";
+		fi
 		# if [[ "$PKG" = "ipa" ]]; then
 		# 	CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
 		# 	if [[ "$MODE" = "release" ]]; then
