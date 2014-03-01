@@ -27,7 +27,7 @@
 
     <script type="text/javascript" src="scripts/swfobject.min.js"></script>
     <script type="text/javascript">
-        (function (window, document) {
+        (function (window, document, AM, undefined) {
 
             var PROTOCOL = (document.location.protocol || '');
             var HOST = (document.location.host || '');
@@ -76,8 +76,10 @@
             } else {
                 window.location = 'fallback/index.html';
             }
+            
+            AM.baseUrl = BASEURL;
 
-        }(this, document));
+        }(this, document, this.AM = this.AM || {}));
     </script>
 </body>
 </html>
