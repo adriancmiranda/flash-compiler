@@ -57,6 +57,13 @@ or
         -launch (✓ Opens localhost environment)
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
+        
+Config constants
+================
+
+    CONFIG::FLASH_10_1 (boolean)
+    CONFIG::WEB (boolean)
+    CONFIG::AIR (boolean)
 
 Helpfull
 ========
