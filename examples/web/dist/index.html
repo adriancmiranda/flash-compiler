@@ -30,11 +30,12 @@
     <!-- @see https://developers.facebook.com/docs/javascript/quickstart/ -->
     <script type="text/javascript" src="scripts/swfobject.min.js"></script>
     <script>
+        var DEV = 'XXXXXXXXXXXXXXXX';
         var HML = 'XXXXXXXXXXXXXXXX';
         var PRD = 'XXXXXXXXXXXXXXX';
         window.fbAsyncInit = function() {
             FB.init({
-                  appId: PRD
+                  appId: DEV
                 , status: true
                 , xfbml: true
             });
