@@ -59,7 +59,7 @@
             var HOST = (document.location.host || '');
             var PORT = (document.location.port || '').split(':').join('');
             var PATHNAME = (document.location.pathname || '').split('/').slice(0, -1).join('/');
-            var PARAMS = window.location.toString().slice(window.location.toString().indexOf('?'));
+            var QUERY = window.location.toString().slice(window.location.toString().indexOf('?'));
             var BASEURL = (PROTOCOL +'//'+ HOST + (PORT ? ':'+PORT : '') + PATHNAME);
             
             // @see https://developers.facebook.com/docs/reference/dialogs/feed/
@@ -118,7 +118,7 @@
             AM.shareOnFacebook = shareOnFacebook;
             AM.hasFlashPlayer = hasFlashPlayer;
             AM.baseUrl = BASEURL;
-            AM.query = PARAMS;
+            AM.query = QUERY;
 
         }(this, this.document, this.AM = this.AM || {}));
     </script>
