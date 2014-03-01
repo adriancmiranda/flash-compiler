@@ -104,18 +104,19 @@
                 );
             }
 
-            function available() {
+            function hasFlashPlayer() {
                 var playerVersion = swfobject.getFlashPlayerVersion();
                 return playerVersion.major > 0 || swfobject.hasFlashPlayerVersion('6.0.65');
             }
 
-            if (available()) {
+            if (hasFlashPlayer()) {
                 swfobject.addDomLoadEvent(embedFlashPlayer);
             } else {
                 window.location = 'fallback/index.html';
             }
             
             AM.shareOnFacebook = shareOnFacebook;
+            AM.hasFlashPlayer = hasFlashPlayer;
             AM.baseUrl = BASEURL;
             AM.query = PARAMS;
 
