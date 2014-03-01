@@ -58,12 +58,12 @@ or
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
         
-Config constants
-================
+Config constants default
+========================
 
-    CONFIG::FLASH_10_1 (boolean)
-    CONFIG::WEB (boolean)
-    CONFIG::AIR (boolean)
+    CONFIG::FLASH_10_1 <Boolean>
+    CONFIG::WEB <Boolean>
+    CONFIG::AIR <Boolean>
 
 Helpfull
 ========
