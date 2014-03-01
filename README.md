@@ -58,13 +58,6 @@ or
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
         
-Config constants default
-========================
-
-    CONFIG::FLASH_10_1 <Boolean>
-    CONFIG::WEB <Boolean>
-    CONFIG::AIR <Boolean>
-
 Helpfull
 ========
 * [AIR - Comando package do ADT](http://help.adobe.com/pt_BR/air/build/WS901d38e593cd1bac1e63e3d128cdca935b-8000.html)
