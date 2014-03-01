@@ -354,6 +354,15 @@ else
 	fi
 fi
 
+# compc
+if [[ ! -x "$FLEX_SDK/bin/compc" ]]; then
+	# if file doensn't exists or not is executable.
+	printf "${ERROR}ERROR:${NC} compc not found.\n";
+	exit 1;
+else
+	compc="$FLEX_SDK/bin/compc";
+fi
+
 # frameworks
 if [[ ! -d "$FLEX_SDK/frameworks" ]]; then
 	# if directory doensn't exists or 'frameworks' not is directory.
