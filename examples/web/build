@@ -71,7 +71,7 @@ function localhost {
 	local ipl="$(ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1' | sed "1 d")";
 	ipl="${ipl:-localhost}";
 	if [[ "$MODE" = "debug" ]]; then
-		url="$url?debug=true";
+		url="$url?debug=1";
 	fi
 	if [[ "$url" =~ ^[0-9]+$ ]]; then
 	# Launch a local web server from specific port
