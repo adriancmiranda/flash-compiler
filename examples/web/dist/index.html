@@ -37,7 +37,14 @@
             var BASEURL = (PROTOCOL +'//'+ HOST + (PORT ? ':'+PORT : '') + PATHNAME);
             
             function shareOnFacebook() {
-                
+                FB.ui({
+                      method: 'feed'
+                    , link: BASEURL + '/share.html'
+                    , picture: BASEURL + '/og.jpg'
+                    , name: ''
+                    , caption: '<url:share>'
+                    , description: ''
+                });
             }
 
             function embedFlashPlayer() {
