@@ -27,8 +27,10 @@
         </div>
     </div>
     
-    <!-- @see https://developers.facebook.com/docs/javascript/quickstart/ -->
+    <!-- @see https://code.google.com/p/swfobject/ -->
     <script type="text/javascript" src="scripts/swfobject.min.js"></script>
+    
+    <!-- @see https://developers.facebook.com/docs/javascript/quickstart/ -->
     <script>
         var DEV = 'XXXXXXXXXXXXXXXX';
         var HML = 'XXXXXXXXXXXXXXXX';
@@ -48,6 +50,8 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+    
+    <!-- Flash Application Control -->
     <script type="text/javascript">
         (function (window, document, AM, undefined) {
 
@@ -90,8 +94,8 @@
                 swfobject.embedSWF(
                       'boot.swf'
                     , 'flash-content'
-                    , 785
-                    , 520
+                    , '100%'
+                    , '100%'
                     , '9.0.0'
                     , 'expressInstall.swf'
                     , flashvars
