@@ -35,6 +35,10 @@
             var PATHNAME = (document.location.pathname || '').split('/').slice(0, -1).join('/');
             var PARAMS = window.location.toString().slice(window.location.toString().indexOf('?'));
             var BASEURL = (PROTOCOL +'//'+ HOST + (PORT ? ':'+PORT : '') + PATHNAME);
+            
+            function shareOnFacebook() {
+                
+            }
 
             function embedFlashPlayer() {
                 var flashvars = {
@@ -77,10 +81,11 @@
                 window.location = 'fallback/index.html';
             }
             
+            AM.shareOnFacebook = shareOnFacebook;
             AM.baseUrl = BASEURL;
             AM.query = PARAMS;
 
-        }(this, document, this.AM = this.AM || {}));
+        }(this, this.document, this.AM = this.AM || {}));
     </script>
 </body>
 </html>
