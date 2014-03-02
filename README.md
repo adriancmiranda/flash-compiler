@@ -72,6 +72,7 @@ Support
 
  * [Issue tracker][issue_tracker]
 
-Bugs and issues should be reported via the [issue tracker][issue_tracker].
+Bugs and issues should be reported via the [issue tracker][issue_tracker "Issue tracker"].
 
 [issue_tracker]: http://github.com/adriancmiranda/flash-compiler/issues
+[]
