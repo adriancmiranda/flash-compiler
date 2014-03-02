@@ -66,3 +66,10 @@ Helpfull
 Warning
 =======
 Flash compiler is currently only compatible with MAC OS X. No guarantee, but I think that you can perform using [cygwin](http://cygwin.com/) on Microsoft Windows.
+
+Support
+=======
+
+ * [Issue tracker][issue_tracker]
+
+Bugs and issues should be reported via the [issue tracker][issue_tracker].
