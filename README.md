@@ -1,25 +1,25 @@
 ![Flash Compiler](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/flash-compiler.png "Flash Compiler")
 =====
 
-![Grunt](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt")
+![Grunt][grunt_image]
 
-[Grunt](http://gruntjs.com/) is used to build, preview and test your project.
+[Grunt][grunt_site] is used to build, preview and test your project.
 
-![Bower](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower")
+![Bower][bower_image]
 
-[Bower](http://bower.io/) is used for dependency management.
+[Bower][bower_site] is used for dependency management.
 
-![Apache Flex SDK](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png "Apache Flex SDK")
+![Apache Flex SDK][apache_flex_sdk_image]
 
-[Apache Flex SDK](http://flex.apache.org/) is used for build binary files.
+[Apache Flex SDK][apache_flex_sdk_site] is used for build binary files.
 
-![iOS SDK](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-ios.png "iOS SDK")
+![iOS SDK][ios_sdk_image]
 
-[iOS SDK](https://developer.apple.com/devcenter/ios/index.action) is used for build ipa binary files.
+[iOS SDK][ios_sdk_site] is used for build ipa binary files.
 
-![Android SDK](https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-android.png "Android SDK")
+![Android SDK][android_sdk_image]
 
-[Android SDK](http://developer.android.com/sdk/index.html) is used for build apk binary files.
+[Android SDK][android_sdk_site] is used for build apk binary files.
 
 Usage
 =====
