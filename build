@@ -905,6 +905,42 @@ function generateP12 {
 	}
 }
 
+function generateSWC {
+	{ # try
+
+		local CONFIG="-namespace http://www.adobe.com/$(date +%Y)/$NAME manifest.xml";
+		local CLASSES="$(find $ABS/ -name *.as -or -name *.mxml)";
+		local SYMBOLS="";
+
+		CONFIG="$CONFIG -source-path ${2:$ABS/source}";
+		CONFIG="$CONFIG -output='$ABS/dist/${1:am}.swc'";
+		CONFIG="$CONFIG -include-namespaces http://www.adobe.com/$(date +%Y)/AM";
+		CONFIG="$CONFIG -include-classes $CLASSES";
+
+		if [[ ! -z "${SYMBOLS+xxx}" && ! -z "$SYMBOLS" ]]; then
+			CONFIG="$CONFIG -include-file $SYMBOLS";
+		fi
+
+		$compc $CONFIG && {
+
+			local endTime=`eval date +%s`;
+			let PTIME=($endTime - $startTime);
+			if [[ $PTIME > 1 ]]; then
+				printf "${Gre}✓ SWC (Built in $PTIME seconds)\n";
+			else
+				printf "${Gre}✓ SWC (Built in $PTIME second)\n";
+			fi
+
+		}
+
+	} || { # catch
+
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} Build package failed\n$___\n";
+		exit 1;
+
+	}
+}
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
