@@ -74,4 +74,4 @@ Support
 
 Bugs and issues should be reported via the [issue tracker][issue_tracker].
 
-[issue_tracker]: http://github.com/simongregory/hel-log/issues
+[issue_tracker]: http://github.com/adriancmiranda/flash-compiler/issues
