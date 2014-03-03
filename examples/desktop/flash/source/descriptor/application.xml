@@ -74,61 +74,61 @@
          | The render mode for the app (either auto, cpu, or gpu). -->
         <renderMode>auto</renderMode>
 
-        <!--
-         | Whether the app launches in full screen. Optional. Mobile only. Default false -->
+        <!-- Optional (Mobile only - Default false):
+         | Whether the app launches in full screen. -->
         <fullScreen>false</fullScreen>
 
-        <!--
-         | Whether the app will begin auto-orienting on launch. Optional. Mobile only. Default false -->
+        <!-- Optional (Mobile only - Default false):
+         | Whether the app will begin auto-orienting on launch. -->
         <autoOrients>false</autoOrients>
 
-        <!--
-         | Whether the user can minimize the window. Optional. Default true. -->
+        <!-- Optional. (Default true):
+         | Whether the user can minimize the window. -->
         <minimizable>true</minimizable>
 
-        <!--
-         | Whether the user can maximize the window. Optional. Default true. -->
+        <!-- Optional (Default true):
+         | Whether the user can maximize the window. -->
         <maximizable>true</maximizable>
 
-        <!--
-         | Whether the user can resize the window. Optional. Default true. -->
+        <!-- Optional (Default true):
+         | Whether the user can resize the window. -->
         <resizable>true</resizable>
 
-        <!--
-         | The window's initial width. Optional. -->
+        <!-- Optional:
+         | The window's initial width. -->
         <!-- <width>[This value will be overwritten by AM Builder in the output]</width> -->
 
-        <!--
-         | The window's initial height. Optional. -->
+        <!-- Optional:
+         | The window's initial height. -->
         <!-- <height>[This value will be overwritten by AM Builder in the output]</height> -->
 
-        <!--
-         | The window's minimum size, specified as a width/height pair, such as "400 200". Optional. -->
+        <!-- Optional:
+         | The window's minimum size, specified as a width/height pair, such as "400 200". -->
         <minSize>240 200</minSize>
 
-        <!--
-         | The window's initial maximum size, specified as a width/height pair, such as "1600 1200". Optional. -->
+        <!-- Optional:
+         | The window's initial maximum size, specified as a width/height pair, such as "1600 1200". -->
         <!-- <maxSize>1600 1200</maxSize> -->
 
-        <!--
-         | The window's initial x position. Optional. -->
+        <!-- Optional:
+         | The window's initial x position. -->
         <!-- <x>0</x> -->
 
-        <!--
-         | The window's initial y position. Optional. -->
+        <!-- Optional:
+         | The window's initial y position. -->
         <!-- <y>0</y> -->
 
-        <!--
-         | The initial aspect ratio of the app when launched (either "portrait" or "landscape"). Optional. Mobile only. Default is the natural orientation of the device -->
+        <!-- Optional (Mobile only - Default is the natural orientation of the device):
+         | The initial aspect ratio of the app when launched (either "portrait" or "landscape"). -->
         <!-- <aspectRatio></aspectRatio> -->
 
-        <!--
-         | Whether or not to pan when a soft keyboard is raised or lowered (either "pan" or "none"). Optional. Defaults "pan". -->
+        <!-- Optional (Defaults "pan"):
+         | Whether or not to pan when a soft keyboard is raised or lowered (either "pan" or "none"). -->
         <!-- <softKeyboardBehavior>pan</softKeyboardBehavior> -->
     </initialWindow>
 
-    <!--
-     | The name that is displayed in the AIR application installer. Optional. -->
+    <!-- Optional:
+     | The name that is displayed in the AIR application installer. -->
     <name>[This value will be overwritten by AM Builder in the output]</name>
 
     <!--
@@ -140,8 +140,8 @@
     </name>
     -->
 
-    <!--
-     | Description, displayed in the AIR application installer. Optional. -->
+    <!-- Optional:
+     | Description, displayed in the AIR application installer. -->
     <description>[This value will be overwritten by AM Builder in the output]</description>
 
     <!--
@@ -153,19 +153,20 @@
     </description>
     -->
 
-    <!--
-     | Copyright information. Optional. -->
+    <!-- Optional:
+     | Copyright information. -->
     <copyright>[This value will be overwritten by AM Builder in the output]</copyright>
 
-    <!-- We recommend omitting the supportedProfiles element, -->
-    <!-- which in turn permits your application to be deployed to all -->
-    <!-- devices supported by AIR. If you wish to restrict deployment -->
-    <!-- (i.e., to only mobile devices) then add this element and list -->
-    <!-- only the profiles which your application does support. -->
+    <!--
+     | We recommend omitting the supportedProfiles element,
+     | which in turn permits your application to be deployed to all
+     | devices supported by AIR. If you wish to restrict deployment
+     | (i.e., to only mobile devices) then add this element and list
+     | only the profiles which your application does support. -->
     <!-- <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice</supportedProfiles> -->
 
-    <!--
-     | The icon the system uses for the application. Optional. -->
+    <!-- Optional:
+     | The icon the system uses for the application. -->
     <icon>
         <!--
          | For at least one resolution, specify the path to a PNG file included in the AIR package. -->
@@ -182,38 +183,38 @@
         <image512x512>icons/Icon512.png</image512x512>
     </icon>
 
-    <!--
-     | Whether the application can be launched when the user clicks a link in a web browser. Optional. Default false. -->
+    <!-- Optional (Default false):
+     | Whether the application can be launched when the user clicks a link in a web browser. -->
     <allowBrowserInvocation>false</allowBrowserInvocation>
 
-    <!--
-     | Whether the application handles the update when a user double-clicks an update version of the AIR file (true), or the default AIR application installer handles the update (false). Optional. Default false. -->
+    <!-- Optional (Default false):
+     | Whether the application handles the update when a user double-clicks an update version of the AIR file (true), or the default AIR application installer handles the update (false). -->
     <customUpdateUI>false</customUpdateUI>
 
-    <!--
-     | Listing of file types for which the application can register. Optional. -->
+    <!-- Optional:
+     | Listing of file types for which the application can register. -->
     <fileTypes>
-        <!--
-         | Defines one file type. Optional. -->
+        <!-- Optional:
+         | Defines one file type. -->
         <!-- <fileType> -->
-            <!--
-             | The name that the system displays for the registered file type. Required. -->
+            <!-- Required:
+             | The name that the system displays for the registered file type. -->
             <!-- <name></name> -->
 
-            <!--
-             | The extension to register. Required. -->
+            <!-- Required:
+             | The extension to register. -->
             <!-- <extension></extension> -->
 
-            <!--
-             | The description of the file type. Optional. -->
+            <!-- Optional:
+             | The description of the file type. -->
             <!-- <description></description> -->
 
-            <!--
-             | The MIME type. Optional. -->
+            <!-- Optional:
+             | The MIME type. -->
             <!-- <contentType></contentType> -->
 
-            <!--
-             | The icon to display for the file type. Optional. -->
+            <!-- Optional:
+             | The icon to display for the file type. -->
             <!-- <icon>
                 <image16x16>icons/filetype/Organizr16.png</image16x16>
                 <image32x32>icons/filetype/Organizr32.png</image32x32>
