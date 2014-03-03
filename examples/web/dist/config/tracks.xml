@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<tracks ua="">
-	<tag id="0000" slug="project/tag/id"><![CDATA[original/track/from/project]]></tag>
+<tracks UA="XXXXXXXX-X">
+	<!-- ✓ Page: _gaq.push(['_trackPageview','/page']); -->
+	<pageview id="0000" slug="project/tag/id"><![CDATA[original/track/from/project]]></pageview>
+	<!-- ✓ Page: _gaq.push(['_trackPageview','category','action','opt_label','opt_value','opt_noninteraction']); -->
+	<event id="0000" slug="Base_Facebook"><![CDATA[category,action,opt_label,opt_value,opt_noninteraction]]></event>
 </tracks>
