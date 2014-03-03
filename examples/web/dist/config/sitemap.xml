@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<header title="" flow="normal" history="yes" strict="yes" connections="1">
+<header title="Organizr" flow="normal" history="yes" strict="yes" connections="1">
 	<languages></languages>
 	<file id="layers" url="{@fvBaseContent}config/layers.xml" kb="4"/>
 	<base id="base" class="Base" standard="home" mistake="home">
