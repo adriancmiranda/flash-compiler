@@ -18,117 +18,145 @@
  -->
 <application xmlns="http://ns.adobe.com/air/application/3.9" minimumPatchLevel="0">
     <!-- Required:
-     | The application identifier string, unique to this application. -->
+     | The application identifier string, unique to this application.
+     '-->
     <id>[This value will be overwritten by AM Builder in the output]</id>
 
     <!-- Required:
-     | Used as the filename for the application. -->
+     | Used as the filename for the application.
+     '-->
     <filename>[This value will be overwritten by AM Builder in the output]</filename>
 
     <!-- Optional:
      | A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
      | Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
-     | An updated version of application must have a versionNumber value higher than the previous version. Required for namespace >= 2.5. -->
+     | An updated version of application must have a versionNumber value higher than the previous version. Required for namespace >= 2.5.
+     '-->
     <versionNumber>[This value will be overwritten by AM Builder in the output]</versionNumber>
 
     <!-- Required:
-     | An application version designator (such as "v1", "2.5", or "Alpha 1"). -->
-    <!-- <versionLabel></versionLabel> -->
+     | An application version designator (such as "v1", "2.5", or "Alpha 1").
+    <versionLabel></versionLabel>
+     '-->
 
     <!-- Optional:
-     | Publisher ID. Used if you're updating an application created prior to 1.5.3 -->
-    <!-- <publisherID></publisherID> -->
+     | Publisher ID. Used if you're updating an application created prior to 1.5.3.
+    <publisherID></publisherID>
+     '-->
 
     <!-- Optional:
-     | The subpath of the Programs menu to use. (Ignored on operating systems without a Programs menu.) -->
-    <!-- <programMenuFolder>Organizr</programMenuFolder> -->
+     | The subpath of the Programs menu to use. (Ignored on operating systems without a Programs menu.)
+    <programMenuFolder>Organizr</programMenuFolder>
+     '-->
 
     <!-- Optional:
-     | The subpath of the standard default installation location to use. -->
-    <!-- <installFolder>Organizr</installFolder> -->
+     | The subpath of the standard default installation location to use.
+    <installFolder>Organizr</installFolder>
+     '-->
 
     <!-- Required:
-     | Settings for the application's initial window. -->
+     | Settings for the application's initial window.
+     '-->
     <initialWindow>
         <!-- Required:
-         | The main SWF or HTML file of the application. -->
+         | The main SWF or HTML file of the application.
+         '-->
         <content>[This value will be overwritten by AM Builder in the output]</content>
 
         <!-- Optional:
-         | The title of the main window. -->
+         | The title of the main window.
+         '-->
         <title>[This value will be overwritten by AM Builder in the output]</title>
 
         <!-- Optional (Default standard):
-         | The type of system chrome to use (either "standard" or "none"). -->
+         | The type of system chrome to use (either "standard" or "none").
+         '-->
         <systemChrome>standard</systemChrome>
 
         <!-- Optional (Default false):
-         | Whether the window is transparent. Only applicable when systemChrome is false. -->
+         | Whether the window is transparent. Only applicable when systemChrome is false.
+         '-->
         <transparent>false</transparent>
 
         <!-- Optional (Default false):
-         | Whether the window is initially visible. -->
+         | Whether the window is initially visible.
+         '-->
         <visible>true</visible>
 
         <!-- Optional (Mobile only - Default auto):
-         | The render mode for the app (either auto, cpu, or gpu). -->
+         | The render mode for the app (either auto, cpu, or gpu).
+         '-->
         <renderMode>auto</renderMode>
 
         <!-- Optional (Mobile only - Default false):
-         | Whether the app launches in full screen. -->
+         | Whether the app launches in full screen.
+         '-->
         <fullScreen>false</fullScreen>
 
         <!-- Optional (Mobile only - Default false):
-         | Whether the app will begin auto-orienting on launch. -->
+         | Whether the app will begin auto-orienting on launch.
+         '-->
         <autoOrients>false</autoOrients>
 
         <!-- Optional. (Default true):
-         | Whether the user can minimize the window. -->
+         | Whether the user can minimize the window.
+         '-->
         <minimizable>true</minimizable>
 
         <!-- Optional (Default true):
-         | Whether the user can maximize the window. -->
+         | Whether the user can maximize the window.
+         '-->
         <maximizable>true</maximizable>
 
         <!-- Optional (Default true):
-         | Whether the user can resize the window. -->
+         | Whether the user can resize the window.
+         '-->
         <resizable>true</resizable>
 
         <!-- Optional:
-         | The window's initial width. -->
-        <!-- <width>[This value will be overwritten by AM Builder in the output]</width> -->
+         | The window's initial width.
+        <width>[This value will be overwritten by AM Builder in the output]</width>
+         '-->
 
         <!-- Optional:
-         | The window's initial height. -->
-        <!-- <height>[This value will be overwritten by AM Builder in the output]</height> -->
+         | The window's initial height.
+        <height>[This value will be overwritten by AM Builder in the output]</height>
+         '-->
 
         <!-- Optional:
-         | The window's minimum size, specified as a width/height pair, such as "400 200". -->
+         | The window's minimum size, specified as a width/height pair, such as "400 200".
+         '-->
         <minSize>240 200</minSize>
 
         <!-- Optional:
-         | The window's initial maximum size, specified as a width/height pair, such as "1600 1200". -->
-        <!-- <maxSize>1600 1200</maxSize> -->
+         | The window's initial maximum size, specified as a width/height pair, such as "1600 1200".
+        <maxSize>1600 1200</maxSize>
+         '-->
 
         <!-- Optional:
-         | The window's initial x position. -->
-        <!-- <x>0</x> -->
+         | The window's initial x position.
+        <x>0</x>
+         '-->
 
         <!-- Optional:
-         | The window's initial y position. -->
-        <!-- <y>0</y> -->
+         | The window's initial y position.
+        <y>0</y>
+         '-->
 
         <!-- Optional (Mobile only - Default is the natural orientation of the device):
-         | The initial aspect ratio of the app when launched (either "portrait" or "landscape"). -->
-        <!-- <aspectRatio></aspectRatio> -->
+         | The initial aspect ratio of the app when launched (either "portrait" or "landscape").
+        <aspectRatio></aspectRatio>
+         '-->
 
         <!-- Optional (Defaults "pan"):
-         | Whether or not to pan when a soft keyboard is raised or lowered (either "pan" or "none"). -->
-        <!-- <softKeyboardBehavior>pan</softKeyboardBehavior> -->
+         | Whether or not to pan when a soft keyboard is raised or lowered (either "pan" or "none").
+        <softKeyboardBehavior>pan</softKeyboardBehavior>
+         '-->
     </initialWindow>
 
     <!-- Optional:
-     | The name that is displayed in the AIR application installer. -->
+     | The name that is displayed in the AIR application installer.
+     '-->
     <name>[This value will be overwritten by AM Builder in the output]</name>
 
     <!--
@@ -138,10 +166,11 @@
         <text xml:lang="fr">French App name goes here</text>
         <text xml:lang="ja">Japanese App name goes here</text>
     </name>
-    -->
+     '-->
 
     <!-- Optional:
-     | Description, displayed in the AIR application installer. -->
+     | Description, displayed in the AIR application installer.
+     '-->
     <description>[This value will be overwritten by AM Builder in the output]</description>
 
     <!--
@@ -151,10 +180,11 @@
         <text xml:lang="fr">French App description goes here</text>
         <text xml:lang="ja">Japanese App description goes here</text>
     </description>
-    -->
+    '-->
 
     <!-- Optional:
-     | Copyright information. -->
+     | Copyright information.
+     '-->
     <copyright>[This value will be overwritten by AM Builder in the output]</copyright>
 
     <!--
@@ -162,14 +192,17 @@
      | which in turn permits your application to be deployed to all
      | devices supported by AIR. If you wish to restrict deployment
      | (i.e., to only mobile devices) then add this element and list
-     | only the profiles which your application does support. -->
-    <!-- <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice</supportedProfiles> -->
+     | only the profiles which your application does support.
+    <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice</supportedProfiles>
+    '-->
 
     <!-- Optional:
-     | The icon the system uses for the application. -->
+     | The icon the system uses for the application.
+     '-->
     <icon>
         <!--
-         | For at least one resolution, specify the path to a PNG file included in the AIR package. -->
+         | For at least one resolution, specify the path to a PNG file included in the AIR package.
+         '-->
         <image16x16>icons/Icon16.png</image16x16>
         <image29x29>icons/Icon29.png</image29x29>
         <image32x32>icons/Icon32.png</image32x32>
@@ -184,48 +217,58 @@
     </icon>
 
     <!-- Optional (Default false):
-     | Whether the application can be launched when the user clicks a link in a web browser. -->
+     | Whether the application can be launched when the user clicks a link in a web browser.
+     '-->
     <allowBrowserInvocation>false</allowBrowserInvocation>
 
     <!-- Optional (Default false):
-     | Whether the application handles the update when a user double-clicks an update version of the AIR file (true), or the default AIR application installer handles the update (false). -->
+     | Whether the application handles the update when a user double-clicks an update version of the AIR file (true), or the default AIR application installer handles the update (false).
+     '-->
     <customUpdateUI>false</customUpdateUI>
 
     <!-- Optional:
-     | Listing of file types for which the application can register. -->
+     | Listing of file types for which the application can register.
+     '-->
     <fileTypes>
         <!-- Optional:
-         | Defines one file type. -->
-        <!-- <fileType> -->
+         | Defines one file type.
+        <fileType>
+         '-->
             <!-- Required:
-             | The name that the system displays for the registered file type. -->
-            <!-- <name></name> -->
+             | The name that the system displays for the registered file type.
+            <name></name>
+             '-->
 
             <!-- Required:
-             | The extension to register. -->
-            <!-- <extension></extension> -->
+             | The extension to register.
+            <extension></extension>
+             '-->
 
             <!-- Optional:
-             | The description of the file type. -->
-            <!-- <description></description> -->
+             | The description of the file type.
+            <description></description>
+             '-->
 
             <!-- Optional:
-             | The MIME type. -->
-            <!-- <contentType></contentType> -->
+             | The MIME type.
+            <contentType></contentType>
+             '-->
 
             <!-- Optional:
-             | The icon to display for the file type. -->
-            <!-- <icon>
+             | The icon to display for the file type.
+            <icon>
                 <image16x16>icons/filetype/Organizr16.png</image16x16>
                 <image32x32>icons/filetype/Organizr32.png</image32x32>
                 <image48x48>icons/filetype/Organizr48.png</image48x48>
                 <image128x128>icons/filetype/Organizr128.png</image128x128>
-            </icon> -->
+            </icon>
+             '-->
         <!-- </fileType> -->
     </fileTypes>
 
     <!--
-     | Specify Android specific tags that get passed to AndroidManifest.xml file. -->
+     | Specify Android specific tags that get passed to AndroidManifest.xml file.
+     '-->
     <android>
         <manifestAdditions><![CDATA[
             <manifest android:installLocation="auto">
@@ -251,7 +294,8 @@
     </android>
 
     <!--
-     | iOS specific capabilities -->
+     | iOS specific capabilities
+     '-->
     <iPhone>
         <InfoAdditions><![CDATA[
             <key>UIDeviceFamily</key>
