@@ -1,219 +1,264 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
- <!--
-
- 	Adobe AIR Application Descriptor File Template.
-
-	Specifies parameters for identifying, installing, and launching AIR applications.
-
-	xmlns
-	=====
-	The Adobe AIR namespace: http://ns.adobe.com/air/application/3.9
-	The last segment of the namespace specifies the version
-	of the AIR runtime required for this application to run.
-
-	minimumPatchLevel Optional.
-	============================
-	The minimum patch level of the AIR runtime required to run the application.
-
--->
+<!--
+ |
+ |  Adobe AIR Application Descriptor File Template.
+ |
+ |  Specifies parameters for identifying, installing, and launching AIR applications.
+ |
+ |  xmlns
+ |  =====
+ |  The Adobe AIR namespace: http://ns.adobe.com/air/application/3.9
+ |  The last segment of the namespace specifies the version
+ |  of the AIR runtime required for this application to run.
+ |
+ |  minimumPatchLevel Optional.
+ |  ============================
+ |  The minimum patch level of the AIR runtime required to run the application.
+ |
+ -->
 <application xmlns="http://ns.adobe.com/air/application/3.9" minimumPatchLevel="0">
-	<!-- The application identifier string, unique to this application. Required. -->
-	<id>[This value will be overwritten by AM Builder in the output]</id>
+    <!-- Required:
+     | The application identifier string, unique to this application. -->
+    <id>[This value will be overwritten by AM Builder in the output]</id>
 
-	<!-- Used as the filename for the application. Required. -->
-	<filename>[This value will be overwritten by AM Builder in the output]</filename>
+    <!-- Required:
+     | Used as the filename for the application. -->
+    <filename>[This value will be overwritten by AM Builder in the output]</filename>
 
-	<!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
-	Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
-	An updated version of application must have a versionNumber value higher than the previous version. Required for namespace >= 2.5 . -->
-	<versionNumber>[This value will be overwritten by AM Builder in the output]</versionNumber>
+    <!-- Optional:
+     | A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
+     | Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
+     | An updated version of application must have a versionNumber value higher than the previous version. Required for namespace >= 2.5. -->
+    <versionNumber>[This value will be overwritten by AM Builder in the output]</versionNumber>
 
-	<!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
-	<!-- <versionLabel></versionLabel> -->
+    <!-- Required:
+     | An application version designator (such as "v1", "2.5", or "Alpha 1"). -->
+    <!-- <versionLabel></versionLabel> -->
 
-	<!-- Publisher ID. Used if you're updating an application created prior to 1.5.3 -->
-	<!-- <publisherID></publisherID> -->
+    <!-- Optional:
+     | Publisher ID. Used if you're updating an application created prior to 1.5.3 -->
+    <!-- <publisherID></publisherID> -->
 
-	<!-- The subpath of the Programs menu to use. (Ignored on operating systems without a Programs menu.) Optional. -->
-	<!-- <programMenuFolder>Organizr</programMenuFolder> -->
+    <!-- Optional:
+     | The subpath of the Programs menu to use. (Ignored on operating systems without a Programs menu.) -->
+    <!-- <programMenuFolder>Organizr</programMenuFolder> -->
 
-	<!-- The subpath of the standard default installation location to use. Optional. -->
-	<!-- <installFolder>Organizr</installFolder> -->
+    <!-- Optional:
+     | The subpath of the standard default installation location to use. -->
+    <!-- <installFolder>Organizr</installFolder> -->
 
-	<!-- Settings for the application's initial window. Required. -->
-	<initialWindow>
-		<!-- The main SWF or HTML file of the application. Required. -->
-		<content>[This value will be overwritten by AM Builder in the output]</content>
+    <!-- Required:
+     | Settings for the application's initial window. -->
+    <initialWindow>
+        <!-- Required:
+         | The main SWF or HTML file of the application. -->
+        <content>[This value will be overwritten by AM Builder in the output]</content>
 
-		<!-- The title of the main window. Optional. -->
-		<title>[This value will be overwritten by AM Builder in the output]</title>
+        <!-- Optional:
+         | The title of the main window. -->
+        <title>[This value will be overwritten by AM Builder in the output]</title>
 
-		<!-- The type of system chrome to use (either "standard" or "none"). Optional. Default standard. -->
-		<systemChrome>standard</systemChrome>
+        <!-- Optional (Default standard):
+         | The type of system chrome to use (either "standard" or "none"). -->
+        <systemChrome>standard</systemChrome>
 
-		<!-- Whether the window is transparent. Only applicable when systemChrome is false. Optional. Default false. -->
-		<transparent>false</transparent>
+        <!-- Optional (Default false):
+         | Whether the window is transparent. Only applicable when systemChrome is false. -->
+        <transparent>false</transparent>
 
-		<!-- Whether the window is initially visible. Optional. Default false. -->
-		<visible>true</visible>
+        <!-- Optional (Default false):
+         | Whether the window is initially visible. -->
+        <visible>true</visible>
 
-		<!-- The render mode for the app (either auto, cpu, or gpu). Optional. Mobile only. Default auto -->
-		<renderMode>auto</renderMode>
+        <!-- Optional (Mobile only - Default auto):
+         | The render mode for the app (either auto, cpu, or gpu). -->
+        <renderMode>auto</renderMode>
 
-		<!-- Whether the app launches in full screen. Optional. Mobile only. Default false -->
-		<fullScreen>false</fullScreen>
+        <!--
+         | Whether the app launches in full screen. Optional. Mobile only. Default false -->
+        <fullScreen>false</fullScreen>
 
-		<!-- Whether the app will begin auto-orienting on launch. Optional. Mobile only. Default false -->
-		<autoOrients>false</autoOrients>
+        <!--
+         | Whether the app will begin auto-orienting on launch. Optional. Mobile only. Default false -->
+        <autoOrients>false</autoOrients>
 
-		<!-- Whether the user can minimize the window. Optional. Default true. -->
-		<minimizable>true</minimizable>
+        <!--
+         | Whether the user can minimize the window. Optional. Default true. -->
+        <minimizable>true</minimizable>
 
-		<!-- Whether the user can maximize the window. Optional. Default true. -->
-		<maximizable>true</maximizable>
+        <!--
+         | Whether the user can maximize the window. Optional. Default true. -->
+        <maximizable>true</maximizable>
 
-		<!-- Whether the user can resize the window. Optional. Default true. -->
-		<resizable>true</resizable>
+        <!--
+         | Whether the user can resize the window. Optional. Default true. -->
+        <resizable>true</resizable>
 
-		<!-- The window's initial width. Optional. -->
-		<!-- <width>[This value will be overwritten by AM Builder in the output]</width> -->
+        <!--
+         | The window's initial width. Optional. -->
+        <!-- <width>[This value will be overwritten by AM Builder in the output]</width> -->
 
-		<!-- The window's initial height. Optional. -->
-		<!-- <height>[This value will be overwritten by AM Builder in the output]</height> -->
+        <!--
+         | The window's initial height. Optional. -->
+        <!-- <height>[This value will be overwritten by AM Builder in the output]</height> -->
 
-		<!-- The window's minimum size, specified as a width/height pair, such as "400 200". Optional. -->
-		<minSize>240 200</minSize>
+        <!--
+         | The window's minimum size, specified as a width/height pair, such as "400 200". Optional. -->
+        <minSize>240 200</minSize>
 
-		<!-- The window's initial maximum size, specified as a width/height pair, such as "1600 1200". Optional. -->
-		<!-- <maxSize>1600 1200</maxSize> -->
+        <!--
+         | The window's initial maximum size, specified as a width/height pair, such as "1600 1200". Optional. -->
+        <!-- <maxSize>1600 1200</maxSize> -->
 
-		<!-- The window's initial x position. Optional. -->
-		<!-- <x>0</x> -->
+        <!--
+         | The window's initial x position. Optional. -->
+        <!-- <x>0</x> -->
 
-		<!-- The window's initial y position. Optional. -->
-		<!-- <y>0</y> -->
+        <!--
+         | The window's initial y position. Optional. -->
+        <!-- <y>0</y> -->
 
-		<!-- The initial aspect ratio of the app when launched (either "portrait" or "landscape"). Optional. Mobile only. Default is the natural orientation of the device -->
-		<!-- <aspectRatio></aspectRatio> -->
+        <!--
+         | The initial aspect ratio of the app when launched (either "portrait" or "landscape"). Optional. Mobile only. Default is the natural orientation of the device -->
+        <!-- <aspectRatio></aspectRatio> -->
 
-		<!-- Whether or not to pan when a soft keyboard is raised or lowered (either "pan" or "none"). Optional. Defaults "pan". -->
-		<!-- <softKeyboardBehavior>pan</softKeyboardBehavior> -->
-	</initialWindow>
+        <!--
+         | Whether or not to pan when a soft keyboard is raised or lowered (either "pan" or "none"). Optional. Defaults "pan". -->
+        <!-- <softKeyboardBehavior>pan</softKeyboardBehavior> -->
+    </initialWindow>
 
-	<!-- The name that is displayed in the AIR application installer. Optional. -->
-	<name>[This value will be overwritten by AM Builder in the output]</name>
+    <!--
+     | The name that is displayed in the AIR application installer. Optional. -->
+    <name>[This value will be overwritten by AM Builder in the output]</name>
 
-	<!-- To localize the name, use the following format for the name element.
-	<name>
-		<text xml:lang="en">English App name goes here</text>
-		<text xml:lang="fr">French App name goes here</text>
-		<text xml:lang="ja">Japanese App name goes here</text>
-	</name>
-	-->
+    <!--
+     | To localize the name, use the following format for the name element.
+    <name>
+        <text xml:lang="en">English App name goes here</text>
+        <text xml:lang="fr">French App name goes here</text>
+        <text xml:lang="ja">Japanese App name goes here</text>
+    </name>
+    -->
 
-	<!-- Description, displayed in the AIR application installer. Optional. -->
-	<description>[This value will be overwritten by AM Builder in the output]</description>
+    <!--
+     | Description, displayed in the AIR application installer. Optional. -->
+    <description>[This value will be overwritten by AM Builder in the output]</description>
 
-	<!-- To localize the description, use the following format for the description element.
-	<description>
-		<text xml:lang="en">English App description goes here</text>
-		<text xml:lang="fr">French App description goes here</text>
-		<text xml:lang="ja">Japanese App description goes here</text>
-	</description>
-	-->
+    <!--
+     | To localize the description, use the following format for the description element.
+    <description>
+        <text xml:lang="en">English App description goes here</text>
+        <text xml:lang="fr">French App description goes here</text>
+        <text xml:lang="ja">Japanese App description goes here</text>
+    </description>
+    -->
 
-	<!-- Copyright information. Optional. -->
-	<copyright>[This value will be overwritten by AM Builder in the output]</copyright>
+    <!--
+     | Copyright information. Optional. -->
+    <copyright>[This value will be overwritten by AM Builder in the output]</copyright>
 
-	<!-- We recommend omitting the supportedProfiles element, -->
-	<!-- which in turn permits your application to be deployed to all -->
-	<!-- devices supported by AIR. If you wish to restrict deployment -->
-	<!-- (i.e., to only mobile devices) then add this element and list -->
-	<!-- only the profiles which your application does support. -->
-	<!-- <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice</supportedProfiles> -->
+    <!-- We recommend omitting the supportedProfiles element, -->
+    <!-- which in turn permits your application to be deployed to all -->
+    <!-- devices supported by AIR. If you wish to restrict deployment -->
+    <!-- (i.e., to only mobile devices) then add this element and list -->
+    <!-- only the profiles which your application does support. -->
+    <!-- <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice</supportedProfiles> -->
 
-	<!-- The icon the system uses for the application. Optional. -->
-	<icon>
-		<!-- For at least one resolution, specify the path to a PNG file included in the AIR package. -->
-		<image16x16>icons/Icon16.png</image16x16>
-		<image29x29>icons/Icon29.png</image29x29>
-		<image32x32>icons/Icon32.png</image32x32>
-		<image36x36>icons/Icon36.png</image36x36>
-		<image48x48>icons/Icon48.png</image48x48>
-		<image57x57>icons/Icon57.png</image57x57>
-		<image58x58>icons/Icon58.png</image58x58>
-		<image72x72>icons/Icon72.png</image72x72>
-		<image114x114>icons/Icon114.png</image114x114>
-		<image128x128>icons/Icon128.png</image128x128>
-		<image512x512>icons/Icon512.png</image512x512>
-	</icon>
+    <!--
+     | The icon the system uses for the application. Optional. -->
+    <icon>
+        <!--
+         | For at least one resolution, specify the path to a PNG file included in the AIR package. -->
+        <image16x16>icons/Icon16.png</image16x16>
+        <image29x29>icons/Icon29.png</image29x29>
+        <image32x32>icons/Icon32.png</image32x32>
+        <image36x36>icons/Icon36.png</image36x36>
+        <image48x48>icons/Icon48.png</image48x48>
+        <image57x57>icons/Icon57.png</image57x57>
+        <image58x58>icons/Icon58.png</image58x58>
+        <image72x72>icons/Icon72.png</image72x72>
+        <image114x114>icons/Icon114.png</image114x114>
+        <image128x128>icons/Icon128.png</image128x128>
+        <image512x512>icons/Icon512.png</image512x512>
+    </icon>
 
-	<!-- Whether the application can be launched when the user clicks a link in a web browser. Optional. Default false. -->
-	<allowBrowserInvocation>false</allowBrowserInvocation>
+    <!--
+     | Whether the application can be launched when the user clicks a link in a web browser. Optional. Default false. -->
+    <allowBrowserInvocation>false</allowBrowserInvocation>
 
-	<!-- Whether the application handles the update when a user double-clicks an update version of the AIR file (true), or the default AIR application installer handles the update (false). Optional. Default false. -->
-	<customUpdateUI>false</customUpdateUI>
+    <!--
+     | Whether the application handles the update when a user double-clicks an update version of the AIR file (true), or the default AIR application installer handles the update (false). Optional. Default false. -->
+    <customUpdateUI>false</customUpdateUI>
 
-	<!-- Listing of file types for which the application can register. Optional. -->
-	<fileTypes>
-		<!-- Defines one file type. Optional. -->
-		<!-- <fileType> -->
-			<!-- The name that the system displays for the registered file type. Required. -->
-			<!-- <name></name> -->
+    <!--
+     | Listing of file types for which the application can register. Optional. -->
+    <fileTypes>
+        <!--
+         | Defines one file type. Optional. -->
+        <!-- <fileType> -->
+            <!--
+             | The name that the system displays for the registered file type. Required. -->
+            <!-- <name></name> -->
 
-			<!-- The extension to register. Required. -->
-			<!-- <extension></extension> -->
+            <!--
+             | The extension to register. Required. -->
+            <!-- <extension></extension> -->
 
-			<!-- The description of the file type. Optional. -->
-			<!-- <description></description> -->
+            <!--
+             | The description of the file type. Optional. -->
+            <!-- <description></description> -->
 
-			<!-- The MIME type. Optional. -->
-			<!-- <contentType></contentType> -->
+            <!--
+             | The MIME type. Optional. -->
+            <!-- <contentType></contentType> -->
 
-			<!-- The icon to display for the file type. Optional. -->
-			<!-- <icon>
-				<image16x16>icons/filetype/Organizr16.png</image16x16>
-				<image32x32>icons/filetype/Organizr32.png</image32x32>
-				<image48x48>icons/filetype/Organizr48.png</image48x48>
-				<image128x128>icons/filetype/Organizr128.png</image128x128>
-			</icon> -->
-		<!-- </fileType> -->
-	</fileTypes>
+            <!--
+             | The icon to display for the file type. Optional. -->
+            <!-- <icon>
+                <image16x16>icons/filetype/Organizr16.png</image16x16>
+                <image32x32>icons/filetype/Organizr32.png</image32x32>
+                <image48x48>icons/filetype/Organizr48.png</image48x48>
+                <image128x128>icons/filetype/Organizr128.png</image128x128>
+            </icon> -->
+        <!-- </fileType> -->
+    </fileTypes>
 
-	<!-- Specify Android specific tags that get passed to AndroidManifest.xml file. -->
-	<android>
-		<manifestAdditions><![CDATA[
-			<manifest android:installLocation="auto">
-				<!--See the Adobe AIR documentation for more information about setting Google Android permissions-->
-				<!--Removing the permission android.permission.INTERNET will have the side effect
-				of preventing you from debugging your application on your device-->
-				<uses-permission android:name="android.permission.INTERNET"/>
-				<!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
-				<!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
-				<!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
-				<!--The DISABLE_KEYGUARD and WAKE_LOCK permissions should be toggled together
-				in order to access AIR's SystemIdleMode APIs-->
-				<!--<uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>-->
-				<!--<uses-permission android:name="android.permission.WAKE_LOCK"/>-->
-				<!--<uses-permission android:name="android.permission.CAMERA"/>-->
-				<!--<uses-permission android:name="android.permission.RECORD_AUDIO"/>-->
-				<!--The ACCESS_NETWORK_STATE and ACCESS_WIFI_STATE permissions should be toggled
-				together in order to use AIR's NetworkInfo APIs-->
-				<!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
-				<!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
-			</manifest>
-		]]></manifestAdditions>
-	</android>
+    <!--
+     | Specify Android specific tags that get passed to AndroidManifest.xml file. -->
+    <android>
+        <manifestAdditions><![CDATA[
+            <manifest android:installLocation="auto">
+                <!--See the Adobe AIR documentation for more information about setting Google Android permissions-->
+                <!--Removing the permission android.permission.INTERNET will have the side effect
+                of preventing you from debugging your application on your device-->
+                <uses-permission android:name="android.permission.INTERNET"/>
+                <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
+                <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
+                <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
+                <!--The DISABLE_KEYGUARD and WAKE_LOCK permissions should be toggled together
+                in order to access AIR's SystemIdleMode APIs-->
+                <!--<uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>-->
+                <!--<uses-permission android:name="android.permission.WAKE_LOCK"/>-->
+                <!--<uses-permission android:name="android.permission.CAMERA"/>-->
+                <!--<uses-permission android:name="android.permission.RECORD_AUDIO"/>-->
+                <!--The ACCESS_NETWORK_STATE and ACCESS_WIFI_STATE permissions should be toggled
+                together in order to use AIR's NetworkInfo APIs-->
+                <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
+                <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
+            </manifest>
+        ]]></manifestAdditions>
+    </android>
 
-	<!-- iOS specific capabilities -->
-	<iPhone>
-		<InfoAdditions><![CDATA[
-			<key>UIDeviceFamily</key>
-			<array>
-				<string>1</string>
-				<string>2</string>
-			</array>
-		]]></InfoAdditions>
-		<requestedDisplayResolution>high</requestedDisplayResolution>
-	</iPhone>
+    <!--
+     | iOS specific capabilities -->
+    <iPhone>
+        <InfoAdditions><![CDATA[
+            <key>UIDeviceFamily</key>
+            <array>
+                <string>1</string>
+                <string>2</string>
+            </array>
+        ]]></InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+    </iPhone>
 </application>
