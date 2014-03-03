@@ -69,7 +69,6 @@ Flash compiler is currently only compatible with MAC OS X. No guarantee, but I t
 
 Support
 =======
-
 Bugs and issues should be reported via the [issue tracker][issue_tracker].
 
 [flash_compiler_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/flash-compiler.png "Flash Compiler"
