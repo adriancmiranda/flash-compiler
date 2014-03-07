@@ -355,7 +355,8 @@ if [[ ! -x "$FLEX_SDK/bin/mxmlc" ]]; then
 	exit 1;
 else
 	if [[ -x "$FLEX_SDK/bin/fcshctl" ]]; then
-		mxmlc="$FLEX_SDK/bin/fcshctl mxmlc";
+		export FCSHCTL_AUTO_INCREMENTAL=1;
+		mxmlc="$FLEX_SDK/bin/fcshctl mxmlc -strict=true ";
 	else
 		mxmlc="$FLEX_SDK/bin/mxmlc";
 	fi
@@ -762,6 +763,7 @@ function generateAIR {
 		# Keystore config
 		local CONFIG="-keystore $CERTIFICATE";
 		CONFIG="$CONFIG -storepass $PASSWORD";
+		CONFIG="$CONFIG -storetype pkcs12";
 
 		# Application bundle
 		if [[ "$PKG" = "app" ]]; then
@@ -843,7 +845,7 @@ function generateAIR {
 		printf "\n=> Packaging application\n";
 		local PTIME=0;
 		local startTime=`eval date +%s`;
-		$adt -package -storetype pkcs12 $CONFIG && {
+		$adt -package $CONFIG && {
 
 			local endTime=`eval date +%s`;
 			let PTIME=($endTime - $startTime);
