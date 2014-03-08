@@ -186,7 +186,7 @@ function usage {
 	printf "${Red}[package]${NC}\n";
 	printf "   -dmg ${Gre}(✓ Apple disk images)${NC}\n";
 	printf "   -app ${Gre}(✓ Application bundle)${NC}\n";
-	printf "   -apk ${Gre}(${Red}✖ ${Gre}Android application package file)${NC}\n";
+	printf "   -apk ${Gre}(✓ Android application package file)${NC}\n";
 	printf "   -ipa ${Gre}(${Red}✖ ${Gre}iOS application)${NC}\n";
 	printf "   -air ${Gre}(✓ Adobe Integrated Runtime)${NC}\n";
 	printf "   -exe ${Gre}(${Red}✖ ${Gre}Windows Executable file)${NC}\n";
