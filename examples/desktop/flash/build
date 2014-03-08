@@ -760,20 +760,8 @@ function generateAIR {
 			exit 1;
 		fi
 
-		# Keystore config
-		local CONFIG="-keystore $CERTIFICATE";
-		CONFIG="$CONFIG -storepass $PASSWORD";
-		CONFIG="$CONFIG -storetype pkcs12";
-
-		# Application bundle
-		if [[ "$PKG" = "app" ]]; then
-			CONFIG="$CONFIG -target bundle";
-		fi
-
-		# Apple disk image
-		if [[ "$PKG" = "dmg" ]]; then
-			CONFIG="$CONFIG -target native";
-		fi
+		# Startup config variable
+		local CONFIG="";
 
 		# Android application package file
 		if [[ "$PKG" = "apk" ]]; then
@@ -793,9 +781,6 @@ function generateAIR {
 			elif [[ "$MODE" = "profile" ]]; then
 				CONFIG="$CONFIG -target apk-profile";
 			fi
-
-			# Flag to your Android SDK directory
-			CONFIG="$CONFIG -platformsdk $ANDROID_SDK";
 		fi
 
 		# iOS application
@@ -824,6 +809,21 @@ function generateAIR {
 			CONFIG="$CONFIG -connect";
 		fi
 
+		# Keystore config
+		CONFIG="$CONFIG -storetype pkcs12";
+		CONFIG="$CONFIG -keystore $CERTIFICATE";
+		CONFIG="$CONFIG -storepass $PASSWORD";
+
+		# Application bundle
+		if [[ "$PKG" = "app" ]]; then
+			CONFIG="$CONFIG -target bundle";
+		fi
+
+		# Apple disk image
+		if [[ "$PKG" = "dmg" ]]; then
+			CONFIG="$CONFIG -target native";
+		fi
+
 		# Package
 		CONFIG="$CONFIG $OUTPUT.${PKG:air}";
 
@@ -845,6 +845,7 @@ function generateAIR {
 		printf "\n=> Packaging application\n";
 		local PTIME=0;
 		local startTime=`eval date +%s`;
+		echo "adt -package $CONFIG";
 		$adt -package $CONFIG && {
 
 			local endTime=`eval date +%s`;

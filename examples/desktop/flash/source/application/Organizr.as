@@ -20,6 +20,7 @@ package {
 			removeEventListener(Event.ADDED_TO_STAGE, onInitialize);
 			addEventListener(Event.REMOVED_FROM_STAGE, onFinalize);
 			var textField:TextField = new TextField();
+			textField.autoSize = 'left';
 			textField.text = 'Organizr is up and running!';
 			stage.addChild(textField);
 		}
