@@ -81,7 +81,7 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 [bower_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower"
 
 <!-- links -->
-[license]: http://www.apache.org/licenses/LICENSE-2.0
+[license]: http://www.apache.org/licenses/LICENSE-2.0 "Apache License 2.0"
 [issue_tracker]: http://github.com/adriancmiranda/flash-compiler/issues "Issue tracker"
 [android_sdk_site]: http://developer.android.com/sdk/index.html "Android SDK"
 [ios_sdk_site]: https://developer.apple.com/devcenter/ios/index.action "iOS SDK"
