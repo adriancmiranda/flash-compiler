@@ -71,7 +71,7 @@ Support
 =======
 Bugs and issues should be reported via the [issue tracker][issue_tracker].
 
-[license]: http://www.apache.org/licenses/LICENSE-2.0
+<!-- images -->
 [flash_compiler_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/flash-compiler.png "Flash Compiler"
 [android_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-android.png "Android SDK"
 [ios_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-ios.png "iOS SDK" 
@@ -80,6 +80,8 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 [grunt_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt"
 [bower_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower"
 
+<!-- links -->
+[license]: http://www.apache.org/licenses/LICENSE-2.0
 [issue_tracker]: http://github.com/adriancmiranda/flash-compiler/issues "Issue tracker"
 [android_sdk_site]: http://developer.android.com/sdk/index.html "Android SDK"
 [ios_sdk_site]: https://developer.apple.com/devcenter/ios/index.action "iOS SDK"
