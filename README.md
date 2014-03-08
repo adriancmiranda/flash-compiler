@@ -76,6 +76,7 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 [android_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-android.png "Android SDK"
 [ios_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-ios.png "iOS SDK" 
 [apache_flex_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png "Apache Flex SDK"
+[adobe_air_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png "Adobe AIR SDK"
 [grunt_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt"
 [bower_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower"
 
@@ -83,5 +84,6 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 [android_sdk_site]: http://developer.android.com/sdk/index.html "Android SDK"
 [ios_sdk_site]: https://developer.apple.com/devcenter/ios/index.action "iOS SDK"
 [apache_flex_sdk_site]: http://flex.apache.org/ "Apache Flex SDK"
+[adobe_air_sdk_site]: http://www.adobe.com/devnet/air/air-sdk-download.html "Adobe AIR SDK"
 [grunt_site]: http://gruntjs.com/ "Grunt JS"
 [bower_site]: http://bower.io/ "Bower"
