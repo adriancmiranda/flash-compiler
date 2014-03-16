@@ -3,7 +3,7 @@
 
 ![Apache Flex SDK][apache_flex_sdk_image] | ![Adobe AIR SDK][adobe_air_sdk_image]
 --- | --- |
-[Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build binary files.
+[Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build, preview and test your binary files.
 
 ![Grunt][grunt_image]
 
