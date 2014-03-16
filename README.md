@@ -1,6 +1,10 @@
 ![Flash Compiler][flash_compiler_image]
 =====
 
+![Apache Flex SDK][apache_flex_sdk_image] | ![Adobe AIR SDK][adobe_air_sdk_image]
+--- | --- |
+[Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build binary files.
+
 ![Grunt][grunt_image]
 
 [Grunt][grunt_site] is used to build, preview and test your project.
@@ -8,10 +12,6 @@
 ![Bower][bower_image]
 
 [Bower][bower_site] is used for dependency management.
-
-![Apache Flex SDK][apache_flex_sdk_image]
-
-[Apache Flex SDK][apache_flex_sdk_site] is used for build binary files.
 
 ![iOS SDK][ios_sdk_image]
 
