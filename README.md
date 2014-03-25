@@ -73,11 +73,11 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 
 Contributing
 ============
-1. Fork it
+1. [Fork it][fork_it]
 2. Create your feature branch (`git checkout -b my-new-feature`).
 3. Commit your changes (`git commit -am 'Add some feature'`).
 4. Push to the branch (`git push origin my-new-feature`).
-5. Create new Pull Request.
+5. Create new [Pull Request][pull_request].
 
 <!-- images -->
 [flash_compiler_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/flash-compiler.png "Flash Compiler"
@@ -91,6 +91,8 @@ Contributing
 <!-- links -->
 [license]: http://www.apache.org/licenses/LICENSE-2.0 "Apache License 2.0"
 [issue_tracker]: http://github.com/adriancmiranda/flash-compiler/issues "Issue tracker"
+[fork_it]: https://github.com/adriancmiranda/flash-compiler/fork "Fork it"
+[pull_request]: https://github.com/adriancmiranda/flash-compiler/compare/ "Pull request"
 [android_sdk_site]: http://developer.android.com/sdk/index.html "Android SDK"
 [ios_sdk_site]: https://developer.apple.com/devcenter/ios/index.action "iOS SDK"
 [apache_flex_sdk_site]: http://flex.apache.org/ "Apache Flex SDK"
