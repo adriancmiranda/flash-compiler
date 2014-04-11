@@ -119,7 +119,7 @@
                 return document[id];
             }
             
-            function dispatchToFlashPlayer(id, method) {
+            function sendToFlashPlayer(id, method) {
                 var rest = Array.prototype.slice.call(arguments, 2);
                 var flashPlayer = getFlashPlayer(id);
                 if (flashPlayer && typeof flashPlayer[method] === 'function') {
