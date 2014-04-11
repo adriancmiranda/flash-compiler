@@ -111,6 +111,13 @@
                 var playerVersion = swfobject.getFlashPlayerVersion();
                 return playerVersion.major > 0 || swfobject.hasFlashPlayerVersion('6.0.65');
             }
+            
+            function getFlashPlayer(id) {
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                    return window[id];
+                }
+                return document[id];
+            }
 
             if (hasFlashPlayer()) {
                 swfobject.addDomLoadEvent(embedFlashPlayer);
