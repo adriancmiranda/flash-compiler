@@ -4,7 +4,7 @@ package server {
 	import flash.events.Event;
 	import flash.net.Responder;
 
-	public class FMSBridge extends EventDispatcher {
+	public final class FMSBridge extends EventDispatcher {
 		public var connection:FMSConnection;
 		public var client:FMSClient;
 
