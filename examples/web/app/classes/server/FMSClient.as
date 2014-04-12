@@ -1,5 +1,7 @@
 package server {
-	dynamic public class FMSClient extends Object {
+	import flash.events.EventDispatcher;
+	
+	dynamic public class FMSClient extends EventDispatcher {
 		public function FMSClient() {
 			super();
 		}
