@@ -8,6 +8,10 @@ package server {
 			trace('FMSClient.onRegisterUser:', user, result);
 		}
 
+		public function onSigninUser(user:String, result:Object):void {
+			trace('FMSClient.onSigninUser:', user, result);
+		}
+
 		public function onStartGame(user:String):void {
 			trace('FMSClient.onStartGame:', user);
 		}
