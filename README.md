@@ -9,9 +9,9 @@
 --- | --- |
 [Grunt][grunt_site] or [Gulp][gulp_site] are used for build, preview and test your project.
 
-![Bower][bower_image]
-
-[Bower][bower_site] is used for dependency management.
+![Bower][bower_image] | ![JAM][jam_image]
+--- | --- |
+[Bower][bower_site] or [JAM][jam_site] are used for dependency management.
 
 ![iOS SDK][ios_sdk_image]
 
@@ -88,6 +88,7 @@ Contributing
 [grunt_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt"
 [gulp_image]: https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-gulp.png "Gulp"
 [bower_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower"
+[jam_image]: https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-jam.png "JAM"
 
 <!-- links -->
 [license]: http://www.apache.org/licenses/LICENSE-2.0 "Apache License 2.0"
@@ -101,3 +102,4 @@ Contributing
 [grunt_site]: http://gruntjs.com/ "Grunt JS"
 [gulp_site]: http://gulpjs.com/ "Gulp JS"
 [bower_site]: http://bower.io/ "Bower"
+[jam_site]: http://jamjs.org/ "JAM"
