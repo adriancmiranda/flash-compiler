@@ -41,5 +41,9 @@ package server {
 		public function startGame():void {
 			connection.call('startGame', null);
 		}
+		
+		public function updateScore(score:uint):void {
+			connection.call('updateScore', null, score);
+		}
 	}
 }
