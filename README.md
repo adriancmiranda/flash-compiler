@@ -5,9 +5,9 @@
 --- | --- |
 [Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build, preview and test your binary files.
 
-![Grunt][grunt_image]
-
-[Grunt][grunt_site] is used to build, preview and test your project.
+![Grunt][grunt_image] | ![Gulp][gulp_image]
+--- | --- |
+[Grunt][grunt_site] or [Gulp][gulp_site] are used for build, preview and test your project.
 
 ![Bower][bower_image]
 
@@ -86,6 +86,7 @@ Contributing
 [apache_flex_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png "Apache Flex SDK"
 [adobe_air_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-air.png "Adobe AIR SDK"
 [grunt_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt"
+[gulp_image]: https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-gulp.png "Gulp"
 [bower_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower"
 
 <!-- links -->
@@ -98,4 +99,5 @@ Contributing
 [apache_flex_sdk_site]: http://flex.apache.org/ "Apache Flex SDK"
 [adobe_air_sdk_site]: http://www.adobe.com/devnet/air/air-sdk-download.html "Adobe AIR SDK"
 [grunt_site]: http://gruntjs.com/ "Grunt JS"
+[gulp_site]: http://gulpjs.com/ "Gulp JS"
 [bower_site]: http://bower.io/ "Bower"
