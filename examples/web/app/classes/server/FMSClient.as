@@ -19,6 +19,10 @@ package server {
 		public function onChangePlayer(user:String, player:uint):void {
 			trace('FMSClient.onChangePlayer:', user, player);
 		}
+		
+		public function onUpdateScore(score:uint):void {
+			trace('FMSClient.onUpdateScore:', score);
+		}
 
 		public function onDisconnect(user:String):void {
 			trace('FMSClient.onDisconnect:', user);
