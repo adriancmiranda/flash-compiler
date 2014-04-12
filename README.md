@@ -1,23 +1,23 @@
-![Flash Compiler][flash_compiler_image]
+[![Flash Compiler][flash_compiler_image]][gh_page]
 =====
 
-![Apache Flex SDK][apache_flex_sdk_image] | ![Adobe AIR SDK][adobe_air_sdk_image]
+[![Apache Flex SDK][apache_flex_sdk_image]][apache_flex_sdk_site] | [![Adobe AIR SDK][adobe_air_sdk_image]][adobe_air_sdk_site]
 --- | --- |
 [Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build, preview and test your binary files.
 
-![Grunt][grunt_image] | ![Gulp][gulp_image]
+[![Grunt][grunt_image]][grunt_site] | [![Gulp][gulp_image]][gulp_site]
 --- | --- |
 [Grunt][grunt_site] or [Gulp][gulp_site] are used for build, preview and test your project.
 
-![Bower][bower_image] | ![JAM][jam_image]
+[![Bower][bower_image]][bower_site] | [![JAM][jam_image]][jam_site]
 --- | --- |
 [Bower][bower_site] or [JAM][jam_site] are used for dependency management.
 
-![iOS SDK][ios_sdk_image]
+[![iOS SDK][ios_sdk_image]][ios_sdk_site]
 
 [iOS SDK][ios_sdk_site] is used for build ipa binary files.
 
-![Android SDK][android_sdk_image]
+[![Android SDK][android_sdk_image]][android_sdk_site]
 
 [Android SDK][android_sdk_site] is used for build apk binary files.
 
@@ -91,6 +91,7 @@ Contributing
 [jam_image]: https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-jam.png "JAM"
 
 <!-- links -->
+[gh_page]: http://adriancmiranda.github.io/flash-compiler/ "flash-compiler"
 [license]: http://www.apache.org/licenses/LICENSE-2.0 "Apache License 2.0"
 [issue_tracker]: http://github.com/adriancmiranda/flash-compiler/issues "Issue tracker"
 [fork_it]: https://github.com/adriancmiranda/flash-compiler/fork "Fork it"
