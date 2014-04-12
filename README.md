@@ -5,9 +5,9 @@
 --- | --- |
 [Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build, preview and test your binary files.
 
-![Grunt][grunt_image]
-
-[Grunt][grunt_site] is used to build, preview and test your project.
+![Grunt][grunt_image] | ![Gulp][gulp_image]
+--- | --- |
+[Grunt][grunt_site] or [Gulp][gulp_site] are used for build, preview and test your project.
 
 ![Bower][bower_image]
 
