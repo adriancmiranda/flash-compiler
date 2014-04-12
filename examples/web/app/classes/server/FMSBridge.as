@@ -26,7 +26,7 @@ package server {
 			connection.close();
 		}
 
-		public function registerUser(token:String, email:String, player:String):void {
+		public function registerUser(token:String, email:String, player:uint):void {
 			connection.call('registerUser', null, token, email, player);
 		}
 
