@@ -74,10 +74,10 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 
 Contributing
 ============
-1. [Fork it][fork_it]
-2. Create your feature branch (`git checkout -b my-new-feature`).
-3. Commit your changes (`git commit -am 'Add some feature'`).
-4. Push to the branch (`git push origin my-new-feature`).
+1. [Fork it][fork_it].
+2. Run `git checkout -b my-new-feature` to create your feature branch.
+3. Run `git commit -am 'Add some feature'` to commit your changes.
+4. Run `git push origin my-new-feature` to push to the branch.
 5. Create new [Pull Request][pull_request].
 
 <!-- images -->
