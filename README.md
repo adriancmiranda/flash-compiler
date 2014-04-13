@@ -6,6 +6,11 @@
 --- | --- |
 [Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build, preview and test your binary files.
 
+[![Android SDK][android_sdk_image]][android_sdk_site] | [![iOS SDK][ios_sdk_image]][ios_sdk_site]
+--- | --- |
+[Android SDK][android_sdk_site] is used for build _apk_ binary files.
+[iOS SDK][ios_sdk_site] is used for build _ipa_ binary files.
+
 [![Grunt][grunt_image]][grunt_site] | [![Gulp][gulp_image]][gulp_site]
 --- | --- |
 [Grunt][grunt_site] or [Gulp][gulp_site] are used for build, preview and test your project.
@@ -13,14 +18,6 @@
 [![Bower][bower_image]][bower_site] | [![JAM][jam_image]][jam_site]
 --- | --- |
 [Bower][bower_site] or [JAM][jam_site] are used for dependency management.
-
-[![iOS SDK][ios_sdk_image]][ios_sdk_site]
-
-[iOS SDK][ios_sdk_site] is used for build ipa binary files.
-
-[![Android SDK][android_sdk_image]][android_sdk_site]
-
-[Android SDK][android_sdk_site] is used for build apk binary files.
 
 Usage
 =====
