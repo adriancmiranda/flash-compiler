@@ -8,8 +8,7 @@
 
 [![Android SDK][android_sdk_image]][android_sdk_site] | [![iOS SDK][ios_sdk_image]][ios_sdk_site]
 --- | --- |
-[Android SDK][android_sdk_site] is used for build _apk_ binary files.
-[iOS SDK][ios_sdk_site] is used for build _ipa_ binary files.
+[Android SDK][android_sdk_site] and [iOS SDK][ios_sdk_site] are used for build mobile binary files.
 
 [![Grunt][grunt_image]][grunt_site] | [![Gulp][gulp_image]][gulp_site]
 --- | --- |
