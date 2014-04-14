@@ -76,7 +76,7 @@ Contributing
 4. Run `git push origin my-new-feature` to push to the branch.
 5. Create new [Pull Request][pull_request].
 
-<sub>[Back to top](#)</sub>
+<sub>[▴ Back to top](#)</sub>
 
 <!-- images -->
 [flash_compiler_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/flash-compiler.png "Flash Compiler"
