@@ -2,8 +2,6 @@
 =====
 > Another Flash compiler
 
-> [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/adriancmiranda/flash-compiler/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
 [![Apache Flex SDK][apache_flex_sdk_image]][apache_flex_sdk_site] | [![Adobe AIR SDK][adobe_air_sdk_image]][adobe_air_sdk_site]
 --- | --- |
 [Apache Flex SDK][apache_flex_sdk_site] and [Adobe AIR SDK][adobe_air_sdk_site] are used for build, preview and test your binary files.
