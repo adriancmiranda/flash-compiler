@@ -1,7 +1,8 @@
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/adriancmiranda/flash-compiler/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Flash Compiler][flash_compiler_image]][gh_page]
 =====
 > Another Flash compiler
+
+> [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/adriancmiranda/flash-compiler/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 [![Apache Flex SDK][apache_flex_sdk_image]][apache_flex_sdk_site] | [![Adobe AIR SDK][adobe_air_sdk_image]][adobe_air_sdk_site]
 --- | --- |
@@ -55,7 +56,7 @@ or
         -launch (✓ Opens localhost environment)
         -hml (✓ Opens homologation environment)
         -dev (✓ Opens staging environment)
-        
+
 Helpfull
 ========
 * [AIR - Comando package do ADT](http://help.adobe.com/pt_BR/air/build/WS901d38e593cd1bac1e63e3d128cdca935b-8000.html)
