@@ -1,3 +1,4 @@
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/adriancmiranda/flash-compiler/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Flash Compiler][flash_compiler_image]][gh_page]
 =====
 > Another Flash compiler
