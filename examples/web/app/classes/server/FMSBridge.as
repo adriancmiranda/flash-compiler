@@ -20,6 +20,7 @@ package server {
 
 		public function dispose():void {
 			connection.dispose();
+			client.dispose();
 		}
 
 		public function close():void {
