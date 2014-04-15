@@ -105,3 +105,7 @@ Contributing
 [gulp_site]: http://gulpjs.com/ "Gulp JS"
 [bower_site]: http://bower.io/ "Bower"
 [jam_site]: http://jamjs.org/ "JAM"
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/adriancmiranda/flash-compiler/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
