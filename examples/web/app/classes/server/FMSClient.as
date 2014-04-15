@@ -29,6 +29,10 @@ package server {
 		public function onDisconnect(user:String):void {
 			trace('FMSClient.onDisconnect:', user);
 		}
+		
+		public function dispose():void {
+			trace('FMSClient.diposed');
+		}
 	}
 }
 
