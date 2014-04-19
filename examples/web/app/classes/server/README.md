@@ -6,6 +6,7 @@
 * [Client class](http://help.adobe.com/en_US/FlashMediaServer/3.5_SS_ASD/WS5b3ccc516d4fbf351e63e3d11a11afc95e-7ec3.html)
 * [ORA Learning FMS3 ch05](http://www.adobe.com/content/dam/Adobe/en/devnet/flashmediaserver/pdfs/ora_learning_fms3_ch05.pdf "ORA Learning FMS3 ch05")
 
+[]: http://help.adobe.com/en_US/flashmediaserver/ssaslr/WS5b3ccc516d4fbf351e63e3d11a11afc95e-7ec3SSASLR.html
 []: http://forums.adobe.com/thread/1148140
 []: http://forums.adobe.com/thread/477123
 []: http://forums.adobe.com/thread/1148140
