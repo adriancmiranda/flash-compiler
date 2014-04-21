@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>flash-compiler by adriancmiranda</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>flash-compiler</h1>
+        <p>Another Flash compiler</p>
+        <p class="view"><a href="https://github.com/adriancmiranda/flash-compiler">View the Project on GitHub <small>adriancmiranda/flash-compiler</small></a></p>
+        <ul>
+          <li><a href="https://github.com/adriancmiranda/flash-compiler/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/adriancmiranda/flash-compiler/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/adriancmiranda/flash-compiler">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a><a href="http://adriancmiranda.github.io/flash-compiler/" title="flash-compiler"><img src="https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/flash-compiler.png" alt="Flash Compiler" title="Flash Compiler"></a>
+</h1>
+
+<blockquote>
+<p>Another Flash compiler</p>
+</blockquote>
+
+<table>
+<thead><tr>
+<th><a href="http://flex.apache.org/" title="Apache Flex SDK"><img src="https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png" alt="Apache Flex SDK" title="Apache Flex SDK"></a></th>
+<th><a href="http://www.adobe.com/devnet/air/air-sdk-download.html" title="Adobe AIR SDK"><img src="https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-air.png" alt="Adobe AIR SDK" title="Adobe AIR SDK"></a></th>
+</tr></thead>
+<tbody></tbody>
+</table><p><a href="http://flex.apache.org/" title="Apache Flex SDK">Apache Flex SDK</a> and <a href="http://www.adobe.com/devnet/air/air-sdk-download.html" title="Adobe AIR SDK">Adobe AIR SDK</a> are used for build, preview and test your binary files.</p>
+
+<table>
+<thead><tr>
+<th><a href="http://developer.android.com/sdk/index.html" title="Android SDK"><img src="https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-android.png" alt="Android SDK" title="Android SDK"></a></th>
+<th><a href="https://developer.apple.com/devcenter/ios/index.action" title="iOS SDK"><img src="https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-ios.png" alt="iOS SDK" title="iOS SDK"></a></th>
+</tr></thead>
+<tbody></tbody>
+</table><p><a href="http://developer.android.com/sdk/index.html" title="Android SDK">Android SDK</a> and <a href="https://developer.apple.com/devcenter/ios/index.action" title="iOS SDK">iOS SDK</a> are used for emulate, preview and test your mobile binary files.</p>
+
+<table>
+<thead><tr>
+<th><a href="http://gruntjs.com/" title="Grunt JS"><img src="https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif" alt="Grunt" title="Grunt"></a></th>
+<th><a href="http://gulpjs.com/" title="Gulp JS"><img src="https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-gulp.png" alt="Gulp" title="Gulp"></a></th>
+</tr></thead>
+<tbody></tbody>
+</table><p><a href="http://gruntjs.com/" title="Grunt JS">Grunt</a> or <a href="http://gulpjs.com/" title="Gulp JS">Gulp</a> are used for build, preview and test your project.</p>
+
+<table>
+<thead><tr>
+<th><a href="http://bower.io/" title="Bower"><img src="https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif" alt="Bower" title="Bower"></a></th>
+<th><a href="http://jamjs.org/" title="JAM"><img src="https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-jam.png" alt="JAM" title="JAM"></a></th>
+</tr></thead>
+<tbody></tbody>
+</table><p><a href="http://bower.io/" title="Bower">Bower</a> or <a href="http://jamjs.org/" title="JAM">JAM</a> are used for dependency management.</p>
+
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<pre><code>sh build [package] [mode] [options]
+</code></pre>
+
+<p>or</p>
+
+<pre><code>chmod +x build &amp;&amp; ./build -help
+</code></pre>
+
+<p>or</p>
+
+<pre><code>double-click on it
+</code></pre>
+
+<h3>
+<a name="package" class="anchor" href="#package"><span class="octicon octicon-link"></span></a>[package]</h3>
+
+<pre><code>    -swf (✓ Default: ShockWave Flash)
+    -dmg (✓ Apple disk images)
+    -app (✓ Application bundle)
+    -apk (✓ Android application package file)
+    -ipa (✖ iOS application) 
+    -air (✓ Adobe Integrated Runtime)
+    -exe (? Windows Executable file)
+    -rem (✖ Blackberry Desktop Manager / Blackberry devices)
+</code></pre>
+
+<h3>
+<a name="mode" class="anchor" href="#mode"><span class="octicon octicon-link"></span></a>[mode]</h3>
+
+<pre><code>    -debug (✓ Default: Methodical process of finding and reducing the number of bugs, or defects)
+    -release (✓ The public distribution of software code and support materials)
+</code></pre>
+
+<h3>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>[options]</h3>
+
+<pre><code>    -preview (✓ Opens compiled project)
+    -server (✓ Compiles and opens localhost environment)
+    -launch (✓ Opens localhost environment)
+    -hml (✓ Opens homologation environment)
+    -dev (✓ Opens staging environment)
+</code></pre>
+
+<h1>
+<a name="helpfull" class="anchor" href="#helpfull"><span class="octicon octicon-link"></span></a>Helpfull</h1>
+
+<ul>
+<li><a href="http://help.adobe.com/pt_BR/air/build/WS901d38e593cd1bac1e63e3d128cdca935b-8000.html">AIR - Comando package do ADT</a></li>
+<li><a href="http://help.adobe.com/en_US/air/build/air_buildingapps.pdf">AIR - Building Apps</a></li>
+</ul><h1>
+<a name="warning" class="anchor" href="#warning"><span class="octicon octicon-link"></span></a>Warning</h1>
+
+<p>Flash compiler is currently only compatible with MAC OS X. No guarantee, but I think that you can perform using <a href="http://cygwin.com/">cygwin</a> on Microsoft Windows.</p>
+
+<h1>
+<a name="support" class="anchor" href="#support"><span class="octicon octicon-link"></span></a>Support</h1>
+
+<p>Bugs and issues should be reported via the <a href="http://github.com/adriancmiranda/flash-compiler/issues" title="Issue tracker">issue tracker</a>.</p>
+
+<h1>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h1>
+
+<ol>
+<li>
+<a href="https://github.com/adriancmiranda/flash-compiler/fork" title="Fork it">Fork it</a>.</li>
+<li>Run <code>git checkout -b my-new-feature</code> to create your feature branch.</li>
+<li>Run <code>git commit -am 'Add some feature'</code> to commit your changes.</li>
+<li>Run <code>git push origin my-new-feature</code> to push to the branch.</li>
+<li>Create new <a href="https://github.com/adriancmiranda/flash-compiler/compare/" title="Pull request">Pull Request</a>.</li>
+</ol><p><sub><a href="#">▴ Back to top</a></sub></p>
+
+
+
+
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/adriancmiranda">adriancmiranda</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
