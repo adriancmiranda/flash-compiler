@@ -37,7 +37,7 @@ or
         -dmg (✓ Apple disk images)
         -app (✓ Application bundle)
         -apk (✓ Android application package file)
-        -ipa (✖ iOS application) 
+        -ipa (? iOS application) 
         -air (✓ Adobe Integrated Runtime)
         -exe (? Windows Executable file)
         -rem (✖ Blackberry Desktop Manager / Blackberry devices)
