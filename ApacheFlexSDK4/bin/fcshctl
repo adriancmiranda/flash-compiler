@@ -1,0 +1,417 @@
+#!/bin/bash
+# ---------------------------------------------------
+# DESCRIPTION:
+# 
+# fcshctl	(version 0.5.1)
+# 
+# A Controller for the Flex Compiler Shell (fcsh) that
+# runs it in a GNU screen session and allows for sending
+# commands to it, just like you would in the interactive
+# shell session. Any arguments passed to this script
+# are forwarded to fcsh and its output is returned.
+# 
+# If the first argument is "mxmlc" or "compc" (i.e. if
+# you're compiling something), this script will
+# automatically check if the same file has been
+# compiled before, and if it has, the fcsh "compile"
+# command will be used instead with the corresponding
+# compile target id (so as to automatically leverage
+# fcsh's main feature, incremental compilation).
+# 
+# 
+# (c) 2008 Ali Rantakari (http://hasseg.org)
+# 
+# ---------------------------------------------------
+# REQUIREMENTS:
+# 
+# The following must be in your $PATH for this script
+# to work:
+# 
+# rm, mv, cat, ps, sleep, tail, head, grep, awk, screen,
+# xargs, basename
+# 
+# You also (obviously) need the fcsh binary, which is
+# distributed with the Flex SDK, and can be found
+# under /bin there.
+# 
+# 
+# ---------------------------------------------------
+# USAGE:
+# 
+# Set the value of the FLEX_HOME environment variable to
+# point to where you have the Flex SDK located and you
+# should be good to go -- just call this script with any
+# arguments you'd like to send to fcsh as commands, like
+# this:
+# 
+#   $ ./fcshctl help
+#   $ ./fcshctl mxmlc -strict=true ./myProject.as
+# 
+# If you wish to disable the feature of automatically
+# invoking the incremental compilation feature based on
+# the filename to compile, set the environment variable
+# FCSHCTL_AUTO_INCREMENTAL to 1 (false) before calling this
+# script:
+# 
+#   $ export FCSHCTL_AUTO_INCREMENTAL=1
+#   $ ./fcshctl mxmlc -strict=true ./myProject.as
+# 
+# 
+# ---------------------------------------------------
+# This code is licensed under the MIT License:
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+# ---------------------------------------------------
+
+
+
+
+
+# ---------------------------------------------------
+# CONFIGURATION:
+
+# path to the fcsh binary
+PATH_TO_FCSH="${FLEX_HOME}/bin/fcsh"
+
+# the name of the screen session to run fcsh in
+SCREEN_SESSION_NAME="fcsh"
+
+# the temporary log file to use for capturing output from fcsh
+LOGFILE="/tmp/fcshctl_screen_log"
+
+# the interval (in seconds) with which to check the output in
+# the temporary log file when monitoring it to see when the
+# prompt appears
+LOGFILE_MONITOR_INTERVAL=0.2
+
+
+
+
+
+
+# ---------------------------------------------------
+# SOME GLOBAL DEFINITIONS:
+
+TRUE=0
+FALSE=1
+
+
+# ---------------------------------------------------
+# FUNCTIONS:
+
+# monitors the screen log file and waits until the prompt "(fcsh)"
+# appears at the end
+wait_for_prompt_in_logfile()
+{
+	while sleep ${LOGFILE_MONITOR_INTERVAL}
+	do
+		lastLine="`tail -n 1 \"${LOGFILE}\"`"
+		[ "${lastLine:0:6}" == "(fcsh)" ] && break
+	done
+}
+
+start_fcsh_in_screen()
+{
+	screen -d -m -S "${SCREEN_SESSION_NAME}" "${PATH_TO_FCSH}"
+}
+
+# sets up screen's logfile location and flush interval
+set_up_screen_logging()
+{
+	screen -S "${SCREEN_SESSION_NAME}" -p 0 -X logfile "${LOGFILE}"
+	screen -S "${SCREEN_SESSION_NAME}" -p 0 -X logfile flush 0
+}
+
+create_screen_logfile()
+{
+	touch "${LOGFILE}"
+}
+
+remove_screen_logfile()
+{
+	[ -e "${LOGFILE}" ] && rm -f "${LOGFILE}"
+}
+
+clear_screen_logfile()
+{
+	[ -e "${LOGFILE}" ] && echo -n "" > "${LOGFILE}"
+}
+
+start_screen_logging()
+{
+	screen -S "${SCREEN_SESSION_NAME}" -p 0 -X log on
+}
+
+stop_screen_logging()
+{
+	screen -S "${SCREEN_SESSION_NAME}" -p 0 -X log off
+}
+
+# returns the fcsh compile target id for the specified
+# file path or filename ($1) as a string, or "0" if none found
+get_compile_target_id()
+{
+	start_screen_logging
+	screen -S "${SCREEN_SESSION_NAME}" -p 0 -X stuff "info
+"
+	wait_for_prompt_in_logfile
+	foundId="`cat \"${LOGFILE}\" | grep -C 1 \"${1}\" | head -1 | awk '/^id:.*/ {print \$2}'`"
+	clear_screen_logfile
+	if [ "${foundId}" != "" ];then
+		echo "${foundId//[^0-9]/}"
+	else
+		echo "0"
+	fi
+}
+
+other_fcshctl_instances_running()
+{
+	NUM_FCSHCTL_PROCESSES="`ps xawww | grep -v grep | grep -c fcshctl`"
+	# the value of the above variable should be two higher than the actual
+	# number of fcshctl instances running since it's being run in a subshell
+	# and this whole thing is being run in a function
+	# (that adds two more processes that include the string fcshctl)
+	if [ ${NUM_FCSHCTL_PROCESSES} -gt 3 ];then
+		echo ${TRUE}
+	else
+		echo ${FALSE}
+	fi
+}
+
+
+
+
+
+# ---------------------------------------------------
+# IMPLEMENTATION:
+
+EXIT_STATUS_COMPILE_ERROR=1
+EXIT_STATUS_FCSH_NOT_FOUND=3
+
+
+if [ -n "$1" ];then
+	
+	# if log file exists, wait until it is removed
+	# (so as to make sure two fcshctl instances don't
+	# try to send commands to fcsh at the same time)
+	# unless no other fcshctl processes seem to be
+	# running, in which case we can assume that the
+	# log file is orphaned, remove it and continue
+	if [ -e "${LOGFILE}" ];then
+		echo "fcshctl: log file seems to exist: ${LOGFILE}"
+		
+		if [ "`other_fcshctl_instances_running`" == "${FALSE}" ];then
+			echo "fcshctl: can not see any other fcshctl instances running."
+			echo "fcshctl: assuming log file is orphaned, removing it and "
+			echo "fcshctl: continuing."
+			remove_screen_logfile
+		else
+			PROCESS_CHECK_INTERVAL=5
+			PROCESS_CHECK_INTERVAL_COUNTER=0
+			echo "fcshctl: other fcshctl instances seem to be running."
+			echo "fcshctl: waiting for log file to be removed or"
+			echo -n "fcshctl: other fcshctl processes to die."
+			while [ -e "${LOGFILE}" ]; do
+				echo -n "."
+				sleep 1
+				PROCESS_CHECK_INTERVAL_COUNTER=$((PROCESS_CHECK_INTERVAL_COUNTER+1))
+				if [ ${PROCESS_CHECK_INTERVAL_COUNTER} -ge ${PROCESS_CHECK_INTERVAL} ];then
+					PROCESS_CHECK_INTERVAL_COUNTER=0
+					if [ "`other_fcshctl_instances_running`" == "${FALSE}" ] && [ -e "${LOGFILE}" ];then
+						echo
+						echo "fcshctl: other fcshctl processes killed while log file"
+						echo "fcshctl: still exists. assuming log file is orphaned"
+						echo "fcshctl: and removing it."
+						remove_screen_logfile
+						break
+					fi
+				fi
+			done
+			echo
+			echo "fcshctl: log file removed, continuing."
+		fi
+		echo
+	fi
+	
+	
+	create_screen_logfile
+	
+	# initialize
+	# (if fcsh is not running in screen, start it)
+	if [ "`screen -list | grep -c \".fcsh\"`" == "0" ];then
+		if [ -e "${PATH_TO_FCSH}" ]; then
+			start_fcsh_in_screen
+			set_up_screen_logging
+			clear_screen_logfile
+			start_screen_logging
+			wait_for_prompt_in_logfile
+			clear_screen_logfile
+		else
+			echo "fcshctl: Error: Can not find fcsh in: ${PATH_TO_FCSH}"
+			echo "fcshctl:        Please make sure the environment variable"
+			echo "fcshctl:        FLEX_HOME is set to point to the path to"
+			echo "fcshctl:        the Flex SDK."
+			remove_screen_logfile
+			exit ${EXIT_STATUS_FCSH_NOT_FOUND}
+		fi
+	else
+		set_up_screen_logging
+		clear_screen_logfile
+		start_screen_logging
+	fi
+	
+	
+	# figure out what command to send to fcsh
+	fcshCommand="$@"
+	compiling=${FALSE}; [ "${1}" == "mxmlc" ] || [ "${1}" == "compc" ] && compiling=${TRUE}
+	
+	
+	# if first argument is "id", find the first compile target id matching the
+	# second argument 
+	if [ "${1}" == "id" ];then
+		if [ $# -gt 1 ];then
+			matchingCompileTargetId=$(get_compile_target_id "${2}")
+			if [ "${matchingCompileTargetId}" != "0" ];then
+				echo "fcshctl: the first compile target id matching '${2}' is ${matchingCompileTargetId}"
+			else
+				echo "fcshctl: can not find any compile target ids matching '${2}'"
+			fi
+		else
+			echo "fcshctl: you must specify the string to search for after the 'id' argument"
+		fi
+		stop_screen_logging
+		remove_screen_logfile
+		exit 0
+	fi
+	
+	
+	# if first argument is "clear", remove the corresponding retained compile target ids
+	# (all of them if no further arguments are specified, the specified id if the next
+	#  argument is an integer, or the first id matching the specified filename if the next
+	#  argument is a string.)
+	if [ "${1}" == "clear" ];then
+		if [ $# -gt 1 ];then
+			test ${2} -eq 0 2>/dev/null
+			if [ $? -eq 2 ];then # 2nd arg is not an integer
+				compileTargetIdToRemove=$(get_compile_target_id "${2}")
+				if [ "${compileTargetIdToRemove}" != "0" ];then
+					echo "fcshctl: found compile target id ${compileTargetIdToRemove} for ${2}"
+					echo "fcshctl: sending 'clear ${compileTargetIdToRemove}' to fcsh"
+					fcshCommand="clear ${compileTargetIdToRemove}"
+				else
+					echo "fcshctl: error: can not find retained compile target id for ${2}"
+					stop_screen_logging
+					remove_screen_logfile
+					exit 0
+				fi
+			fi
+		fi
+	fi
+	
+	
+	# figure out which of the arguments specifies the file to compile
+	# (here we're assuming that it's the last one ending in .mxml or .as)
+	fileToCompile=""
+	if [ ${compiling} -eq ${TRUE} ];then
+		for i in "$@"
+		do
+			case ${i} in
+				*.mxml) fileToCompile="${i}" ;;
+				*.as) fileToCompile="${i}" ;;
+			esac
+		done
+	fi
+	
+	if [ ${compiling} -eq ${TRUE} ] && [ ${FCSHCTL_AUTO_INCREMENTAL:=0} -eq ${TRUE} ];then
+		thisCompileTargetId=$(get_compile_target_id "${fileToCompile}")
+		[ "${thisCompileTargetId}" != "0" ] && fcshCommand="compile ${thisCompileTargetId}"
+	fi
+	
+	[ ${compiling} -eq ${TRUE} ] && echo "fcshctl: compiling...
+"
+	
+	# send command to fcsh
+	screen -S "${SCREEN_SESSION_NAME}" -p 0 -X stuff "${fcshCommand}
+"
+	
+	# wait for command to finish (unless it's "quit")
+	if [ "$1" == "quit" ];then
+		stop_screen_logging
+		remove_screen_logfile
+		exit 0
+	else
+		wait_for_prompt_in_logfile
+	fi
+	
+	stop_screen_logging
+	
+	# remove uninteresting lines from log (retaining only the actual command output)
+	# (writing to a temp file here in order to fix some kind of race condition issue
+	#  with reading the file and writing to it in the same piped command)
+	cat "${LOGFILE}" | grep -v "^(fcsh).*\$" | grep -F -v "${fcshCommand}" > "${LOGFILE}---temp"
+	mv -f "${LOGFILE}---temp" "${LOGFILE}"
+	
+	# if compiling, check to see if compilation was successful
+	compiledOk=${FALSE}
+	[ ${compiling} -eq ${TRUE} ] && [ "`grep -c \"\\\.sw[fc] (.* bytes)\" \"${LOGFILE}\"`" != "0" ] && compiledOk=${TRUE}
+	[ ${compiling} -eq ${TRUE} ] && [ "`grep -c \"Nothing has changed since the last compile\" \"${LOGFILE}\"`" != "0" ] && compiledOk=${TRUE}
+	
+	
+	# if 1st argument is "help", print our own help output before
+	# whatever fcsh has to say
+	if [ "${1}" == "help" ];then
+		echo "fcshctl: List of fcshctl-specific commands:"
+		echo "fcshctl: id [search]	find first compile target id matching [search]"
+		echo
+	fi
+	
+	
+	# output log
+	cat "${LOGFILE}"
+	
+	remove_screen_logfile
+	
+	# exit
+	if [ ${compiling} -eq ${TRUE} ];then
+		if [ ${compiledOk} -eq ${TRUE} ];then
+			exit 0
+		else
+			exit ${EXIT_STATUS_COMPILE_ERROR}
+		fi
+	else
+		exit 0
+	fi
+	
+else
+	
+	echo
+	echo "Usage: `basename \"${0}\"` <commands>"
+	echo
+	echo "  Substitute <commands> with any commands you"
+	echo "  would like to send fcsh, just like you would"
+	echo "  enter them in the interactive fcsh shell"
+	echo "  session."
+	echo
+	echo "  To get a list of the available commands, run:"
+	echo
+	echo "    `basename \"${0}\"` help"
+	echo
+	
+fi
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Flash plugin-program</string>
+   <string name="audio_files">Ljudfiler</string>
+   <string name="image_files">Bildfiler</string>
+   <string name="video_files">Videofiler</string>
+   <string name="empty_file_list">Inga filer hittades.</string>
+   <string name="button_ok">OK</string>
+   <string name="button_cancel">Avbryt</string>
+   <string name="button_continue">Fortsätt</string>
+   <string name="file_save_as">Spara som:</string>
+   <string name="file_download">Hämta</string>
+   <string name="file_upload">Skicka</string>
+   <string name="button_yes">Ja</string>
+   <string name="button_no">Nej</string>
+   <string name="app_name">Skyddsvarning</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">Skyddsvarning</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">Pålitlighet för session</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">Avbryt</string>
+   <string name="IDA_CURL_INTERFACE_OK">OK</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">Den server som programmet ansluter till har inte verifierats.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">Lita alltid på</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>Server:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">Vill du lita på den här servern och ansluta?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">Namnet på servern (%1$s) stämmer inte överens med namnet på certifikatet (%2$s). Vill du lita på servern och fortsätta?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>Visa certifikat</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>Certifikatinformation</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>Certifikat:</b>\n
+					\n
+            		<b><u>Utfärdat till:</u></b>\n
+            		Allmänt namn:\n
+            		%1$s\n
+            		\n
+            		Organisation:\n
+            		%2$s\n
+            		\n
+            		Organisationsenhet:\n
+            		%3$s\n
+            		\n
+            		<b><u>Utfärdat av:</u></b>\n
+            		Allmänt namn:\n
+            		%4$s\n
+            		\n
+            		Organisation:\n
+            		%5$s\n
+            		\n
+            		Organisationsenhet:\n
+            		%6$s\n
+            		\n
+            		<b><u>Giltighet:</u></b>\n 
+            		Utfärdat den:\n
+            		%7$s\n
+            		\n
+            		Förfaller den:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: Väntar på anslutning</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: Lyssnar om det finns en port</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>AIR-programmet väntar på att en anslutning sker med felsökningsprogrammet. Detta kan ta upp till %d sekunder.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">Det går inte att ansluta till felsökningsprogrammet.<u></u></string>
+</resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Flash-plug-in</string>
+   <string name="audio_files">Audiobestanden</string>
+   <string name="image_files">Afbeeldingsbestanden</string>
+   <string name="video_files">Videobestanden</string>
+   <string name="empty_file_list">Er zijn geen bestanden gevonden.</string>
+   <string name="button_ok">OK</string>
+   <string name="button_cancel">Annuleren</string>
+   <string name="button_continue">Doorgaan</string>
+   <string name="file_save_as">Opslaan als:</string>
+   <string name="file_download">Downloaden</string>
+   <string name="file_upload">Uploaden</string>
+   <string name="button_yes">Ja</string>
+   <string name="button_no">Nee</string>
+   <string name="app_name">Beveiligingswaarschuwing</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">Beveiligingswaarschuwing</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">Vertrouwen voor sessie</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">Annuleren</string>
+   <string name="IDA_CURL_INTERFACE_OK">OK</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">De server waarmee de toepassing een verbinding probeert te maken, is niet geverifieerd.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">Altijd vertrouwen</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>Server:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">Deze server vertrouwen en verbinding maken?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">De naam van de server (%1$s) komt niet overeen met de naam op het certificaat (%2$s). Vertrouwt u deze server en wilt u doorgaan?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>Certificaat weergeven</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>Certificaatdetails</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>Certificaat:</b>\n
+					\n
+            		<b><u>Verleend aan:</u></b>\n
+            		Algemene naam:\n
+            		%1$s\n
+            		\n
+            		Organisatie:\n
+            		%2$s\n
+            		\n
+            		Organisatie-eenheid:\n
+            		%3$s\n
+            		\n
+            		<b><u>Verleend door:</u></b>\n
+            		Algemene naam:\n
+            		%4$s\n
+            		\n
+            		Organisatie:\n
+            		%5$s\n
+            		\n
+            		Organisatie-eenheid:\n
+            		%6$s\n
+            		\n
+            		<b><u>Geldigheid:</u></b>\n 
+            		Verleend op:\n
+            		%7$s\n
+            		\n
+            		Vervalt op:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: wachten op verbinding</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: luisteren naar poort</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>De AIR-toepassing wacht op een verbinding van de debugger. Dit kan %d seconden duren.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">Kan geen verbinding maken met de debugger.<u></u></string>
+</resources>

@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.    
+-->
+<html>
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <script type="text/javascript">var xookiConfig = {level: 0};</script>   
+    
+
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<title>Release Notes | Apache Ivy&#153; 2.3.0 Documentation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+  <script src="js/jquery.pack.js" type="text/javascript"></script>
+  <script src="js/jquery.treeview.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){$("#treemenu").Treeview({speed: "fast",store: true});});
+  </script>
+
+<script language="javascript" type="text/javascript">xooki = {u: function(url) {return "xooki/"+url;}};</script>
+</head>
+<body>
+
+<div id="body">
+<table id="header" summary="Navigation elements." border="0"
+	cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td id="home" width="30%"><a href="http://ant.apache.org/"
+			title="Apache Ant"><img src="images/ant-group-logo.gif" alt="Apache Ant"
+			border="0" /></a></td>
+
+		<td class="product" width="70%" align="right" valign="middle"><img
+			src="images/logo.png" alt="ivy" border="0" /></td>
+	</tr>
+</table>
+
+<table id="top-menu" summary="Navigation elements." border="0"
+	cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td>
+
+		<div id="navcontainer">
+		<a href="http://www.apache.org/">Apache&#153;</a> &gt; <a href="http://ant.apache.org/">Apache Ant&#153;</a> &gt; <a href="http://ant.apache.org/ivy/">Apache Ivy&#153;</a> &gt; <span class="breadCrumb"><a href="index.html" >Documentation</a> &gt; <a href="release-notes.html" class="current">Release Notes</a></span>
+		</div>
+		</td>
+	</tr>
+
+</table>
+
+<table id="content" border="0" cellpadding="0" cellspacing="0"
+	width="100%">
+	<tr>
+		<td id="sidebar-left">
+		<div class="block block-book" id="block-book-0">
+		<h2>Apache Ivy&#153;</h2>
+
+		<div class="content"><ul id="treemenu" class="treeview">
+<li id="xooki-index" class="submenu"><a href="index.html" >Documentation</a><ul class="open"><li id="xooki-release-notes"><a href="release-notes.html" class="current">Release Notes</a></li>
+<li id="xooki-tutorial" class="submenu"><a href="tutorial.html" >Tutorials</a><ul class="closed"><li id="xooki-tutorial/start"><a href="tutorial/start.html" >Quick Start</a></li>
+<li id="xooki-tutorial/defaultconf"><a href="tutorial/defaultconf.html" >Adjusting default settings</a></li>
+<li id="xooki-tutorial/multiple"><a href="tutorial/multiple.html" >Multiple Resolvers</a></li>
+<li id="xooki-tutorial/dual"><a href="tutorial/dual.html" >Dual Resolver</a></li>
+<li id="xooki-tutorial/dependence"><a href="tutorial/dependence.html" >Project dependencies</a></li>
+<li id="xooki-tutorial/multiproject"><a href="tutorial/multiproject.html" >Using Ivy in multiple projects environment</a></li>
+<li id="xooki-tutorial/conf"><a href="tutorial/conf.html" >Using Ivy Module Configurations</a></li>
+<li id="xooki-tutorial/build-repository" class="submenu"><a href="tutorial/build-repository.html" >Building a repository</a><ul class="closed"><li id="xooki-tutorial/build-repository/basic"><a href="tutorial/build-repository/basic.html" >Basic repository copy</a></li>
+<li id="xooki-tutorial/build-repository/advanced"><a href="tutorial/build-repository/advanced.html" >Using namespaces</a></li>
+</ul></li>
+<li id="xooki-moreexamples"><a href="moreexamples.html" >More examples</a></li>
+</ul></li>
+<li id="xooki-reference" class="submenu"><a href="reference.html" >Reference</a><ul class="closed"><li id="xooki-intro" class="submenu">Introduction<ul class="closed"><li id="xooki-terminology"><a href="terminology.html" >Terminology</a></li>
+<li id="xooki-concept"><a href="concept.html" >Main Concepts</a></li>
+<li id="xooki-textual"><a href="textual.html" >Text Conventions</a></li>
+<li id="xooki-principle"><a href="principle.html" >How does it work ?</a></li>
+<li id="xooki-bestpractices"><a href="bestpractices.html" >Best practices</a></li>
+<li id="xooki-install"><a href="install.html" >Installation</a></li>
+</ul></li>
+<li id="xooki-settings" class="submenu"><a href="settings.html" >Settings Files</a><ul class="closed"><li id="xooki-settings/property"><a href="settings/property.html" >property</a></li>
+<li id="xooki-settings/properties"><a href="settings/properties.html" >properties</a></li>
+<li id="xooki-settings/settings"><a href="settings/settings.html" >settings</a></li>
+<li id="xooki-settings/include"><a href="settings/include.html" >include</a></li>
+<li id="xooki-settings/classpath"><a href="settings/classpath.html" >classpath</a></li>
+<li id="xooki-settings/typedef"><a href="settings/typedef.html" >typedef</a></li>
+<li id="xooki-settings/credentials"><a href="settings/credentials.html" >credentials</a></li>
+<li id="xooki-settings/signers"><a href="settings/signers.html" >signers</a></li>
+<li id="xooki-settings/lock-strategies"><a href="settings/lock-strategies.html" >lock-strategies</a></li>
+<li id="xooki-settings/caches" class="submenu"><a href="settings/caches.html" >caches</a><ul class="closed"><li id="xooki-settings/caches/cache" class="submenu"><a href="settings/caches/cache.html" >cache</a><ul class="closed"><li id="xooki-settings/caches/ttl"><a href="settings/caches/ttl.html" >ttl</a></li>
+</ul></li>
+</ul></li>
+<li id="xooki-settings/latest-strategies"><a href="settings/latest-strategies.html" >latest-strategies</a></li>
+<li id="xooki-settings/parsers"><a href="settings/parsers.html" >parsers</a></li>
+<li id="xooki-settings/namespaces" class="submenu"><a href="settings/namespaces.html" >namespaces</a><ul class="closed"><li id="xooki-settings/namespace" class="submenu"><a href="settings/namespace.html" >namespace</a><ul class="closed"><li id="xooki-settings/namespace/rule" class="submenu"><a href="settings/namespace/rule.html" >rule</a><ul class="closed"><li id="xooki-settings/namespace/fromtosystem" class="submenu"><a href="settings/namespace/fromtosystem.html" >fromsystem / tosystem</a><ul class="closed"><li id="xooki-settings/namespace/src"><a href="settings/namespace/src.html" >src</a></li>
+<li id="xooki-settings/namespace/dest"><a href="settings/namespace/dest.html" >dest</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li id="xooki-settings/macrodef" class="submenu"><a href="settings/macrodef.html" >macrodef</a><ul class="closed"><li id="xooki-settings/macrodef/attribute"><a href="settings/macrodef/attribute.html" >attribute</a></li>
+</ul></li>
+<li id="xooki-settings/resolvers" class="submenu"><a href="settings/resolvers.html" >resolvers</a><ul class="closed"><li id="xooki-resolver/ivyrep"><a href="resolver/ivyrep.html" >IvyRep Resolver</a></li>
+<li id="xooki-resolver/ibiblio"><a href="resolver/ibiblio.html" >IBiblio Resolver</a></li>
+<li id="xooki-resolver/packager"><a href="resolver/packager.html" >Packager resolver</a></li>
+<li id="xooki-resolver/filesystem"><a href="resolver/filesystem.html" >File System resolver</a></li>
+<li id="xooki-resolver/url"><a href="resolver/url.html" >Url Resolver</a></li>
+<li id="xooki-resolver/chain"><a href="resolver/chain.html" >Chain Resolver</a></li>
+<li id="xooki-resolver/dual"><a href="resolver/dual.html" >Dual resolver</a></li>
+<li id="xooki-resolver/sftp"><a href="resolver/sftp.html" >sftp resolver</a></li>
+<li id="xooki-resolver/ssh"><a href="resolver/ssh.html" >ssh resolver</a></li>
+<li id="xooki-resolver/vfs"><a href="resolver/vfs.html" >vfs resolver</a></li>
+<li id="xooki-resolver/jar"><a href="resolver/jar.html" >Jar resolver</a></li>
+<li id="xooki-resolver/obr"><a href="resolver/obr.html" >OSGi Bundle Repository</a></li>
+<li id="xooki-resolver/updatesite"><a href="resolver/updatesite.html" >Eclipse updatesite</a></li>
+<li id="xooki-resolver/mirrored"><a href="resolver/mirrored.html" >Mirrored Resolver</a></li>
+</ul></li>
+<li id="xooki-settings/conflict-managers"><a href="settings/conflict-managers.html" >conflict-managers</a></li>
+<li id="xooki-settings/modules" class="submenu"><a href="settings/modules.html" >modules</a><ul class="closed"><li id="xooki-settings/module"><a href="settings/module.html" >module</a></li>
+</ul></li>
+<li id="xooki-settings/outputters"><a href="settings/outputters.html" >outputters</a></li>
+<li id="xooki-settings/signers"><a href="settings/signers.html" >signers</a></li>
+<li id="xooki-settings/statuses" class="submenu"><a href="settings/statuses.html" >statuses</a><ul class="closed"><li id="xooki-settings/status"><a href="settings/status.html" >status</a></li>
+</ul></li>
+<li id="xooki-settings/triggers"><a href="settings/triggers.html" >triggers</a></li>
+<li id="xooki-settings/version-matchers"><a href="settings/version-matchers.html" >version-matchers</a></li>
+</ul></li>
+<li id="xooki-ivyfile" class="submenu"><a href="ivyfile.html" >Ivy Files</a><ul class="closed"><li id="xooki-ivyfile/info" class="submenu"><a href="ivyfile/info.html" >info</a><ul class="closed"><li id="xooki-ivyfile/extends"><a href="ivyfile/extends.html" >extends</a></li>
+<li id="xooki-ivyfile/license"><a href="ivyfile/license.html" >license</a></li>
+<li id="xooki-ivyfile/ivyauthor"><a href="ivyfile/ivyauthor.html" >ivyauthor</a></li>
+<li id="xooki-ivyfile/repository"><a href="ivyfile/repository.html" >repository</a></li>
+<li id="xooki-ivyfile/description"><a href="ivyfile/description.html" >description</a></li>
+</ul></li>
+<li id="xooki-ivyfile/configurations" class="submenu"><a href="ivyfile/configurations.html" >configurations</a><ul class="closed"><li id="xooki-ivyfile/conf"><a href="ivyfile/conf.html" >conf</a></li>
+<li id="xooki-ivyfile/include"><a href="ivyfile/include.html" >include</a></li>
+</ul></li>
+<li id="xooki-ivyfile/publications" class="submenu"><a href="ivyfile/publications.html" >publications</a><ul class="closed"><li id="xooki-ivyfile/artifact" class="submenu"><a href="ivyfile/artifact.html" >artifact</a><ul class="closed"><li id="xooki-ivyfile/artifact-conf"><a href="ivyfile/artifact-conf.html" >conf</a></li>
+</ul></li>
+</ul></li>
+<li id="xooki-ivyfile/dependencies" class="submenu"><a href="ivyfile/dependencies.html" >dependencies</a><ul class="closed"><li id="xooki-ivyfile/dependency" class="submenu"><a href="ivyfile/dependency.html" >dependency</a><ul class="closed"><li id="xooki-ivyfile/dependency-conf" class="submenu"><a href="ivyfile/dependency-conf.html" >conf</a><ul class="closed"><li id="xooki-ivyfile/mapped"><a href="ivyfile/mapped.html" >mapped</a></li>
+</ul></li>
+<li id="xooki-ivyfile/dependency-artifact" class="submenu"><a href="ivyfile/dependency-artifact.html" >artifact</a><ul class="closed"><li id="xooki-ivyfile/dependency-artifact-conf"><a href="ivyfile/dependency-artifact-conf.html" >conf</a></li>
+</ul></li>
+<li id="xooki-ivyfile/artifact-exclude" class="submenu"><a href="ivyfile/artifact-exclude.html" >exclude</a><ul class="closed"><li id="xooki-ivyfile/artifact-exclude-conf"><a href="ivyfile/artifact-exclude-conf.html" >conf</a></li>
+</ul></li>
+<li id="xooki-ivyfile/dependency-include" class="submenu"><a href="ivyfile/dependency-include.html" >include</a><ul class="closed"><li id="xooki-ivyfile/dependency-include-conf"><a href="ivyfile/dependency-include-conf.html" >conf</a></li>
+</ul></li>
+</ul></li>
+<li id="xooki-ivyfile/exclude"><a href="ivyfile/exclude.html" >exclude</a></li>
+<li id="xooki-ivyfile/override"><a href="ivyfile/override.html" >override</a></li>
+<li id="xooki-ivyfile/conflict"><a href="ivyfile/conflict.html" >conflict</a></li>
+</ul></li>
+<li id="xooki-ivyfile/conflicts" class="submenu"><a href="ivyfile/conflicts.html" >conflicts</a><ul class="closed"><li id="xooki-ivyfile/manager"><a href="ivyfile/manager.html" >manager</a></li>
+</ul></li>
+</ul></li>
+<li id="xooki-ant" class="submenu"><a href="ant.html" >Ant Tasks</a><ul class="closed"><li id="xooki-use/artifactproperty"><a href="use/artifactproperty.html" >artifactproperty</a></li>
+<li id="xooki-use/artifactreport"><a href="use/artifactreport.html" >artifactreport</a></li>
+<li id="xooki-use/buildlist"><a href="use/buildlist.html" >buildlist</a></li>
+<li id="xooki-use/buildobr"><a href="use/buildobr.html" >buildobr</a></li>
+<li id="xooki-use/buildnumber"><a href="use/buildnumber.html" >buildnumber</a></li>
+<li id="xooki-use/cachefileset"><a href="use/cachefileset.html" >cachefileset</a></li>
+<li id="xooki-use/cachepath"><a href="use/cachepath.html" >cachepath</a></li>
+<li id="xooki-use/cleancache"><a href="use/cleancache.html" >cleancache</a></li>
+<li id="xooki-use/configure"><a href="use/configure.html" >configure</a></li>
+<li id="xooki-use/convertmanifest"><a href="use/convertmanifest.html" >convertmanifest</a></li>
+<li id="xooki-use/convertpom"><a href="use/convertpom.html" >convertpom</a></li>
+<li id="xooki-use/deliver"><a href="use/deliver.html" >deliver</a></li>
+<li id="xooki-use/findrevision"><a href="use/findrevision.html" >findrevision</a></li>
+<li id="xooki-use/info"><a href="use/info.html" >info</a></li>
+<li id="xooki-use/install"><a href="use/install.html" >install</a></li>
+<li id="xooki-use/listmodules"><a href="use/listmodules.html" >listmodules</a></li>
+<li id="xooki-use/makepom"><a href="use/makepom.html" >makepom</a></li>
+<li id="xooki-use/postresolvetask"><a href="use/postresolvetask.html" >post resolve tasks</a></li>
+<li id="xooki-use/publish"><a href="use/publish.html" >publish</a></li>
+<li id="xooki-use/repreport"><a href="use/repreport.html" >repreport</a></li>
+<li id="xooki-use/resolve"><a href="use/resolve.html" >resolve</a></li>
+<li id="xooki-use/resources"><a href="use/resources.html" >resources</a></li>
+<li id="xooki-use/retrieve"><a href="use/retrieve.html" >retrieve</a></li>
+<li id="xooki-use/report" class="submenu"><a href="use/report.html" >report</a><ul class="closed"><li id="xooki-yed"><a href="yed.html" >Using yEd to layout report graphs</a></li>
+</ul></li>
+<li id="xooki-use/settings"><a href="use/settings.html" >settings</a></li>
+<li id="xooki-use/var"><a href="use/var.html" >var</a></li>
+</ul></li>
+<li id="xooki-standalone"><a href="standalone.html" >Using standalone</a></li>
+<li id="xooki-osgi" class="submenu"><a href="osgi.html" >OSGi</a><ul class="closed"><li id="xooki-osgi/osgi-mapping"><a href="osgi/osgi-mapping.html" >OSGi mapping</a></li>
+<li id="xooki-osgi/eclipse-plugin"><a href="osgi/eclipse-plugin.html" >Building an Eclipse plugin</a></li>
+<li id="xooki-osgi/standard-osgi"><a href="osgi/standard-osgi.html" >Building a standard OSGi bundle</a></li>
+<li id="xooki-osgi/target-platform"><a href="osgi/target-platform.html" >Managing a target platform</a></li>
+<li id="xooki-osgi/sigil"><a href="osgi/sigil.html" >Apache Felix Sigil</a></li>
+</ul></li>
+</ul></li>
+<li id="xooki-dev" class="submenu"><a href="dev.html" >Developer doc</a><ul class="closed"><li id="xooki-extend"><a href="extend.html" >Extending Ivy</a></li>
+<li id="xooki-dev/makerelease"><a href="dev/makerelease.html" >Making a release</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+		<center><iframe src="http://www.apache.org/ads/buttonbar.html"
+                         style="border-width:0;" frameborder="0" scrolling="no"
+                         width="135" height="265"></iframe>
+                </center>
+
+		</div>
+
+		</td>
+		
+		<td valign="top">
+		<div id="main">
+
+		<h1 class="title">Release Notes</h1>
+            <br class="xooki-br"/><h2>Announcement</h2>
+
+<pre>
+Jan 20, 2013 - The Apache Ivy project is pleased to announce its 2.3.0 release.<br class="xooki-br"/><br class="xooki-br"/>Apache Ivy is a tool for managing (recording, tracking, resolving and<br class="xooki-br"/>reporting) project dependencies, characterized by flexibility,<br class="xooki-br"/>configurability, and tight integration with Apache Ant.<br class="xooki-br"/><br class="xooki-br"/>Key features of this 2.3.0 release are<br class="xooki-br"/>* improved Ant support with some new Ant tasks and enhancements to existing tasks<br class="xooki-br"/>* improved Maven2 compatibility<br class="xooki-br"/>* some new resolvers<br class="xooki-br"/>* numerous bug fixes as documented in Jira and in the release notes<br class="xooki-br"/><br class="xooki-br"/>In addition, experimental OSGI support has been added to the Ivy core.<br class="xooki-br"/><br class="xooki-br"/>You can download this 2.3.0 release at:<br class="xooki-br"/><a href="http://ant.apache.org/ivy/download.cgi">http://ant.apache.org/ivy/download.cgi</a><br class="xooki-br"/><br class="xooki-br"/>Issues should be reported to:<br class="xooki-br"/><a href="https://issues.apache.org/jira/browse/IVY">https://issues.apache.org/jira/browse/IVY</a><br class="xooki-br"/><br class="xooki-br"/>More information can be found on the website:<br class="xooki-br"/><a href="http://ant.apache.org/ivy/">http://ant.apache.org/ivy/</a><br class="xooki-br"/><br class="xooki-br"/>Regards,<br class="xooki-br"/>Maarten Coene
+</pre>
+
+<h2>Release Notes</h2>
+
+CONTENTS<br class="xooki-br"/>1. What is Apache Ivy?<br class="xooki-br"/>2. How to Get Involved<br class="xooki-br"/>3. How to Report Issues<br class="xooki-br"/>4. Committers and Contributors for this release<br class="xooki-br"/>5. List of Changes in this Release   <br class="xooki-br"/>   <br class="xooki-br"/>   <br class="xooki-br"/><h3>1. What is Apache Ivy?</h3>
+
+Apache Ivy is a tool for managing (recording, tracking, resolving and reporting) <br class="xooki-br"/>project dependencies. <br class="xooki-br"/>It is characterized by the following:<br class="xooki-br"/><br class="xooki-br"/>   1. flexibility and configurability <br class="xooki-br"/>        Apache Ivy is essentially process agnostic and is not tied to any <br class="xooki-br"/>        methodology or structure. <br class="xooki-br"/>        Instead it provides the necessary flexibility and configurability <br class="xooki-br"/>        to be adapted to a broad range of dependency management and build <br class="xooki-br"/>        processes.<br class="xooki-br"/>   2. tight integration with Apache Ant<br class="xooki-br"/>        while available as a standalone tool, Apache Ivy works particularly well <br class="xooki-br"/>        with Apache Ant providing a number of powerful Ant tasks ranging <br class="xooki-br"/>        from dependency resolution to dependency reporting and publication.<br class="xooki-br"/><br class="xooki-br"/><h3>2. How to Get Involved</h3> 
+
+The Apache Ivy project really needs and appreciates any contributions, <br class="xooki-br"/>including documentation help, source code and feedback.  If you are interested<br class="xooki-br"/>in contributing, please visit <a href="http://ant.apache.org/ivy/get-involved.html">http://ant.apache.org/ivy/get-involved.html</a>.<br class="xooki-br"/><br class="xooki-br"/><h3>3. How to Report Issues</h3>
+
+The Apache Ivy project uses JIRA for issue tracking.  Please report any <br class="xooki-br"/>issues you find at <a href="http://issues.apache.org/jira/browse/IVY">http://issues.apache.org/jira/browse/IVY</a><br class="xooki-br"/><br class="xooki-br"/><h3>4. Committers and Contributors for this Release</h3>
+
+Here is the list of people who have contributed source code and documentation<br class="xooki-br"/>to this release. Many thanks to all of them, and also to the whole Ivy community<br class="xooki-br"/>contributing ideas and feedback, and promoting the use of Ivy. The list would be too<br class="xooki-br"/>long, but Ivy couldn't be what it is without you!<br class="xooki-br"/><br class="xooki-br"/> Committers<br class="xooki-br"/>    Matt Benson<br class="xooki-br"/>    Jean-Louis Boudart<br class="xooki-br"/>    Maarten Coene<br class="xooki-br"/>    Xavier Hanin<br class="xooki-br"/>    Nicolas Lalevee<br class="xooki-br"/>    Jon Schneider<br class="xooki-br"/>    Gilles Scokart<br class="xooki-br"/><br class="xooki-br"/> Contributors<br class="xooki-br"/>    Arnold Blaasmo<br class="xooki-br"/>    Ed Burcher<br class="xooki-br"/>    Joseph Boyd<br class="xooki-br"/>    Wei Chen<br class="xooki-br"/>    Robin Fernandes<br class="xooki-br"/>    Wolfgang Frank<br class="xooki-br"/>    Mitch Gitman<br class="xooki-br"/>    Payam Hekmat<br class="xooki-br"/>    Stepan Koltsov<br class="xooki-br"/>    Thomas Kurpick<br class="xooki-br"/>    Ales Nosek<br class="xooki-br"/>    Douglas Palmer<br class="xooki-br"/>    Carl Quinn<br class="xooki-br"/>    Torkild U. Resheim<br class="xooki-br"/>    Jens Rohloff<br class="xooki-br"/>    Ben Schmidt<br class="xooki-br"/>    Nihal Sinha<br class="xooki-br"/>    Sven Zethelius<br class="xooki-br"/><br class="xooki-br"/>For the list of people who have contributed since Ivy inception, see CHANGES.txt file.<br class="xooki-br"/><br class="xooki-br"/><h3>5. List of Changes in this Release</h3>
+
+For a full release history of Ivy see the file CHANGES.txt<br class="xooki-br"/><br class="xooki-br"/>For details about the following changes, check our JIRA install at <br class="xooki-br"/><a href="http://issues.apache.org/jira/browse/ivy">http://issues.apache.org/jira/browse/ivy</a><br class="xooki-br"/><br class="xooki-br"/>List of changes since Ivy 2.2.0:<br class="xooki-br"/>- DOCUMENTATION: Bad example in Project dependencies Tutorial (<a href="https://issues.apache.org/jira/browse/IVY-1263">IVY-1263</a>)<br class="xooki-br"/>- DOCUMENTATION: remove deprecated defaultCache setting from examples (<a href="https://issues.apache.org/jira/browse/IVY-1273">IVY-1273</a>) (thanks to Joseph Boyd)<br class="xooki-br"/>- DOCUMENTATION: link to FAQ is incorrect in distribution files (<a href="https://issues.apache.org/jira/browse/IVY-793">IVY-793</a>) (thanks to Joseph Boyd)<br class="xooki-br"/>- DOCUMENTATION: The tag version-matchers is missing attribute in documentation (<a href="https://issues.apache.org/jira/browse/IVY-1292">IVY-1292</a>) (thanks to Per Arnold Blaasmo)<br class="xooki-br"/>- DOCUMENTATION: wrong default resolver documented on the 'How does it work' page (<a href="https://issues.apache.org/jira/browse/IVY-1265">IVY-1265</a>)<br class="xooki-br"/>- DOCUMENTATION: Correct outdated links to configuration pages (<a href="https://issues.apache.org/jira/browse/IVY-1266">IVY-1266</a>)<br class="xooki-br"/>- DOCUMENTATION: Documentation and Implementation mismatch of makepom (<a href="https://issues.apache.org/jira/browse/IVY-1383">IVY-1383</a>) (thanks to Thomas Kurpick)<br class="xooki-br"/>- DOCUMENTATION: added link to extra beginners guide (<a href="https://issues.apache.org/jira/browse/IVY-1381">IVY-1381</a>)<br class="xooki-br"/><br class="xooki-br"/>- NEW: [orgPath] can now be used as token in ivy/artifact patterns<br class="xooki-br"/>- NEW: New Ant datatype ivy:resources, an Ant resource collection like ivy:cachepath or ivy:cachefileset (<a href="https://issues.apache.org/jira/browse/IVY-334">IVY-334</a>)<br class="xooki-br"/>- NEW: ivy:resolve and post resole task can now have inlined dependencies declaration.<br class="xooki-br"/>- NEW: Import Bushel into Ivy core (<a href="https://issues.apache.org/jira/browse/IVY-1241">IVY-1241</a>)<br class="xooki-br"/>- NEW: An new resolver 'mirroredurl' which can handle a list of mirrored URL repositories (<a href="https://issues.apache.org/jira/browse/IVY-468">IVY-468</a>)<br class="xooki-br"/>- NEW: Support for a jar resolver (<a href="https://issues.apache.org/jira/browse/IVY-1312">IVY-1312</a>)<br class="xooki-br"/><br class="xooki-br"/>- IMPROVEMENT: ivy:install task does not allow specification of conf (<a href="https://issues.apache.org/jira/browse/IVY-1313">IVY-1313</a>) (thanks to Nihal Sinha)<br class="xooki-br"/>- IMPROVEMENT: ivy:makepom ignores the artifact type in generated dependencies (<a href="https://issues.apache.org/jira/browse/IVY-1229">IVY-1229</a>) (thanks to Douglas Palmer)<br class="xooki-br"/>- IMPROVEMENT: ivy:makepom now honors exclusion of artifacts in generated pom files (<a href="https://issues.apache.org/jira/browse/IVY-1294">IVY-1294</a>) (thanks to Jens Rohloff)<br class="xooki-br"/>- IMPROVEMENT: Added support for dynamic revisions in <extends> tag (<a href="https://issues.apache.org/jira/browse/IVY-1281">IVY-1281</a>)<br class="xooki-br"/>- IMPROVEMENT: ivy:makepom child element dependency should support the type and classifier attributes (<a href="https://issues.apache.org/jira/browse/IVY-1262">IVY-1262</a>)<br class="xooki-br"/>- IMPROVEMENT: ivy:retrieve can now create a path or fileset containing the retrieved artifacts (<a href="https://issues.apache.org/jira/browse/IVY-1235">IVY-1235</a>)<br class="xooki-br"/>- IMPROVEMENT: Improve diagnostics in ssh resolver (<a href="https://issues.apache.org/jira/browse/IVY-1267">IVY-1267</a>) (thanks to Stepan Koltsov)<br class="xooki-br"/>- IMPROVEMENT: ivy:retrieve now accepts a nested mapper type.<br class="xooki-br"/><br class="xooki-br"/>- FIX: Ivy generates wrong revision in URL for Maven snapshots (<a href="https://issues.apache.org/jira/browse/IVY-1396">IVY-1396</a>)<br class="xooki-br"/>- FIX: Maven2: resolve failure when parent has <dependencyManagement> with dependency in 'import' scope (<a href="https://issues.apache.org/jira/browse/IVY-1376">IVY-1376</a>)<br class="xooki-br"/>- FIX: IvyPublish fails when using extend tags with no explicit location attribute (<a href="https://issues.apache.org/jira/browse/IVY-1391">IVY-1391</a>)<br class="xooki-br"/>- FIX: *.lck files created by "artifact-lock" lock strategy are not cleaned up if ivy quits abruptly (<a href="https://issues.apache.org/jira/browse/IVY-1388">IVY-1388</a>) (thanks to Wei Chen)<br class="xooki-br"/>- FIX: Ivy default cache path with non-ASCII character lets it crash (<a href="https://issues.apache.org/jira/browse/IVY-1378">IVY-1378</a>)<br class="xooki-br"/>- FIX: latest.integration isn't resolved against a Maven snapshot repository (when uniqueVersion = true) (<a href="https://issues.apache.org/jira/browse/IVY-1036">IVY-1036</a>)<br class="xooki-br"/>- FIX: Resolve does not deliver all dependent artifacts (<a href="https://issues.apache.org/jira/browse/IVY-1366">IVY-1366</a>) (thanks to Wolfgang Frank)<br class="xooki-br"/>- FIX: Ivy descriptors are merged incorrectly when there is an <exclude> element (<a href="https://issues.apache.org/jira/browse/IVY-1356">IVY-1356</a>)<br class="xooki-br"/>- FIX: SimpleDateFormat is not thread safe (<a href="https://issues.apache.org/jira/browse/IVY-1373">IVY-1373</a>)<br class="xooki-br"/>- FIX: Maven 'hk2-jar' packaging is now supported (<a href="https://issues.apache.org/jira/browse/IVY-1357">IVY-1357</a>)<br class="xooki-br"/>- FIX: Maven 'orbit' and 'pear' packaging is now supported (<a href="https://issues.apache.org/jira/browse/IVY-899">IVY-899</a>)<br class="xooki-br"/>- FIX: Memory leak and infinite loop in ModuleId.java (<a href="https://issues.apache.org/jira/browse/IVY-1362">IVY-1362</a>)<br class="xooki-br"/>- FIX: Unnecessary warning when parent ivy.xml is not found (<a href="https://issues.apache.org/jira/browse/IVY-1346">IVY-1346</a>)<br class="xooki-br"/>- FIX: StackOverflowError when using <extends> and ../ivy.xml is not the parent ivy.xml (<a href="https://issues.apache.org/jira/browse/IVY-1437">IVY-1437</a>)<br class="xooki-br"/>- FIX: NullPointerExeption in AbstractOSGiResolver (<a href="https://issues.apache.org/jira/browse/IVY-1343">IVY-1343</a>) (thanks to Thomas Kurpick)<br class="xooki-br"/>- FIX: Delivered ivy descriptor inconsistent with resolve report / retrieve and other post-resolve actions (<a href="https://issues.apache.org/jira/browse/IVY-1300">IVY-1300</a>) (thanks to Ed Burcher)<br class="xooki-br"/>- FIX: The Updatesite resolver is downloading Eclipse features instead of Eclipse bundle/plugin<br class="xooki-br"/>- FIX: ivy:buildlist task confused by extends feature using two parents (<a href="https://issues.apache.org/jira/browse/IVY-1363">IVY-1363</a>) (thanks to Mitch Gitman and Jean-Louis Boudart)<br class="xooki-br"/>- FIX: ivy.xml extends feature complains about Windows filesystem path (<a href="https://issues.apache.org/jira/browse/IVY-1359">IVY-1359</a>) (thanks to Mitch Gitman and Jean-Louis Boudart)<br class="xooki-br"/>- FIX: buildlist task chokes on absolute path to parent Ivy module (<a href="https://issues.apache.org/jira/browse/IVY-1364">IVY-1364</a>) (thanks to Mitch Gitman and Jean-Louis Boudart)<br class="xooki-br"/>- FIX: The ignore circular dependency strategy is clobbering the warn strategy (<a href="https://issues.apache.org/jira/browse/IVY-1353">IVY-1353</a>) (Thanks to Carl Quinn)<br class="xooki-br"/>- FIX: Buildnumber and IvyFindRevision Ant tasks should honour defaultBranch setting (<a href="https://issues.apache.org/jira/browse/IVY-1344">IVY-1344</a>) (Thanks to Ales Nosek)<br class="xooki-br"/>- FIX: ApacheURLLister.retrieveListing() fails if the encoding of the URL list is different from the default encoding (<a href="https://issues.apache.org/jira/browse/IVY-1060">IVY-1060</a>) (Thanks to Robin Fernandes)<br class="xooki-br"/>- FIX: global exclude rules is not applying to root ivy files<br class="xooki-br"/>- FIX: Exclude doesn't work when there is some circular dependencies (<a href="https://issues.apache.org/jira/browse/IVY-1309">IVY-1309</a>)<br class="xooki-br"/>- FIX: Impossible to get artifacts when data has not been loaded for multiple dynamic revisions (<a href="https://issues.apache.org/jira/browse/IVY-1333">IVY-1333</a>)<br class="xooki-br"/>- FIX: Ivy didn't properly handle some file: URLs (<a href="https://issues.apache.org/jira/browse/IVY-1340">IVY-1340</a>)<br class="xooki-br"/>- FIX: fallback mechanism didn't work properly for private configurations<br class="xooki-br"/>- FIX: /localivy target does not work when building Ivy jar (<a href="https://issues.apache.org/jira/browse/IVY-1338">IVY-1338</a>) (thanks to Ben Schmidt)<br class="xooki-br"/>- FIX: The showprogress=false attribute of ivy:resolve doesn't do what it should (<a href="https://issues.apache.org/jira/browse/IVY-1052">IVY-1052</a>) (thanks to Joseph Boyd)<br class="xooki-br"/>- FIX: extends ignores defaultconfmapping/defaultconf/confmappingoverride attributes from parent's configurations and dependencies tags (<a href="https://issues.apache.org/jira/browse/IVY-1213">IVY-1213</a>)<br class="xooki-br"/>- FIX: NullPointerException when providing empty password to <credentials> (<a href="https://issues.apache.org/jira/browse/IVY-1335">IVY-1335</a>)<br class="xooki-br"/>- FIX: [originalname] not expanded for source and javadoc types during publish in ivy:install (<a href="https://issues.apache.org/jira/browse/IVY-1324">IVY-1324</a>)<br class="xooki-br"/>- FIX: cannot resolve from repositories that return HTTP 204 in response to an HTTP HEAD request (<a href="https://issues.apache.org/jira/browse/IVY-1328">IVY-1328</a>)<br class="xooki-br"/>- FIX: extra attributes lost from info when ivy file is merged with parent (<a href="https://issues.apache.org/jira/browse/IVY-1206">IVY-1206</a>)<br class="xooki-br"/>- FIX: ivy:report ant task intermittently "cannot compile stylesheet" (<a href="https://issues.apache.org/jira/browse/IVY-1325">IVY-1325</a>)<br class="xooki-br"/>- FIX: Maven 'eclipse-plugin', 'jbi-component' and 'jbi-shared-library' packaging is now mapped to 'jar' extension (<a href="https://issues.apache.org/jira/browse/IVY-899">IVY-899</a>)<br class="xooki-br"/>- FIX: Infinite loop in latest-compatible conflict manager (<a href="https://issues.apache.org/jira/browse/IVY-1233">IVY-1233</a>) (thanks to Payam Hekmat and Sven Zethelius)<br class="xooki-br"/>- FIX: extends section of ivy.xml info does not replace variable in location tag (<a href="https://issues.apache.org/jira/browse/IVY-1287">IVY-1287</a>)<br class="xooki-br"/>- FIX: Valid Path does not work for Filesystem Resolver (<a href="https://issues.apache.org/jira/browse/IVY-1268">IVY-1268</a>)<br class="xooki-br"/>- FIX: quiet="true" does not surpress download 'dots' on packager resolver (<a href="https://issues.apache.org/jira/browse/IVY-1269">IVY-1269</a>)<br class="xooki-br"/>- FIX: Dynamic version resolution result can be incorrect when ivy metadata contains extra attributes (<a href="https://issues.apache.org/jira/browse/IVY-1236">IVY-1236</a>)<br class="xooki-br"/>- FIX: NullPointerException in FileUtil#forceDelete.<br class="xooki-br"/>- FIX: XmlModuleDescriptorUpdater is a mess that produces broken xmls in many cases (<a href="https://issues.apache.org/jira/browse/IVY-1010">IVY-1010</a>)<br class="xooki-br"/>- FIX: ivy.xml that contains UTF-8 encoded umlauts cannot be bigger than 10000 bytes (<a href="https://issues.apache.org/jira/browse/IVY-1253">IVY-1253</a>)<br class="xooki-br"/>- FIX: Can not use a v[revision] in an artifact pattern of a filesystem resolver (<a href="https://issues.apache.org/jira/browse/IVY-1238">IVY-1238</a>)<br class="xooki-br"/>- FIX: Cached ivy.xml is invalid if the description contains the ampersand entity (&amp;) (<a href="https://issues.apache.org/jira/browse/IVY-1237">IVY-1237</a>)<br class="xooki-br"/>- FIX: Couldn't authenticate against sites having the same address as the proxy server (<a href="https://issues.apache.org/jira/browse/IVY-1234">IVY-1234</a>)<br class="xooki-br"/>- FIX: OutOfMemoryError when uploading large files using commons-httpclient (<a href="https://issues.apache.org/jira/browse/IVY-1197">IVY-1197</a>) (thanks to Torkild U. Resheim)<br class="xooki-br"/>- FIX: Only the last dependency descriptor is taken into account on the same module (<a href="https://issues.apache.org/jira/browse/IVY-1240">IVY-1240</a>)<br class="xooki-br"/>- FIX: UseCacheOnly doesn't respect the cache configuration in the ivysettings (<a href="https://issues.apache.org/jira/browse/IVY-1227">IVY-1227</a>)<br class="xooki-br"/>- FIX: UseCacheOnly is influenced by the TTL on cached metadata (<a href="https://issues.apache.org/jira/browse/IVY-1243">IVY-1243</a>)<br class="xooki-br"/>- FIX: ConcurrentModificationException on ivy settings loading (<a href="https://issues.apache.org/jira/browse/IVY-1250">IVY-1250</a>)<br class="xooki-br"/>- FIX: Module inheritance sometimes fails to locate parent descriptor in deliver process (<a href="https://issues.apache.org/jira/browse/IVY-1248">IVY-1248</a>)<br class="xooki-br"/>- FIX: <cachefileset> on an empty configuration produces a very slow-to-evaluate fileset (<a href="https://issues.apache.org/jira/browse/IVY-1272">IVY-1272</a>)<br class="xooki-br"/>- FIX: Ivy does not apply overridden properties to m2 parent dependency versions specified using properties (<a href="https://issues.apache.org/jira/browse/IVY-1299">IVY-1299</a>)<br class="xooki-br"/>- FIX: Ivy does not apply overridden properties to m2 parent dependency versions specified using dependencyManagement properties (<a href="https://issues.apache.org/jira/browse/IVY-1301">IVY-1301</a>)<br class="xooki-br"/>
+ 		</div><!-- main -->
+		</td>
+	</tr>
+</table>
+
+<table id="footer-menu" summary="Navigation elements." border="0"
+	cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td align="center" valign="middle">
+		<div class="primary-links">:: 
+			<a href="index.html">Home</a> ::
+			<a href="reference.html">Reference</a> ::
+			<a href="tutorial.html">Tutorials</a> ::
+			<a href="dev.html">Developer's doc</a> ::
+		</div>
+		</td>
+	</tr>
+</table>
+
+
+
+<div id="footer-message" class="footer">
+    <hr />
+    <i>Copyright &#169; 2013 The Apache Software Foundation, Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a>.</i><br />
+    <i>Apache Ivy, Apache Ant, Ivy, Ant, Apache, the Apache Ivy logo, the Apache Ant logo and the Apache feather logo are trademarks of The Apache Software Foundation.</i><br />
+    <i>All other marks mentioned may be trademarks or registered trademarks of their respective owners. </i>
+</div>
+
+
+
+</div><!-- body -->
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="opaque_blue">#00f</color>
+<style name="BackgroundImage.Fullscreen" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+    <item name="android:windowBackground">@drawable/loading</item>
+    <item name="android:windowNoTitle">true</item>
+</style>
+</resources>

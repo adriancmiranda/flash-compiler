@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Plug-in Flash</string>
+   <string name="audio_files">Arquivos de áudio</string>
+   <string name="image_files">Arquivos de imagens</string>
+   <string name="video_files">Arquivos de vídeo</string>
+   <string name="empty_file_list">Nenhum arquivo foi encontrado.</string>
+   <string name="button_ok">OK</string>
+   <string name="button_cancel">Cancelar</string>
+   <string name="button_continue">Continuar</string>
+   <string name="file_save_as">Salvar como:</string>
+   <string name="file_download">Download</string>
+   <string name="file_upload">Carregar</string>
+   <string name="button_yes">Sim</string>
+   <string name="button_no">Não</string>
+   <string name="app_name">Aviso de segurança</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">Aviso de segurança</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">Confiar na sessão</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">Cancelar</string>
+   <string name="IDA_CURL_INTERFACE_OK">OK</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">O servidor ao qual o aplicativo está se conectando não foi verificado.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">Confiar sempre</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>Servidor:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">Deseja confiar neste servidor e estabelecer a conexão?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">O nome do servidor (%1$s) não corresponde ao nome no certificado (%2$s). Deseja confiar neste servidor e continuar?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>Exibir certificado</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>Detalhes do certificado</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>Certificado:</b>\n
+					\n
+            		<b><u>Emitido para:</u></b>\n
+            		Nome comum:\n
+            		%1$s\n
+            		\n
+            		Organização:\n
+            		%2$s\n
+            		\n
+            		Unidade organizacional:\n
+            		%3$s\n
+            		\n
+            		<b><u>Emitido por:</u></b>\n
+            		Nome comum:\n
+            		%4$s\n
+            		\n
+            		Organização:\n
+            		%5$s\n
+            		\n
+            		Unidade organizacional:\n
+            		%6$s\n
+            		\n
+            		<b><u>Validade:</u></b>\n 
+            		Emitido em:\n
+            		%7$s\n
+            		\n
+            		Expira em:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: aguardando conexão</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: ouvindo na porta</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>O aplicativo AIR está aguardando a conexão pelo depurador. Isso pode levar até %d segundos.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">Não é possível se conectar com o depurador.<u></u></string>
+</resources>

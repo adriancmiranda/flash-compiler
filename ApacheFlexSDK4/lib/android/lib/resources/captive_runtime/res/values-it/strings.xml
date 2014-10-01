@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Plugin Flash</string>
+   <string name="audio_files">File audio</string>
+   <string name="image_files">File di immagine</string>
+   <string name="video_files">File video</string>
+   <string name="empty_file_list">Nessun file trovato.</string>
+   <string name="button_ok">OK</string>
+   <string name="button_cancel">Annulla</string>
+   <string name="button_continue">Continua</string>
+   <string name="file_save_as">Salva con nome:</string>
+   <string name="file_download">Scarica</string>
+   <string name="file_upload">Carica</string>
+   <string name="button_yes">Sì</string>
+   <string name="button_no">No</string>
+   <string name="app_name">Avviso di sicurezza</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">Avviso di sicurezza</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">Attendibile per la sessione</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">Annulla</string>
+   <string name="IDA_CURL_INTERFACE_OK">OK</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">Il server al quale l\'applicazione si sta connettendo non è verificato.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">Considera sempre attendibile</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>Server:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">Considerare attendibile questo server ed effettuare la connessione?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">Il nome del server (%1$s) non corrisponde al nome sul certificato (%2$s). Volete considerare il server attendibile e continuare?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>Visualizza certificato</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>Dettagli certificato</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>Certificato:</b>\n
+					\n
+            		<b><u>Rilasciato a:</u></b>\n
+            		Nome comune:\n
+            		%1$s\n
+            		\n
+            		Organizzazione:\n
+            		%2$s\n
+            		\n
+            		Unità organizzativa:\n
+            		%3$s\n
+            		\n
+            		<b><u>Emesso da:</u></b>\n
+            		Nome comune:\n
+            		%4$s\n
+            		\n
+            		Organizzazione:\n
+            		%5$s\n
+            		\n
+            		Unità organizzativa:\n
+            		%6$s\n
+            		\n
+            		<b><u>Validità:</u></b>\n 
+            		Emesso il:\n
+            		%7$s\n
+            		\n
+            		Scadenza:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: attesa connessione</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: ascolto sulla porta</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>L\'applicazione AIR è in attesa della connessione del debugger. L\'operazione potrebbe richiedere fino a %d secondi.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO"><u>Impossibile connettere il debugger.</u></string>
+</resources>

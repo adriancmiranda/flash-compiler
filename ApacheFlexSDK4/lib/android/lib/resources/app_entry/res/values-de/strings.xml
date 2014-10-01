@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="app_name">APP_NAME</string>
+   <string name="app_version">APP_VERSION</string>
+   <string name="button_install">Installieren</string>
+   <string name="button_exit">Beenden</string>
+   <string name="title_adobe_air"><b>Adobe® AIR®</b></string>
+   <string name="text_runtime_required">"Für diese Anwendung ist Adobe AIR erforderlich.\n\n"</string>
+   <string name="text_install_runtime">"Installieren Sie zum Fortfahren Adobe AIR auf diesem Gerät."</string>
+   <string name="text_runtime_on_external_storage">"Installieren Sie Adobe AIR auf diesem Gerät oder beenden Sie diese Anwendung und setzen Sie die SD-Karte mit Adobe AIR ein, bevor Sie die Anwendung neu starten."</string>
+</resources>

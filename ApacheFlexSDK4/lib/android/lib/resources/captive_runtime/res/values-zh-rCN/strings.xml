@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Flash 插件</string>
+   <string name="audio_files">音频文件</string>
+   <string name="image_files">图像文件</string>
+   <string name="video_files">视频文件</string>
+   <string name="empty_file_list">未找到文件。</string>
+   <string name="button_ok">确定</string>
+   <string name="button_cancel">取消</string>
+   <string name="button_continue">继续</string>
+   <string name="file_save_as">另存为:</string>
+   <string name="file_download">下载</string>
+   <string name="file_upload">上传</string>
+   <string name="button_yes">是</string>
+   <string name="button_no">否</string>
+   <string name="app_name">安全警告</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">安全警告</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">信任会话</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">取消</string>
+   <string name="IDA_CURL_INTERFACE_OK">确定</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">应用程序要连接的服务器 未经过验证。</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">始终信任</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>服务器:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">是否信任此服务器并进行连接？</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">服务器的名称 (%1$s) 与证书上的名称 (%2$s) 不符。是否信任此服务器并继续?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>查看证书</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>证书详细信息</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>证书:</b>\n
+					\n
+            		<b><u>颁发对象:</u></b>\n
+            		公共名称:\n
+            		%1$s\n
+            		\n
+            		组织:\n
+            		%2$s\n
+            		\n
+            		组织单位:\n
+            		%3$s\n
+            		\n
+            		<b><u>颁发者:</u></b>\n
+            		公共名称:\n
+            		%4$s\n
+            		\n
+            		组织:\n
+            		%5$s\n
+            		\n
+            		组织单位:\n
+            		%6$s\n
+            		\n
+            		<b><u>有效性:</u></b>\n 
+            		颁发时间:\n
+            		%7$s\n
+            		\n
+            		到期时间:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: 正在等待连接</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: 正在侦听端口</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>AIR 应用程序正在等待调试器建立连接。最多可能需要 %d 秒钟。</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">无法连接到调试器。<u></u></string>
+</resources>

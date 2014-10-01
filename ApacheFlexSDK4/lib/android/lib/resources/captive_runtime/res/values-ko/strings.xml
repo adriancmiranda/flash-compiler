@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Flash 플러그인</string>
+   <string name="audio_files">오디오 파일</string>
+   <string name="image_files">이미지 파일</string>
+   <string name="video_files">비디오 파일</string>
+   <string name="empty_file_list">파일이 없습니다.</string>
+   <string name="button_ok">확인</string>
+   <string name="button_cancel">취소</string>
+   <string name="button_continue">계속</string>
+   <string name="file_save_as">다른 이름으로 저장:</string>
+   <string name="file_download">다운로드</string>
+   <string name="file_upload">업로드</string>
+   <string name="button_yes">예</string>
+   <string name="button_no">아니요</string>
+   <string name="app_name">보안 경고</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">보안 경고</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">세션 신뢰</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">취소</string>
+   <string name="IDA_CURL_INTERFACE_OK">확인</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">응용 프로그램이 연결되어 있는 서버가 확인되지 않았습니다.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">항상 신뢰</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>서버:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">이 서버를 신뢰할 수 있는 대상으로 확인하고 연결하시겠습니까?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">서버 이름(%1$s)이 인증서에 있는 이름(%2$s)과 일치하지 않습니다. 이 서버를 신뢰하고 계속하시겠습니까?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>인증서 보기</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>인증서  세부 사항</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>인증서:</b>\n
+					\n
+            		<b><u>발급 대상:</u></b>\n
+            		일반 이름:\n
+            		%1$s\n
+            		\n
+            		조직:\n
+            		%2$s\n
+            		\n
+            		부서:\n
+            		%3$s\n
+            		\n
+            		<b><u>발급 주체:</u></b>\n
+            		일반 이름:\n
+            		%4$s\n
+            		\n
+            		조직:\n
+            		%5$s\n
+            		\n
+            		부서:\n
+            		%6$s\n
+            		\n
+            		<b><u>유효성:</u></b>\n 
+            		발급 날짜:\n
+            		%7$s\n
+            		\n
+            		만료 날짜:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: 연결 대기 중</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: 포트에서 수신 대기 중</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>AIR 응용 프로그램에서 디버거가 연결을 설정하기를 기다리고 있습니다. 연결하는 데 최대 %d초가 소요될 수 있습니다.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">디버거에 연결할 수 없습니다.<u></u></string>
+</resources>

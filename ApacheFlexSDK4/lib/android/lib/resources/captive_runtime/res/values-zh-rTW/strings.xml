@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Flash 外掛程式</string>
+   <string name="audio_files">音效檔</string>
+   <string name="image_files">影像檔</string>
+   <string name="video_files">視訊檔</string>
+   <string name="empty_file_list">找不到任何檔案。</string>
+   <string name="button_ok">確定</string>
+   <string name="button_cancel">取消</string>
+   <string name="button_continue">繼續</string>
+   <string name="file_save_as">另存新檔:</string>
+   <string name="file_download">下載</string>
+   <string name="file_upload">上傳</string>
+   <string name="button_yes">是</string>
+   <string name="button_no">否</string>
+   <string name="app_name">安全性警告</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">安全性警告</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">信任工作階段</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">取消</string>
+   <string name="IDA_CURL_INTERFACE_OK">確定</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">此應用程式所連線的伺服器 未經驗證。</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">永遠信任</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>伺服器:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">是否要信任此伺服器並進行連線?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">伺服器名稱 (%1$s) 不符合憑證上的名稱 (%2$s)。是否要信任此伺服器並繼續?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>檢視憑證</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>憑證詳細資料</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>憑證:</b>\n
+					\n
+            		<b><u>核發對象:</u></b>\n
+            		一般名稱:\n
+            		%1$s\n
+            		\n
+            		組織:\n
+            		%2$s\n
+            		\n
+            		組織單位:\n
+            		%3$s\n
+            		\n
+            		<b><u>發行者:</u></b>\n
+            		一般名稱:\n
+            		%4$s\n
+            		\n
+            		組織:\n
+            		%5$s\n
+            		\n
+            		組織單位:\n
+            		%6$s\n
+            		\n
+            		<b><u>有效性:</u></b>\n 
+            		核發時間:\n
+            		%7$s\n
+            		\n
+            		到期時間:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: 等待連線</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: 偵聽連接埠</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>AIR 應用程式正在等待除錯程式進行連線。這最多需要 %d 秒鐘。</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">無法連線至除錯程式。<u></u></string>
+</resources>

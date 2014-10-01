@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Flash Eklentisi</string>
+   <string name="audio_files">Ses Dosyaları</string>
+   <string name="image_files">Görüntü Dosyaları</string>
+   <string name="video_files">Video Dosyaları</string>
+   <string name="empty_file_list">Hiçbir dosya bulunamadı.</string>
+   <string name="button_ok">Tamam</string>
+   <string name="button_cancel">İptal</string>
+   <string name="button_continue">Devam Et</string>
+   <string name="file_save_as">Farklı Kaydet:</string>
+   <string name="file_download">İndir</string>
+   <string name="file_upload">Yükle</string>
+   <string name="button_yes">Evet</string>
+   <string name="button_no">Hayır</string>
+   <string name="app_name">Güvenlik Uyarısı</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">Güvenlik Uyarısı</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">Oturum için Güven</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">İptal</string>
+   <string name="IDA_CURL_INTERFACE_OK">Tamam</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">Uygulamanın bağlandığı sunucu doğrulanmamış.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">Her Zaman Güven</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>Sunucu:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">Bu sunucuya güvenmek ve bağlantı kurmak istiyor musunuz?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">Sunucunun adı (%1$s) sertifikanın üzerindeki adla (%2$s) eşleşmiyor. Bu sunucuya güvenilip devam edilsin mi?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>Sertifikayı Görüntüle</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>Sertifika Ayrıntıları</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>Sertifika:</b>\n
+					\n
+            		<b><u>Alan:</u></b>\n
+            		Yaygın Ad:\n
+            		%1$s\n
+            		\n
+            		Kuruluş:\n
+            		%2$s\n
+            		\n
+            		Kuruluş Birimi:\n
+            		%3$s\n
+            		\n
+            		<b><u>Veren:</u></b>\n
+            		Yaygın Ad:\n
+            		%4$s\n
+            		\n
+            		Kuruluş:\n
+            		%5$s\n
+            		\n
+            		Kuruluş Birimi:\n
+            		%6$s\n
+            		\n
+            		<b><u>Geçerlilik:</u></b>\n 
+            		Verilme Tarihi:\n
+            		%7$s\n
+            		\n
+            		Sona Erme Tarihi:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: Bağlantı Bekleniyor</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: Bağlantı Noktası Dinleniyor</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>AIR uygulaması hata ayıklayıcının bir bağlantı kurmasını bekliyor. Bu %d saniye kadar sürebilir.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">Hata ayıklayıcıya bağlanılamıyor.<u></u></string>
+</resources>

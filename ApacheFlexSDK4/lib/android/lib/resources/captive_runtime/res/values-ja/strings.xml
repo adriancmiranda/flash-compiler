@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Flash プラグイン</string>
+   <string name="audio_files">オーディオファイル</string>
+   <string name="image_files">イメージファイル</string>
+   <string name="video_files">ビデオファイル</string>
+   <string name="empty_file_list">ファイルが見つかりませんでした。</string>
+   <string name="button_ok">OK</string>
+   <string name="button_cancel">キャンセル</string>
+   <string name="button_continue">続行</string>
+   <string name="file_save_as">名前を付けて保存 :</string>
+   <string name="file_download">ダウンロード</string>
+   <string name="file_upload">アップロード</string>
+   <string name="button_yes">はい</string>
+   <string name="button_no">いいえ</string>
+   <string name="app_name">セキュリティの警告</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">セキュリティの警告</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">セッションを信用</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">キャンセル</string>
+   <string name="IDA_CURL_INTERFACE_OK">Ok</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">アプリケーションが接続しているサーバーは 未証明です。</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">常に信頼する</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>サーバー :</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">このサーバーを信用して接続を実行しますか？</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">サーバーの名前 (%1$s) が、証明書上の名前 (%2$s) と一致しません。このサーバーを信頼して続行しますか？</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>証明書を表示</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>証明書詳細</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>証明書 :</b>\n
+					\n
+            		<b><u>発行先 :</u></b>\n
+            		共通名 :\n
+            		%1$s\n
+            		\n
+            		所属 :\n
+            		%2$s\n
+            		\n
+            		部署名 :\n
+            		%3$s\n
+            		\n
+            		<b><u>発行元 :</u></b>\n
+            		共通名 :\n
+            		%4$s\n
+            		\n
+            		所属 :\n
+            		%5$s\n
+            		\n
+            		部署名 :\n
+            		%6$s\n
+            		\n
+            		<b><u>有効性 :</u></b>\n 
+            		発行日 :\n
+            		%7$s\n
+            		\n
+            		有効期限 :\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR : 接続されるのを待っています</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR : ポートをリッスンしています</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>AIR アプリケーションはデバッガーによって接続されるのを待っています。最長で %d 秒かかる場合があります。</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">デバッガーに接続できません。<u></u></string>
+</resources>

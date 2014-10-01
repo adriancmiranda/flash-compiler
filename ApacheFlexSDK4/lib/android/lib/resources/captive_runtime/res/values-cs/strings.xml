@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Zásuvný modul Flash</string>
+   <string name="audio_files">Zvukové soubory</string>
+   <string name="image_files">Obrazové soubory</string>
+   <string name="video_files">Soubory videa</string>
+   <string name="empty_file_list">Nebyly nalezeny žádné soubory.</string>
+   <string name="button_ok">OK</string>
+   <string name="button_cancel">Storno</string>
+   <string name="button_continue">Pokračovat</string>
+   <string name="file_save_as">Uložit jako:</string>
+   <string name="file_download">Stáhnout</string>
+   <string name="file_upload">Odeslat na server</string>
+   <string name="button_yes">Ano</string>
+   <string name="button_no">Ne</string>
+   <string name="app_name">Upozornění zabezpečení</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">Upozornění zabezpečení</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">Důvěřovat pro tuto relaci</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">Storno</string>
+   <string name="IDA_CURL_INTERFACE_OK">OK</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">Server, k němuž se aplikace připojuje, není ověřen.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">Vždy důvěřovat</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>Server:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">Chcete tomuto serveru důvěřovat a připojit se k němu?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">Název serveru (%1$s) neodpovídá názvu na certifikátu (%2$s). Chcete důvěřovat tomuto serveru a pokračovat?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>Zobrazit certifikát</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>Podrobnosti certifikátu</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>Certifikát:</b>\n
+					\n
+            		<b><u>Vydán pro:</u></b>\n
+            		Obvyklý název:\n
+            		%1$s\n
+            		\n
+            		Organizace:\n
+            		%2$s\n
+            		\n
+            		Organizační jednotka:\n
+            		%3$s\n
+            		\n
+            		<b><u>Vydal(a):</u></b>\n
+            		Obvyklý název:\n
+            		%4$s\n
+            		\n
+            		Organizace:\n
+            		%5$s\n
+            		\n
+            		Organizační jednotka:\n
+            		%6$s\n
+            		\n
+            		<b><u>Platnost:</u></b>\n 
+            		Vydáno:\n
+            		%7$s\n
+            		\n
+            		Platnost vyprší dne:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: Čekání na připojení</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: Naslouchání na portu</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>Aplikace AIR čeká na debugger, aby mohla navázat připojení. To může trvat až %d sekund.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">Nelze se připojit k debuggeru.<u></u></string>
+</resources>

@@ -1,0 +1,11 @@
+Under the terms of the GNU Library General Public License, you are permitted to make changes to the
+Libglib, Libintl, Libplist, and Libiconv  libraries for your own use, and Adobe delivers with the 
+installed Adobe software the object code that links with the Libglib, Libintl, Libplist, and Libiconv 
+libraries, as required by the GNU LGPL. 
+
+You are also permitted to reverse engineer only those portions of the Adobe software that link with 
+and utilize the Libglib, Libintl, Libplist, and Libiconv libraries, and only to the extent necessary 
+to debug your changes to the Libglib, Libintl, Libplist, and Libiconv libraries. Any other 
+reverse engineering, decompiling or use of utilities or tools to trace, probe, or reveal Adobe software
+and trade secrets embodied therein, is expressly prohibited. Adobe software contains valuable 
+trade secrets and employs methods protected by patents of Adobe Software Incorporated.

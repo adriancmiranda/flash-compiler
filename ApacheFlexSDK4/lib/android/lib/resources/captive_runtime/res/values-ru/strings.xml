@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources>
+   <string name="flash_browser_plugin">Подключаемый модуль Flash</string>
+   <string name="audio_files">Файлы аудио</string>
+   <string name="image_files">Файлы изображений</string>
+   <string name="video_files">Файлы видео</string>
+   <string name="empty_file_list">Файлы не найдены.</string>
+   <string name="button_ok">OK</string>
+   <string name="button_cancel">Отмена</string>
+   <string name="button_continue">Продолжить</string>
+   <string name="file_save_as">Сохранить как:</string>
+   <string name="file_download">Загрузить</string>
+   <string name="file_upload">Отправить</string>
+   <string name="button_yes">Да</string>
+   <string name="button_no">Нет</string>
+   <string name="app_name">Предупреждение системы безопасности</string>
+   <string name="IDA_CURL_SSL_SECURITY_WARNING">Предупреждение системы безопасности</string>
+   <string name="IDA_CURL_INTERFACE_THISSESS">Доверять в этом сеансе</string>
+   <string name="IDA_CURL_INTERFACE_NOSESS">Отмена</string>
+   <string name="IDA_CURL_INTERFACE_OK">OK</string>
+   <string name="IDA_CURL_INTERFACE_UNVERSER_2">Сервер, к которому подключается приложение, не проверен.</string>
+   <string name="IDA_CURL_INTERFACE_ALLSESS">Всегда доверять</string>
+   <string name="IDA_CURL_INTERFACE_SERVER"><b>Сервер:</b></string>
+   <string name="IDA_CURL_INTERFACE_TRUSTSER">Доверять этому серверу и установить соединение?</string>
+   <string name="IDA_CURL_INTERFACE_CNAME_MSG">Имя сервера (%1$s) не соответствует имени в сертификате (%2$s). Доверять этому серверу и продолжить?</string>
+   <string name="IDA_CURL_INTERFACE_VIEW_CERT"><u>Просмотр сертификата</u></string>
+   <string name="IDA_CURL_INTERFACE_CERTIFICATE_DETAILS_TITLE"><u>Данные сертификата</u></string>
+   <string name="IDA_CERTIFICATE_DETAILS"><b>Сертификат:</b>\n
+					\n
+            		<b><u>Получатель:</u></b>\n
+            		Общее имя:\n
+            		%1$s\n
+            		\n
+            		Организация:\n
+            		%2$s\n
+            		\n
+            		Организационное подразделение:\n
+            		%3$s\n
+            		\n
+            		<b><u>Кем выдан:</u></b>\n
+            		Общее имя:\n
+            		%4$s\n
+            		\n
+            		Организация:\n
+            		%5$s\n
+            		\n
+            		Организационное подразделение:\n
+            		%6$s\n
+            		\n
+            		<b><u>Действительность:</u></b>\n 
+            		Дата выдачи:\n
+            		%7$s\n
+            		\n
+            		Дата окончания действия:\n
+            		%8$s
+   </string>
+   <string name="IDA_APP_WAITING_DEBUGGER_TITLE"><u>Adobe AIR: ожидание подключения</u></string>
+   <string name="IDA_APP_UNABLE_LISTEN_ERROR"><u>Adobe AIR: прослушивание порта</u></string>
+   <string name="IDA_APP_WAITING_DEBUGGER_WARNING"><u>Приложение AIR ожидает подключения отладчика. Это может занять до %d с.</u></string>
+   <string name="IDA_APP_DEBUGGER_TIMEOUT_INFO">Не удается подключиться к отладчику.<u></u></string>
+</resources>
