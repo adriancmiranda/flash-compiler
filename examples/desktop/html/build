@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+# URL: https://github.com/adriancmiranda/flash-compiler
 # Title: AIR Project Compiler
 # Usage: ./build -dmg -release
 # Copyright: 2013 Adrian C. Miranda
@@ -66,31 +67,33 @@ ___="${Red}$(printf %81s |tr " " "~")${NC}";
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # @usage: localhost [file/directory/port/nothing]
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function localhost {
-	local qs="";
-	local url="$1";
-	local mode="$MODE";
-	local ipl="$(ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1' | sed "1 d")";
-	ipl="${ipl:-localhost}";
-
-	if [[ "$mode" = "debug" ]]; then
-	# Inserts parameters
-		qs="?debug=1";
+function localhost() {
+	local QS="";
+	local IPLOCAL="$(ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1' | sed "1 d" | head -n1)";
+	local LOCALHOST="$IPLOCAL";
+	local DIRECTORY="${1:-pwd}";
+	local PORT='^[0-9]+$';
+	local MODE="$MODE";
+	if [[ -z $LOCALHOST ]]; then
+	# Doens't have a valid IP
+		LOCALHOST='localhost';
 	fi
-
-	if [[ "$url" =~ ^[0-9]+$ ]]; then
+	if [[ "$MODE" = "debug" ]]; then
+	# Inserts parameters
+		QS="?debug=1";
+	fi
+	LOCALHOST="http://$LOCALHOST/~$USER";
+	if [[ $1 =~ $PORT ]]; then
 	# Launch a local web server from specific port
-		open "http://localhost:$url$qs";
-
-	elif [[ -d $WORKSPACE && $(echo "$url" | grep -o "$WORKSPACE.*") ]]; then
+		open "http://localhost:$1$QS";
+	elif [ `echo "$DIRECTORY" | grep -o "$WORKSPACE.*"` ]; then
 	# Launch a local web server from workspace
-		AMBIENT=`echo "$url" | sed 's,'"$WORKSPACE"','"http://$ipl"','`;
-		open "$AMBIENT$qs";
-
+		AMBIENT=`echo "$DIRECTORY" | sed 's,'"$WORKSPACE"','"$LOCALHOST"','`;
+		open "$AMBIENT/$QS";
 	else
 	# Launch a local web server from a directory if isn't workspace folder
-		python -m SimpleHTTPServer 8080 &>/dev/null &
-		open "http://$ipl:8080/$(basename ${1##*/})$qs";
+		python -m SimpleHTTPServer 8080 &> /dev/null &
+		open "http://localhost:8080/$(basename ${1##*/})$QS";
 	fi
 }
 
@@ -186,7 +189,7 @@ function usage {
 	printf "${Red}[package]${NC}\n";
 	printf "   -dmg ${Gre}(✓ Apple disk images)${NC}\n";
 	printf "   -app ${Gre}(✓ Application bundle)${NC}\n";
-	printf "   -apk ${Gre}(✓ Android application package file)${NC}\n";
+	printf "   -apk ${Gre}(${Red}✖ ${Gre}Android application package file)${NC}\n";
 	printf "   -ipa ${Gre}(${Red}✖ ${Gre}iOS application)${NC}\n";
 	printf "   -air ${Gre}(✓ Adobe Integrated Runtime)${NC}\n";
 	printf "   -exe ${Gre}(${Red}✖ ${Gre}Windows Executable file)${NC}\n";
@@ -355,20 +358,10 @@ if [[ ! -x "$FLEX_SDK/bin/mxmlc" ]]; then
 	exit 1;
 else
 	if [[ -x "$FLEX_SDK/bin/fcshctl" ]]; then
-		export FCSHCTL_AUTO_INCREMENTAL=1;
-		mxmlc="$FLEX_SDK/bin/fcshctl mxmlc -strict=true ";
+		mxmlc="$FLEX_SDK/bin/fcshctl mxmlc";
 	else
 		mxmlc="$FLEX_SDK/bin/mxmlc";
 	fi
-fi
-
-# compc
-if [[ ! -x "$FLEX_SDK/bin/compc" ]]; then
-	# if file doensn't exists or not is executable.
-	printf "${ERROR}ERROR:${NC} compc not found.\n";
-	exit 1;
-else
-	compc="$FLEX_SDK/bin/compc";
 fi
 
 # frameworks
@@ -760,11 +753,25 @@ function generateAIR {
 			exit 1;
 		fi
 
-		# Startup config variable
-		local CONFIG="";
+		# Keystore config
+		local CONFIG="-keystore $CERTIFICATE";
+		CONFIG="$CONFIG -storepass $PASSWORD";
+
+		# Application bundle
+		if [[ "$PKG" = "app" ]]; then
+			CONFIG="$CONFIG -target bundle";
+		fi
+
+		# Apple disk image
+		if [[ "$PKG" = "dmg" ]]; then
+			CONFIG="$CONFIG -target native";
+		fi
 
 		# Android application package file
 		if [[ "$PKG" = "apk" ]]; then
+			CONFIG="$CONFIG -platformsdk $ANDROID_SDK";
+			CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
+
 			# A package produced with this target can only be installed on an Android device, not an emulator.
 			if [[ "$MODE" = "release" ]]; then
 				CONFIG="$CONFIG -target apk";
@@ -785,6 +792,9 @@ function generateAIR {
 
 		# iOS application
 		if [[ "$PKG" = "ipa" ]]; then
+			CONFIG="$CONFIG -platformsdk $IOS_SDK";
+			CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
+
 			# An iOS package for Apple App store distribution.
 			if [[ "$MODE" = "release" ]]; then
 				CONFIG="$CONFIG -target ipa-app-store";
@@ -804,24 +814,7 @@ function generateAIR {
 
 			# An debug package... errr... more faster.
 			CONFIG="$CONFIG -target ipa-debug-interpreter-simulator";
-			CONFIG="$CONFIG -platformsdk $IOS_SDK";
-			CONFIG="$CONFIG -provisioning-profile *.mobileprovision";
 			CONFIG="$CONFIG -connect";
-		fi
-
-		# Keystore config
-		CONFIG="$CONFIG -storetype pkcs12";
-		CONFIG="$CONFIG -keystore $CERTIFICATE";
-		CONFIG="$CONFIG -storepass $PASSWORD";
-
-		# Application bundle
-		if [[ "$PKG" = "app" ]]; then
-			CONFIG="$CONFIG -target bundle";
-		fi
-
-		# Apple disk image
-		if [[ "$PKG" = "dmg" ]]; then
-			CONFIG="$CONFIG -target native";
 		fi
 
 		# Package
@@ -845,8 +838,7 @@ function generateAIR {
 		printf "\n=> Packaging application\n";
 		local PTIME=0;
 		local startTime=`eval date +%s`;
-		echo "adt -package $CONFIG";
-		$adt -package $CONFIG && {
+		$adt -package -storetype pkcs12 $CONFIG && {
 
 			local endTime=`eval date +%s`;
 			let PTIME=($endTime - $startTime);
@@ -1007,18 +999,15 @@ function retrieveResources {
 # @usage: ./build -help
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Prepend info
-printf "     .~~^~^~^~^~^~^~~~.\n";
-printf "    (  Boy this thing  )\n";
-printf "     (    is slow.    )\n";
-printf "      \`~u~u~u~u~u~u~~'\n";
-printf "      O             O\n";
-printf "     O               O\n";
-printf "      o             o\n";
-printf "       \` .     _ . '\n";
-printf "          ~0  (_|\n";
-printf "         |(_~|^~~|\n";
-printf "         TT/_ T\"T\n";
-printf "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
+printf "                      \n";
+printf "   /     '      /  /  \n";
+printf "  /__      ___ (  /   \n";
+printf "  \\--\`-'-|\`---\\ | \n";
+printf "   |' _/   \` __/ /   \n";
+printf "   \'._  W    ,--\'   \n";
+printf "      |_:_._/         \n";
+printf "                      \n";
+printf "x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x~x\n";
 printf "${BCya}Running $SYM symlink on GNU bash $BASH_VERSION${NC}\n";
 printf "${BCya}From:${NC} $PWD\n";
 printf "${BCya}Origin:${NC} $ABS\n";
@@ -1098,11 +1087,6 @@ if [[ ! -z "${PKG+xxx}" && ! -z "$PKG" ]]; then
 elif [[ ! -z "${OPTS+xxx}" && ! -z "$OPTS" ]]; then
 	if [[ "$OPTS" = "preview" ]]; then
 		open "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
-		#printf "Opening IPA in iTunes ...";
-		# osascript -e 'tell application "iTunes" to update "mydevice"';
-		# "$adt" -uninstallApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$ID";
-		# "$adt" -installApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -package "$OUTPUT.$BOOT_OUTPUT_EXTENSION";
-		# "$adt" -launchApp -platform "ios" -platformsdk "$IOS_SDK" -device "ios-simulator" -appid "$ID";
 	elif [[ "$OPTS" = "server" || "$OPTS" = "launch" ]]; then
 		localhost "$OUTPUT_PATH";
 	elif [[ "$OPTS" = "hml" ]]; then
