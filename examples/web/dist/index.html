@@ -69,12 +69,18 @@
             function shareOnFacebook(name, description) {
                 FB.ui({
                       method: 'feed'
+                    , redirect_uri: BASEURL,
                     , link: BASEURL + '/share.html'
                     , picture: BASEURL + '/og.jpg'
                     , name: (name || '')
                     , caption: '<url:share>'
                     , description: (description || '')
-                });
+                }, function (response) {
+					var player = getFlashPlayer('flash-content');
+					if (player) {
+						player.postResult(response);
+					}
+				});
             }
 
             function embedFlashPlayer() {
