@@ -79,15 +79,15 @@ Contributing
 <sub>[▴ Back to top](#)</sub>
 
 <!-- images -->
-[flash_compiler_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/flash-compiler.png "Flash Compiler"
-[android_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-android.png "Android SDK"
-[ios_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-ios.png "iOS SDK" 
-[apache_flex_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-flex.png "Apache Flex SDK"
-[adobe_air_sdk_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-air.png "Adobe AIR SDK"
-[grunt_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-grunt.gif "Grunt"
-[gulp_image]: https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-gulp.png "Gulp"
-[bower_image]: https://raw2.github.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-bower.gif "Bower"
-[jam_image]: https://raw.githubusercontent.com/adriancmiranda/flash-compiler/master/examples/desktop/html/source/application/images/bullet-jam.png "JAM"
+[flash_compiler_image]: http://i.imgur.com/hw5ZUvj.png "Flash Compiler"
+[android_sdk_image]: http://i.imgur.com/6OuM6Lc.png "Android SDK"
+[ios_sdk_image]: http://i.imgur.com/3a4qovu.png "iOS SDK" 
+[apache_flex_sdk_image]: http://i.imgur.com/DjY9iNb.png "Apache Flex SDK"
+[adobe_air_sdk_image]: http://i.imgur.com/l8MVbPd.png "Adobe AIR SDK"
+[grunt_image]: http://i.imgur.com/MzT8Qe5.gif "Grunt"
+[gulp_image]: http://i.imgur.com/7beqL1W.png "Gulp"
+[bower_image]: http://i.imgur.com/ALKE44g.gif "Bower"
+[jam_image]: http://i.imgur.com/aG8ULHu.png "JAM"
 
 <!-- links -->
 [gh_page]: http://adriancmiranda.github.io/flash-compiler/ "flash-compiler"
