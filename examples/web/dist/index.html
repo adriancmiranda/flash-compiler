@@ -1,160 +1,160 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta property="og:title" content=""/>
-    <meta property="og:description" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:image:type" content="image/jpeg"/>
-    <meta property="og:image:width" content="400"/>
-    <meta property="og:image:height" content="300"/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:locale" content="pt_BR"/>
-    <meta property="og:type" content="website"/>
-    <title>Organizr</title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="styles/skin.css"/>
+	<meta charset="UTF-8" />
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:image:type" content="image/jpeg"/>
+	<meta property="og:image:width" content="400"/>
+	<meta property="og:image:height" content="300"/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:locale" content="pt_BR"/>
+	<meta property="og:type" content="website"/>
+	<title>Organizr</title>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="stylesheet" href="styles/skin.css"/>
 </head>
 <body>
-    <!-- The Facebook JavaScript SDK requires the fb-root element to be present in the page. -->
-    <div id="fb-root"></div>
-    
-    <!-- Application -->
-    <div class="app">
-        <!-- Flash Player -->
-        <div id="flash-content">
-        </div>
-    </div>
-    
-    <!-- @see https://code.google.com/p/swfobject/ -->
-    <script type="text/javascript" src="scripts/swfobject.min.js"></script>
-    
-    <!-- @see http://www.asual.com/swfaddress/ -->
-    <script type="text/javascript" src="scripts/swfaddress.min.js"></script>
-    
-    <!-- @see https://developers.facebook.com/docs/javascript/quickstart/ -->
-    <script>
-        var DEV = 'XXXXXXXXXXXXXXXX';
-        var HML = 'XXXXXXXXXXXXXXXX';
-        var PRD = 'XXXXXXXXXXXXXXX';
-        window.fbAsyncInit = function() {
-            FB.init({
-                  appId: DEV
-                , status: true
-                , xfbml: true
-            });
-        };
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = '//connect.facebook.net/en_US/all.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    
-    <!-- Flash Application Control -->
-    <script>
-        (function (window, document, AM, undefined) {
+	<!-- The Facebook JavaScript SDK requires the fb-root element to be present in the page. -->
+	<div id="fb-root"></div>
+	
+	<!-- Application -->
+	<div class="app">
+		<!-- Flash Player -->
+		<div id="flash-content">
+		</div>
+	</div>
+	
+	<!-- @see https://code.google.com/p/swfobject/ -->
+	<script type="text/javascript" src="scripts/swfobject.min.js"></script>
+	
+	<!-- @see http://www.asual.com/swfaddress/ -->
+	<script type="text/javascript" src="scripts/swfaddress.min.js"></script>
+	
+	<!-- @see https://developers.facebook.com/docs/javascript/quickstart/ -->
+	<script>
+		var DEV = 'XXXXXXXXXXXXXXXX';
+		var HML = 'XXXXXXXXXXXXXXXX';
+		var PRD = 'XXXXXXXXXXXXXXX';
+		window.fbAsyncInit = function() {
+			FB.init({
+				  appId: DEV
+				, status: true
+				, xfbml: true
+			});
+		};
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = '//connect.facebook.net/en_US/all.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	
+	<!-- Flash Application Control -->
+	<script>
+		(function (window, document, AM, undefined) {
 
-            var PROTOCOL = (document.location.protocol || '');
-            var HOST = (document.location.host || '');
-            var PORT = (document.location.port || '').split(':').join('');
-            var PATHNAME = (document.location.pathname || '').split('/').slice(0, -1).join('/');
-            var QUERY = window.location.toString().slice(window.location.toString().indexOf('?'));
-            var BASEURL = (PROTOCOL +'//'+ HOST + (PORT ? ':'+PORT : '') + PATHNAME);
-            
-            // @see https://developers.facebook.com/docs/reference/dialogs/feed/
-            function shareOnFacebook(name, description) {
-                FB.ui({
-                      method: 'feed'
-                    , redirect_uri: BASEURL,
-                    , link: BASEURL + '/share.html'
-                    , picture: BASEURL + '/og.jpg'
-                    , name: (name || '')
-                    , caption: '<url:share>'
-                    , description: (description || '')
-                }, function (response) {
+			var PROTOCOL = (document.location.protocol || '');
+			var HOST = (document.location.host || '');
+			var PORT = (document.location.port || '').split(':').join('');
+			var PATHNAME = (document.location.pathname || '').split('/').slice(0, -1).join('/');
+			var QUERY = window.location.toString().slice(window.location.toString().indexOf('?'));
+			var BASEURL = (PROTOCOL +'//'+ HOST + (PORT ? ':'+PORT : '') + PATHNAME);
+			
+			// @see https://developers.facebook.com/docs/reference/dialogs/feed/
+			function shareOnFacebook(name, description) {
+				FB.ui({
+					  method: 'feed'
+					, redirect_uri: BASEURL,
+					, link: BASEURL + '/share.html'
+					, picture: BASEURL + '/og.jpg'
+					, name: (name || '')
+					, caption: '<url:share>'
+					, description: (description || '')
+				}, function (response) {
 					var player = getFlashPlayer('flash-content');
 					if (player) {
 						player.postResult(response);
 					}
 				});
-            }
+			}
 
-            function embedFlashPlayer() {
-                var flashvars = {
-                      debug: swfobject.getQueryParamValue('debug')
-                    , fvBaseUrl: BASEURL
-                    , fvBaseContent: ''
-                    , fvBaseService: ''
-                };
-                var parameters = {
-                      allowscriptaccess: 'always'
-                    , allowFullScreen: 'true'
-                    , allownetworking: 'all'
-                    , wmode: 'transparent'
-                };
-                var attributes = {
-                      id: 'flash-content'
-                    , name: 'flash-content'
-                };
-                swfobject.embedSWF(
-                      'boot.swf'
-                    , 'flash-content'
-                    , '100%'
-                    , '100%'
-                    , '9.0.0'
-                    , 'expressInstall.swf'
-                    , flashvars
-                    , parameters
-                    , attributes
-                );
-            }
+			function embedFlashPlayer() {
+				var flashvars = {
+					  debug: swfobject.getQueryParamValue('debug')
+					, fvBaseUrl: BASEURL
+					, fvBaseContent: ''
+					, fvBaseService: ''
+				};
+				var parameters = {
+					  allowscriptaccess: 'always'
+					, allowFullScreen: 'true'
+					, allownetworking: 'all'
+					, wmode: 'transparent'
+				};
+				var attributes = {
+					  id: 'flash-content'
+					, name: 'flash-content'
+				};
+				swfobject.embedSWF(
+					  'boot.swf'
+					, 'flash-content'
+					, '100%'
+					, '100%'
+					, '9.0.0'
+					, 'expressInstall.swf'
+					, flashvars
+					, parameters
+					, attributes
+				);
+			}
 
-            function hasFlashPlayer() {
-                var playerVersion = swfobject.getFlashPlayerVersion();
-                return playerVersion.major > 0 || swfobject.hasFlashPlayerVersion('6.0.65');
-            }
-            
-            function getFlashPlayer(id) {
-                if (navigator.appName.indexOf('Microsoft') != -1) {
-                    return window[id];
-                }
-                return document[id];
-            }
-            
-            function sendToFlashPlayer(id, method) {
-                var rest = Array.prototype.slice.call(arguments, 2);
-                var flashPlayer = getFlashPlayer(id);
-                if (flashPlayer && typeof flashPlayer[method] === 'function') {
-                    flashPlayer[method].apply(flashPlayer, rest);
-                }
-            }
+			function hasFlashPlayer() {
+				var playerVersion = swfobject.getFlashPlayerVersion();
+				return playerVersion.major > 0 || swfobject.hasFlashPlayerVersion('6.0.65');
+			}
+			
+			function getFlashPlayer(id) {
+				if (navigator.appName.indexOf('Microsoft') != -1) {
+					return window[id];
+				}
+				return document[id];
+			}
+			
+			function sendToFlashPlayer(id, method) {
+				var rest = Array.prototype.slice.call(arguments, 2);
+				var flashPlayer = getFlashPlayer(id);
+				if (flashPlayer && typeof flashPlayer[method] === 'function') {
+					flashPlayer[method].apply(flashPlayer, rest);
+				}
+			}
 
-            if (hasFlashPlayer()) {
-                swfobject.addDomLoadEvent(embedFlashPlayer);
-            } else {
-                window.location = 'fallback/index.html';
-            }
-            
-            AM.sendToFlashPlayer = sendToFlashPlayer;
-            AM.shareOnFacebook = shareOnFacebook;
-            AM.hasFlashPlayer = hasFlashPlayer;
-            AM.getFlashPlayer = getFlashPlayer;
-            AM.baseUrl = BASEURL;
-            AM.query = QUERY;
+			if (hasFlashPlayer()) {
+				swfobject.addDomLoadEvent(embedFlashPlayer);
+			} else {
+				window.location = 'fallback/index.html';
+			}
+			
+			AM.sendToFlashPlayer = sendToFlashPlayer;
+			AM.shareOnFacebook = shareOnFacebook;
+			AM.hasFlashPlayer = hasFlashPlayer;
+			AM.getFlashPlayer = getFlashPlayer;
+			AM.baseUrl = BASEURL;
+			AM.query = QUERY;
 
-        }(this, this.document, this.AM = this.AM || {}));
-    </script>
-    
-    <!-- feedback / fallback -->
-    <noscript>
-        This page uses Javascript. Your browser either
-        doesn't support Javascript or you have it turned off.
-        To see this page as it is meant to appear please use
-        a Javascript enabled browser.
-    </noscript>
+		}(this, this.document, this.AM = this.AM || {}));
+	</script>
+	
+	<!-- feedback / fallback -->
+	<noscript>
+		This page uses Javascript. Your browser either
+		doesn't support Javascript or you have it turned off.
+		To see this page as it is meant to appear please use
+		a Javascript enabled browser.
+	</noscript>
 </body>
 </html>
