@@ -10,10 +10,12 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SYM: For reading through a symlink, which is usually not what you want
 # (you usually don't want to confuse the user this way)
+VER="v1.0.3"
 SYM=$(basename "$(test -L "$0" && readlink "$0" || echo "$0")");
 DIR=$(dirname "$0");
 PWD=$(pwd);
 ABS=$(cd "$DIR"; pwd);
+SRC="${BASH_SOURCE%/*}";
 
 # Navigate to project
 cd "$ABS";
